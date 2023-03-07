@@ -10,7 +10,7 @@ show_sidebar: false
 
 ---
 
-<img src="/images/CoGAPSLogoSmall.png" alt="CoGAPS Logo" style="float:left;width:150px;height:166px;" style= "margin:right;5px;">
+<!-- <img src="/images/CoGAPSLogoSmall.png" alt="CoGAPS Logo" style="float:left;width:150px;height:166px;" style= "margin:right;5px;"> -->
 
 ## Introduction
 
