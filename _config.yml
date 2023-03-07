@@ -8,3 +8,14 @@ tagline: CoGAPS
 description: >
   The website for CoGAPS (Coordinated Gene Association in Pattern Sets)
 fixed_navbar: top
+
+exclude: 
+  - Gemfile
+  - clean-theme.gemspec
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
