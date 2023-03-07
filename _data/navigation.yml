@@ -4,6 +4,8 @@
   link: /install/
 - name: Vignettes
   link: /vignettes/
+- name: Features
+  link: /features/
 #   dropdown: 
 #     - name: Page 2
 #       link: /page-2/
