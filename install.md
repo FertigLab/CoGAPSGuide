@@ -13,7 +13,7 @@ CoGAPS is a bioconductor package and so the release version can be installed as 
 source("https://bioconductor.org/biocLite.R")
 biocLite("CoGAPS")
 ```
-The most up-to-date version of CoGAPS can be installed directly from the FertigLab Github Repository:
+The most up-to-date version of CoGAPS can be installed directly from the <a href="https://github.com/FertigLab/CoGAPS" target="_blank">FertigLab Github Repository</a>:
 ```yaml
 ## Method 1 using biocLite
 biocLite("FertigLab/CoGAPS", dependencies = TRUE, build_vignettes = TRUE)
