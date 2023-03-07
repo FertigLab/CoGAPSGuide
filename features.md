@@ -6,4 +6,4 @@ hero_darken: true
 
 ---
 
-##Features
+## Features
