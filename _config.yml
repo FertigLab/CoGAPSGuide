@@ -1,1 +1,10 @@
 remote_theme: chrisrhymes/bulma-clean-theme
+
+permalink: pretty
+
+lang: en
+title: CoGAPS
+tagline: CoGAPS
+description: >
+  The website for CoGAPS (Coordinated Gene Association in Pattern Sets)
+fixed_navbar: top
