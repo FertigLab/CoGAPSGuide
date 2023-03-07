@@ -3,7 +3,7 @@
 - name: Install
   link: /install/
 - name: Vignettes
-  link: "https://www.bioconductor.org/packages/devel/bioc/vignettes/CoGAPS/inst/doc/CoGAPS.html" target="_blank"
+  link: https://www.bioconductor.org/packages/devel/bioc/vignettes/CoGAPS/inst/doc/CoGAPS.html
 - name: Features
   link: /features/
 - name: FAQ
