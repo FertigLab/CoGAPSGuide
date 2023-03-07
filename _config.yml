@@ -9,6 +9,8 @@ description: >
   The website for CoGAPS (Coordinated Gene Association in Pattern Sets)
 fixed_navbar: top
 # favicon: /images/favicon.png
+plugins:
+  - jekyll-gist
 
 exclude: 
   - Gemfile
