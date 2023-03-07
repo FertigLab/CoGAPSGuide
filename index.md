@@ -3,7 +3,7 @@
 layout: page
 title: CoGAPS
 subtitle: (Coordinated Gene Association in Pattern Sets)
-hero_image: /images/hero.png
+hero_image: /jubilant-bassoon/images/hero.png
 hero_height: is-fullwidth
 
 ---
