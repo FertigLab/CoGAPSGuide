@@ -8,6 +8,8 @@
   link: /features/
 - name: FAQ
   link: /faq/
+- name: GitHub
+  link: https://github.com/FertigLab/CoGAPS
 #   dropdown: 
 #     - name: Page 2
 #       link: /page-2/
