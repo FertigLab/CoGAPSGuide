@@ -258,3 +258,224 @@ AnnData object with n_obs × n_vars = 25 × 20
 ```
 
 This indicates that PyCoGAPS has been set up and run correctly, and we can now proceed to analyzing experimental single-cell data.
+
+### Running PyCoGAPS on Single Cell Data
+
+<strong>this code can be found in the reference file pdacvignette.py]</strong>
+
+<strong>Timing: 5 min - 2 days (depending on whether user runs NMF or uses precomputed result)</strong>
+
+7. Import necessary libraries wrapped in check (Box 4):
+
+```yml
+if __name__ == "__main__":
+    		from PyCoGAPS.parameters import *
+   		from PyCoGAPS.pycogaps_main import CoGAPS
+    		import scanpy as sc
+```
+
+---
+
+Box 4: Handling multithreading for single-cell data
+
+Important: Whenever distributed (ie multithreaded) options are used, all calling code <strong>must</strong> be wrapped in a check like this so it will only be called by the parent process. Missing this line will send calling code into infinite recursion. All subsequent calling code, not just the imports, must fall under this check such that it will only be executed when the check succeeds.
+
+NOTE: Single-threaded CoGAPS, such as the run demonstrated above with ModSim data, does not require this check. It is a perfectly valid and correct way to run CoGAPS. We show distributed-friendly code here because it will be relevant to the majority of single-cell analysis users, who stand to gain both in performance and robustness of solution.
+
+---
+
+8. A single-cell dataset has been provided for this vignette, already located in the ‘data’ folder when we cloned the repository. We will read in the data as an anndata object (Box 5).
+
+```yml
+path = "data/inputdata.h5ad"
+adata = sc.read_h5ad(path)
+```
+
+---
+
+Box 5: Data input format
+
+While CoGAPS can handle multiple data formats, we strongly recommend converting your data to Anndata format using the anndata package61 or another utility designed for translating between data structures62. The returned object will be in Anndata format.
+
+---
+
+9. It is strongly recommended to normalize data before running PyCoGAPS. The data matrix is stored in Sparse Compressed Row format, and we now decompress and normalize it. Here we make use of the scanpy package<sup>71</sup> to perform log-normalization.
+
+```yml
+sc.pp.log1p(adata)
+
+adata.X = adata.X.todense()
+sc.pp.log1p(adata)
+```
+
+CoGAPS expects genes in .obs and cells in .var, which is the opposite of scanpy’s convention. So after normalizing, we transpose the matrix into CoGAPS expected format. 
+
+```yml
+adata = adata.T
+```
+
+Now let's examine adata:
+
+```yml
+>> adata
+AnnData object with n_obs × n_vars = 15219 × 25442
+    obs: 'gene_ensembl_ID', 'gene_short_name', 'feature_in_nCells'
+    var: 'barcode_raw', 'celltype', 'sample_ID', 'sample_ID_celltype', 'TN', 'TN_manuscript', 'manuscript', 'nCount_RNA', 'nFeature_RNA', 'percent.mt', 'Size_Factor', 'TN_cluster_resolution_5', 'TN_assigned_cell_type', 'TN_assigned_cell_type_immune', 'TN_assigned_cell_type_immune_specific', 'TN_assigned_cell_type_immune_broad', 'cc', 'ccstage', 'Classifier_T_duct', 'Classifier_T_Fibroblast_only', 'Classifier_T_Fibroblast_Stellate'
+    uns: 'log1p'
+    varm: 'X_aligned', 'X_pca', 'X_umap'
+```
+
+This is an anndata object consisting of scRNAseq data from 25,422 Pancreatic epithelial cells, with reads from 15,219 genes. The .obs and .var matrices contain metadata such as gene names, cell annotations, and clustering results.
+
+<strong>!CRITICAL</strong> - Any transformation or scaling you choose to perform on your count matrix must result in all non-negative values due to the core constraint of NMF.
+
+10. Next we create a parameters object that stores run options in a dictionary format. 
+
+Note that the easiest way to decrease runtime is to run for fewer iterations, and you may want to set nIterations=1000 for a test run before starting a complete CoGAPS run on your data.
+
+```yml
+params = CoParams(adata=adata)
+
+setParams(params, {
+    'nIterations': 50000,
+    'seed': 42,
+    'nPatterns': 8,
+    'useSparseOptimization': True,
+    'distributed': "genome-wide"
+})
+```
+
+If you are running distributed, you must run this line, and you can specify how many sets will be created and parallelized across, as well as specify cutoffs for how stringently a consensus matrix is determined. 
+
+```yml
+params.setDistributedParams(nSets=7)
+```
+
+The ‘distributed’ parameter enables parallelization to decrease runtimes which we recommended for most cases. Please refer to Box 6 for how to run distributed PyCoGAPS.
+
+---
+
+<strong>Box 6:</strong> Running Distributed PyCoGAPS
+
+Distributed parameters:
+
+If you wish to run distributed CoGAPS, which we recommend for most cases, set the “distributed” parameter to “genome-wide” (parallelize across genes), or “single-cell” (parallelize across cells). Please see Fig. 3 for a full explanation of the mechanism. 
+
+<sup>cut, minNS,</sup> and <sup>maxNS</sup> control the process of matching patterns across subsets and in general should not be changed from defaults. More information about these parameters can be found in the original papers.
+
+<sup>nSets</sup> controls how many subsets are run in parallel when using the distributed version of the algorithm. Setting <sup>nSets</sup> requires balancing available hardware and run time against the size of your data. In general, <sup>nSets</sup> should be less than or equal to the number of nodes/cores that are available. If that is true, then the more subsets you create, the faster CoGAPS will run - however, some robustness can be lost when the subsets get too small. The general rule of thumb is to set <sup>nSets</sup> so that each subset has between 1000 and 5000 genes or cells in order to give robust results, but ideally we would want as many cells per set as possible. More information on these parameters can be found in Table 2.
+
+If <sup>explicitSets</sup> are not provided, the data will be randomly fragmented into the number of sets specified by <sup>nSets</sup> parameter, with the default being 4. Subsets can also be chosen randomly, but weighted according to a user-provided annotation in parameters <sup>samplingAnnotation</sup> and <sup>samplingWeight</sup>.
+
+---
+
+<strong>!CRITICAL</strong> - If you are using the distributed CoGAPS option, all of your calling code must be wrapped in a check to make sure the main thread is running (demonstrated in Step 7). Otherwise, child processes will attempt to call this code, because none of them actually “know” they are not the main thread. This causes infinite recursion to occur and makes the program unrunnable. 
+
+A description and guide for setting key PyCoGAPS parameters can be found in Table 2. To view the parameter values that have been set, we include a printParams function (Box 7). There are many more additional parameters that can be set depending on your goals, which we invite the reader to explore in our GitHub documentation.
+
+---
+
+<strong>Box 7</strong>: Viewing all Parameters
+
+To see all parameters that have been set, call:
+
+```yml
+params.printParams()
+```
+
+Expected output:
+
+```yml
+running genome-wide. if you wish to perform single-cell distributed cogaps, please run setParams(params, "distributed", "single-cell")
+setting distributed parameters - call this again if you change nPatterns
+
+-- Standard Parameters --
+nPatterns:  8
+nIterations:  50000
+seed:  42
+sparseOptimization:  True
+
+-- Sparsity Parameters --
+alpha: 0.01
+maxGibbsMass:  100.0
+
+-- Distributed Parameters --
+cut:  8
+nSets:  7
+minNS:  4
+maxNS:  11
+```
+
+---
+
+11. With all parameters set, we are now ready to run PyCoGAPS. Please note that this is the most time-consuming step of the procedure. Timing can take several hours and scales nlog(n) based on dataset size (see Timing section below), as well as the parameter values set for ‘nPatterns’ and ‘nIterations’. Time is increased when learning more patterns, when running more iterations, and when running a larger dataset, with iterations having the largest variable impact on the runtime of the NMF function.
+
+<strong>CRITICAL! -</strong> This step has a long runtime. For users who want to load an already-complete NMF run and proceed to the analysis portion of this vignette, please skip to step 13. 
+
+Otherwise, you may start the run as so:
+
+```yml
+   start = time.time()
+   result = CoGAPS(adata, params)
+   end = time.time()
+   print("TIME:", end - start)
+```
+
+While CoGAPS is running, you will see periodic status messages, described in Box 8.
+
+---
+<strong>Box 8:</strong> PyCoGAPS Status Messages
+
+While CoGAPS is running, you will see periodic status messages saying how many iterations have been completed, the current ChiSq value, and how much time has elapsed out of the estimated total runtime.
+
+```yml
+1000 of 50000, Atoms: 5424(A), 21232(P), ChiSq: 138364000, Time: 00:03:47 / 11:13:32
+1000 of 50000, Atoms: 5394(A), 20568(P), ChiSq: 133824536, Time: 00:03:46 / 11:10:34
+1000 of 50000, Atoms: 5393(A), 21161(P), ChiSq: 133621048, Time: 00:03:51 / 11:25:24
+1000 of 50000, Atoms: 5527(A), 22198(P), ChiSq: 137671296, Time: 00:04:00 / 11:52:06
+1000 of 50000, Atoms: 5900(A), 20628(P), ChiSq: 137228688, Time: 00:03:58 / 11:46:10
+
+NOTE: when running multithreaded, each thread will output to the console separately. For n threads, you will see each message repeated n times. They may come in different orders
+```
+
+---
+
+?Troubleshooting
+
+When the run is finished, CoGAPS will print a message like this:
+
+```yml
+GapsResult result object with 5900 features and 20628 samples
+8 patterns were learned
+AnnData object with n_obs × n_vars = 15219 × 25442
+    obs: 'Pattern1', 'Pattern2', 'Pattern3', 'Pattern4', 'Pattern5', 'Pattern6', 'Pattern7', 'Pattern8'
+    var: 'Pattern1', 'Pattern2', 'Pattern3', 'Pattern4', 'Pattern5', 'Pattern6', 'Pattern7', 'Pattern8'
+    uns: 'asd', 'atomhistoryA', 'atomhistoryP', 'averageQueueLengthA', 'averageQueueLengthP', 'chisqHistory', 'equilibrationSnapshotsA', 'equilibrationSnapshotsP', 'meanChiSq', 'meanPatternAssignment', 'psd', 'pumpMatrix', 'samplingSnapshotsA', 'samplingSnapshotsP', 'seed', 'totalRunningTime', 'totalUpdates'
+    varm: 'X_aligned', 'X_pca', 'X_umap'
+```
+
+12. When CoGAPS has finished running, write the NMF result to disk. We strongly recommend saving your result object as soon as it returns. 
+
+You can do this by directly saving the anndata object (Box 9):
+
+```yml
+result.write("data/my_pdac_result.h5ad")
+```
+
+To save as a .csv file, use the following line:
+
+```yml
+result.write_csvs(dirname=’./’, skip_data=True, sep=',')
+```
+
+---
+
+<strong>Box 9: The PyCoGAPS Result Object</strong>
+
+The CoGAPS result is returned in Anndata format. CoGAPS stores the lower-dimensional representation of the samples (P matrix) in the <sup>.var</sup> slot and the weight of the features (A matrix) in the <sup>.obs</sup> slot. If you transpose the matrix before running CoGAPS, the opposite will be true. Running single-cell is equivalent in every way to transposing the data matrix and running single-cell. The standard deviation across sample points for each matrix as well as additional metrics are stored in the <sup.uns</sup> slots. Please refer to <a href="https://github.com/FertigLab/pycogaps#readme" target="_blank">github.com/FertigLab/pycogaps#readme</a> for complete documentation of output metrics.
+
+---
+
+<strong>PAUSE POINT</strong> - Now we have successfully generated and saved a CoGAPS result. The procedure may be paused. 
+
+The following steps will walk through analyzing and visualizing the generated saved result.
