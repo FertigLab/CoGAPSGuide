@@ -6,6 +6,8 @@ hero_darken: true
 
 ---
 
+# Procedures
+
 ## Overview
 
 We provide three independent procedures (Procedure 1-3) for NMF analysis. Procedure 1 demonstrates PyCoGAPS, Procedure 2 demonstrates CoGAPS, and Procedure 3 demonstrates GenePattern Notebook. All of these procedures are functionally equivalent and share the same CoGAPS backend, so the user’s choice of interface should depend on factors such as computing performance, familiarity with the programming language, and programming expertise. Please refer to Fig. 4 and/or Table 1 to determine which procedure is most appropriate to follow. 
