@@ -560,5 +560,27 @@ computing UMAP
     'X_umap', UMAP coordinates (adata.obsm) (0:00:07)
 WARNING: saving figure to file figures/umapepithelial_pycogaps_UMAP.png
 ```
+Generated plot:
 
 <img src="/images/cogapsworkflow.png" alt="Generated plot" width="800" height="483">
+
+Each pattern is enriched in a different part of the UMAP embedding, and all patterns seem to have a signal. This is a sign that the number of patterns we selected is sufficient to distinguish signals present in our dataset.
+
+By visual inspection it is apparent that pattern 5 seems to associate only with those epithelial cells annotated as “normal”. Pattern 2, pattern 4, pattern 6, and pattern 8 appear to light up specific, distinct groupings of epithelial cells annotated as “cancer”.
+
+Patterns 1, 3, and 7, however, show signal in both classes of epithelial cells. We note that the epithelial normal cluster is mixed between cells from true normal samples and normal cells that are tumor-adjacent. This leads to hypotheses about  which patterns might represent gene programs that distinguish, or co-occur, in malignant epithelial cells or related to signaling associated with field carcinization or unannotated precancer neoplastic cells in the sample.
+
+15 . To generate statistics on the association between certain sample groups and patterns, we provide a wrapper function around statsmodels’ MANOVA function<sup>72</sup>. This will allow us to explore if the patterns we have discovered lend to statistically significant differences in the sample groups. First, we will load in the original data.
+
+```yml
+orig = anndata.read_h5ad("data/inputdata.h5ad").T
+```
+
+Our original data contains many sample groups, however we are only interested in exploring the associations of a subset of the groups with biological relevance, in this case ‘celltype’ and ‘TN_assigned_cell_type’.
+
+```yml
+interested_vars = ['celltype', 'TN_assigned_cell_type']
+manova_result = MANOVA(cogapsresult, orig, interested_vars)
+```
+
+The function will print out the MANOVA results for each pattern learned based on the variables of interest. From the output, we can observe that all p-values have a value of 0.0, indicating that differences observed in the sample groups based on the patterns are statistically significant.
