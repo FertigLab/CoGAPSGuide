@@ -584,3 +584,18 @@ manova_result = MANOVA(cogapsresult, orig, interested_vars)
 ```
 
 The function will print out the MANOVA results for each pattern learned based on the variables of interest. From the output, we can observe that all p-values have a value of 0.0, indicating that differences observed in the sample groups based on the patterns are statistically significant.
+
+<img src="/images/multivariatelinearmodel.png" alt="Multivariate linear model data">
+
+Further, we introduced some technical sample groups (['celltype', 'TN_assigned_cell_type', 'Size_Factor', 'TN_cluster_resolution_5', 'nCount_RNA']) to show insignificance of associations, where resulting p-values for patterns were equivalent to 1.
+
+16 . Using violin plots, we can visualize association between patterns and annotated cell types.
+
+First let’s gather a list of the names of each pattern:
+
+```yml
+pattern_names = [col for col in cogapsresult.var.columns if col.startswith('Pattern')]
+
+sc.pl.stacked_violin(cogapsresult.T, [pattern_names], groupby='cell_type')
+```
+
