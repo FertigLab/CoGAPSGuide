@@ -561,4 +561,4 @@ computing UMAP
 WARNING: saving figure to file figures/umapepithelial_pycogaps_UMAP.png
 ```
 
-<img src="images/CoGAPSworkflow.png" alt="Generated plot">
+<img src="images/CoGAPSworkflow.png" alt="Generated plot" width="800" height="483">
