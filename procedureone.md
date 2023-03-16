@@ -101,7 +101,7 @@ Finished processing dependencies for pycogaps==0.0.1
 
 To ensure PyCoGAPS is running properly on your computer, we will first perform a setup and run on a small, simulated toy dataset (single-cell data analysis will begin in Step 7). 
 
-3. Import libraries. In your python script (file ending in .py), import the PyCoGAPS functions with the following lines:
+3 . Import libraries. In your python script (file ending in .py), import the PyCoGAPS functions with the following lines:
 
 ```yml
 from PyCoGAPS.parameters import *
@@ -109,7 +109,7 @@ from PyCoGAPS.pycogaps_main import CoGAPS
 import scanpy as sc
 ```
 
-4. Load sample data from directory.
+4 . Load sample data from directory.
 
 ```yml
 modsimpath = "data/ModSimData.txt"
@@ -123,7 +123,7 @@ modsim
 AnnData object with n_obs × n_vars = 25 × 20
 ```
 
-5. Next, we will set the parameters to be used by PyCoGAPS. First, we will create a CoParams object, then set parameters with the setParams function. 
+5 . Next, we will set the parameters to be used by PyCoGAPS. First, we will create a CoParams object, then set parameters with the setParams function. 
 
 ```yml
 params = CoParams(path=modsimpath)
@@ -171,7 +171,7 @@ alpha: 0.01
 maxGibbsMass:  100.0
 ```
 
-6. Since our parameters and data are now ready, we can start our PyCoGAPS run. As a best practice, we recommend always timing CoGAPS runs for your own records.
+6 . Since our parameters and data are now ready, we can start our PyCoGAPS run. As a best practice, we recommend always timing CoGAPS runs for your own records.
 
 ```yml
 start = time.time()
@@ -265,7 +265,7 @@ This indicates that PyCoGAPS has been set up and run correctly, and we can now p
 
 <strong>Timing: 5 min - 2 days (depending on whether user runs NMF or uses precomputed result)</strong>
 
-7. Import necessary libraries wrapped in check (Box 4):
+7 . Import necessary libraries wrapped in check (Box 4):
 
 ```yml
 if __name__ == "__main__":
@@ -284,7 +284,7 @@ NOTE: Single-threaded CoGAPS, such as the run demonstrated above with ModSim dat
 
 ---
 
-8. A single-cell dataset has been provided for this vignette, already located in the ‘data’ folder when we cloned the repository. We will read in the data as an anndata object (Box 5).
+8 . A single-cell dataset has been provided for this vignette, already located in the ‘data’ folder when we cloned the repository. We will read in the data as an anndata object (Box 5).
 
 ```yml
 path = "data/inputdata.h5ad"
@@ -299,7 +299,7 @@ While CoGAPS can handle multiple data formats, we strongly recommend converting 
 
 ---
 
-9. It is strongly recommended to normalize data before running PyCoGAPS. The data matrix is stored in Sparse Compressed Row format, and we now decompress and normalize it. Here we make use of the scanpy package<sup>71</sup> to perform log-normalization.
+9 . It is strongly recommended to normalize data before running PyCoGAPS. The data matrix is stored in Sparse Compressed Row format, and we now decompress and normalize it. Here we make use of the scanpy package<sup>71</sup> to perform log-normalization.
 
 ```yml
 sc.pp.log1p(adata)
@@ -329,7 +329,7 @@ This is an anndata object consisting of scRNAseq data from 25,422 Pancreatic epi
 
 <strong>!CRITICAL</strong> - Any transformation or scaling you choose to perform on your count matrix must result in all non-negative values due to the core constraint of NMF.
 
-10. Next we create a parameters object that stores run options in a dictionary format. 
+10 . Next we create a parameters object that stores run options in a dictionary format. 
 
 Note that the easiest way to decrease runtime is to run for fewer iterations, and you may want to set nIterations=1000 for a test run before starting a complete CoGAPS run on your data.
 
@@ -408,7 +408,7 @@ maxNS:  11
 
 ---
 
-11. With all parameters set, we are now ready to run PyCoGAPS. Please note that this is the most time-consuming step of the procedure. Timing can take several hours and scales nlog(n) based on dataset size (see Timing section below), as well as the parameter values set for ‘nPatterns’ and ‘nIterations’. Time is increased when learning more patterns, when running more iterations, and when running a larger dataset, with iterations having the largest variable impact on the runtime of the NMF function.
+11 . With all parameters set, we are now ready to run PyCoGAPS. Please note that this is the most time-consuming step of the procedure. Timing can take several hours and scales nlog(n) based on dataset size (see Timing section below), as well as the parameter values set for ‘nPatterns’ and ‘nIterations’. Time is increased when learning more patterns, when running more iterations, and when running a larger dataset, with iterations having the largest variable impact on the runtime of the NMF function.
 
 <strong>CRITICAL! -</strong> This step has a long runtime. For users who want to load an already-complete NMF run and proceed to the analysis portion of this vignette, please skip to step 13. 
 
@@ -454,7 +454,7 @@ AnnData object with n_obs × n_vars = 15219 × 25442
     varm: 'X_aligned', 'X_pca', 'X_umap'
 ```
 
-12. When CoGAPS has finished running, write the NMF result to disk. We strongly recommend saving your result object as soon as it returns. 
+12 . When CoGAPS has finished running, write the NMF result to disk. We strongly recommend saving your result object as soon as it returns. 
 
 You can do this by directly saving the anndata object (Box 9):
 
