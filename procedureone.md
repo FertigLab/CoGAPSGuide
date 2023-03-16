@@ -23,7 +23,9 @@ git clone https://github.com/FertigLab/pycogaps.git --recursive
 ?Troubleshooting
 
 <strong>Box 2</strong>
+
 ____
+
 To download PyCoGAPS without the large files (inputresult.h5ad and cogapsresult.h5ad), run the following command:
 
 ```yml
@@ -31,6 +33,7 @@ GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/FertigLab/pycogaps.git --recu
 ```
 
 Please note that if you would like to use the files (inputresult.h5ad and cogapsresulth5ad) later, you may download them from the repository as described in the Data section.
+
 ____
 
 Expected output:
@@ -63,12 +66,15 @@ pip install -r requirements.txt
 ```
 
 <strong>Box 3: Anaconda Environment</strong>
+
 ____
+
 Install Anaconda from here: <a href="https://docs.anaconda.com/anaconda/install/" target="_blank">docs.anaconda.com/anaconda/install/</a>
 
 Instructions for setting up a conda environment can be found here: <a href="https://conda.io/projects/conda/en/latest/user-guide/getting-started.html" target="_blank">conda.io/projects/conda/en/latest/user-guide/getting-started.html</a>
 
 We recommend the user create a conda environment called ‘pycogaps’ and install all requirements and run code from within here.
+
 ____
 
 ?Troubleshooting
