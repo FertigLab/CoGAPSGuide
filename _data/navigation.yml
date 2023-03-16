@@ -1,13 +1,18 @@
 - name: About
   link: /about/
-- name: Install
-  link: /install/
+- name: Procedures
+  link: /procedures/
+    dropdown: 
+    - name: Procedure 1
+      link: /procedure-1/
+    - name: Procedure 2
+      link: /procedure-2/
+    - name: Procedure 3
+      link: /procedure-3/
 - name: Vignettes
   link: https://www.bioconductor.org/packages/devel/bioc/vignettes/CoGAPS/inst/doc/CoGAPS.html
 - name: Features
   link: /features/
 - name: FAQ
   link: /faq/
-#   dropdown: 
-#     - name: Page 2
-#       link: /page-2/
+
