@@ -562,7 +562,7 @@ WARNING: saving figure to file figures/umapepithelial_pycogaps_UMAP.png
 ```
 Generated plot:
 
-[![Generated Plot](images/cogapsworkflow.png)]
+![Generated Plot](images/cogapsworkflow.png)
 
 Each pattern is enriched in a different part of the UMAP embedding, and all patterns seem to have a signal. This is a sign that the number of patterns we selected is sufficient to distinguish signals present in our dataset.
 
