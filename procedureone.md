@@ -680,4 +680,4 @@ plotPatternGSEA(gsea_res, whichPattern = 7)
     
 Generates this plot for pattern 7. This shows negative log quotient (degree of association) of the pattern’s gene set with statistically significant MSigDB Hallmark terms (FDR-corrected P-value reported by gseapy < 0.05)
 
-![Pattern 7 Enriched Terms] (images/pattern7enrichedterms.png)
+![Pattern 7 Enriched Terms](images/pattern7enrichedterms.png)
