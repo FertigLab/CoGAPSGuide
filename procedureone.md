@@ -635,3 +635,47 @@ The three components of the returned dictionary <em>pm</em> are:
             <li>Scores have nonnegative values mostly falling between 0 and 2</li>
 </ul>
     
+patternMarkers can run in two modes, depending on the “threshold” parameter
+
+If <strong>threshold=”all”</strong>, each gene is treated as a marker of one pattern (whichever it is most strongly associated with). The number of marker genes will always equal the number of input genes. If <strong>threshold=”cut”</strong>, a gene is considered a marker of a pattern if and only if it is less significant to at least one other pattern. Counterintuitively, this results in much shorter lists of patternMarkers and is a more convenient statistic to use when functionally annotating patterns.
+    
+---
+    
+To view marker genes for a pattern, access it like this:
+    
+```yml
+pm["PatternMarkers"]["Pattern_7"]
+
+['SPEF2', 'PAH', 'FAM117B', 'SFTPA2', 'PDLIM4', 'ZNF503', 'CITED2', 'GTPBP4', 'ZSWIM8', 'CHD5', 'TNFRSF9', 'CD3EAP', 'AMIGO2', 'STX3', 'CAMK2G', 'RACGAP1', 'SOWAHB', 'ABRACL', 'LTBP2', 'CDK11B', 'MFAP1', 'UNK', 'PLEKHH3', 'C1orf115', 'SATB1', 'BBOX1', 'SPN', 'UHRF1BP1', 'PVR', 'NLRP4', 'CAMK4', 'ZNF324', 'WWTR1', 'DYDC2', 'SHANK2', 'GBF1', 'HSPH1', 'VDAC2', 'FAM229A', 'COG3', 'RFTN1', 'KRT81', 'GLP2R', 'NR3C1', 'BNIP1', 'SLFN13', 'RABL3', 'TNKS', 'RAB30', 'ARHGAP21', 'ABTB2', 'ETNK1', 'DUS4L', 'PDK4', 'SLC35A3', 'ABCC5', 'NRK', 'ZNF439', 'TYSND1', 'SYAP1', 'GAR1', 'NOS3', 'POLR2M', 'SERPINI1']
+```
+    
+18 . We next perform gene set enrichment analysis (GSEA) on lists of marker genes for each pattern in order to annotate the molecular processes in the learned patterns. We accomplish this using a wrapper around the GSEApy library<sup>73</sup>
+    
+```yml
+gsea_res = patternGSEA(cogapsresult, patternmarkers=None, verbose=True,     gene_sets = ['MSigDB_Hallmark_2020'], organism="human")
+```
+    
+To see all patterns for which GSEA was computed:
+
+```yml
+gsea_res.keys()
+
+
+dict_keys(['Pattern1', 'Pattern2', 'Pattern3', 'Pattern4', 'Pattern5', 'Pattern6', 'Pattern7', 'Pattern8'])
+```
+    
+To demonstrate the utility of this gene set analysis, we focus on Pattern 7. To view a pattern’s GSEA result:
+    
+```yml
+gsea_res[“Pattern7”]
+```
+    
+To generate a simple boxplot summarizing the statistically significant enriched terms for a given pattern, please use this wrapper we provide around scanpy’s boxplot function. 
+
+The plotPatternMarkers function will also generate a plot colored by every column in the adata.var matrix. However, for single-cell data analysis, this is probably too large of a matrix to be useful by visual inspection.
+
+```yml
+plotPatternGSEA(gsea_res, whichPattern = 7)
+```
+    
+Generates this plot for pattern 7. This shows negative log quotient (degree of association) of the pattern’s gene set with statistically significant MSigDB Hallmark terms (FDR-corrected P-value reported by gseapy < 0.05)
