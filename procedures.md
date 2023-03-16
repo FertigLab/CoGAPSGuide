@@ -69,6 +69,16 @@ If following Procedure 3, GenePattern Notebook:
   <li>No software is needed</li>
 </ul>
 
-### References
+### <strong>Box 1: C++ Compiler Information</strong>
+
+Linux: comes standard with most if not all distributions
+MacOS: ensure XCode is installed on your machine. If using the M1 chip, we recommend updating your software to at least MacOS Monterey 12.2.1 as it fixes a crucial issue with compiler linkages.
+Windows: you may need to install Microsoft Build Tools. If you experience significant issues during compilation, we recommend building CoGAPS on the Ubuntu subsystem, which is available on the Windows application store.
+
+## Hardware
+
+CoGAPS can be run on most laptops and compute clusters. Due to the nature of the CoGAPS algorithm, memory and RAM requirements will scale with the size of data being analyzed, number of patterns requested, number of threads, and number of iterations. 
+
+#### References
 
 1. <em>zenodo: Research. Shared.</em> (Github).
