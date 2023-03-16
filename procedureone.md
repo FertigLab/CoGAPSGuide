@@ -803,5 +803,139 @@ PyCoGAPS
 ├── output
 │   └── result.pkl
 ```
+---
 
 ### Running PyCoGAPS on Single Cell Data
+
+<strong>Timing: 5 min - 2 days (depending on whether user runs NMF or uses precomputed result)</strong>
+
+3 . Now that PyCoGAPS has been set up and run correctly, we can now proceed to analyzing experimental single-cell data. Navigate to the ‘data’ folder created earlier, and run the following command:
+
+```yml
+cd data
+curl -O https://raw.githubusercontent.com/FertigLab/pycogaps/master/data/inputdata.h5ad
+```
+
+<strong>! CRITICAL -</strong> Always make sure to move the data you seek to analyze into the created ‘data’ folder. 
+
+4 . We will then modify the default parameters before running PyCoGAPS. All parameter values can be modified directly in the params.yaml file already downloaded earlier in Step 1.
+
+We will do this by first opening params.yaml with any text or code editor. Then, modify the following line to:
+
+```yml
+path: ‘data/inputdata.h5ad’
+```
+
+Then, modify any additional desired parameters and save the file (Box 13). 
+
+---
+
+<strong>Box 13: Example snippet of params.yaml</strong>
+
+The params.yaml file holds all parameters that can be inputted to PyCoGAPS. A snippet of params.yaml is shown below, where we have changed some default parameter values to our own specified example values.
+
+```yml
+## This file holds all parameters to be passed into PyCoGAPS.
+## To modify default parameters, simply replace parameter values below with user-specified values, and save file. 
+
+# RELATIVE path to data -- make sure to move your data into the created data/ folder
+path: data/ModSimData.txt
+
+# result output file name 
+result_file: ModSimResult.h5ad
+
+standard_params:
+  # number of patterns CoGAPS will learn
+  nPatterns: 10
+  # number of iterations for each phase of the algorithm
+  nIterations: 5000
+  # random number generator seed
+  seed: 0
+  # speeds up performance with sparse data (roughly >80% of data is zero), note this can only be used with the default uncertainty
+  useSparseOptimization: True
+ 
+...
+```
+
+A complete list of input options and their descriptions can be found as comments in params.yaml and guide to setting key parameters in Table 2.
+
+---
+
+Note the ‘distributed’ parameter enables parallelization to decrease runtimes which we recommended for most cases. Please refer to Box 14 for how to run distributed PyCoGAPS.
+
+A description and guide for setting key PyCoGAPS parameters can be found in Table 2. There are many more additional parameters that can be set depending on your goals, which we invite the reader to explore in our GitHub documentation.
+
+---
+
+<strong>Box 14: Distributed PyCoGAPS in Docker</strong>
+
+A snippet of <sub>params.yaml</sub> is shown below where <sub>distributed_params</sub> parameters are modified.
+
+```yml
+## This file holds all parameters to be passed into PyCoGAPS.
+...
+
+distributed_params:
+  #  either null or genome-wide
+  distributed: genome-wide
+  # number of sets to break data into
+  nSets: 4
+  # number of branches at which to cut dendrogram used in pattern matching
+  cut: null
+  # minimum of individual set contributions a cluster must contain
+  minNS: null
+  # maximum of individual set contributions a cluster can contain
+  maxNS: null
+```
+
+For Distributed PyCoGAPS, once all worker threads have started running their iterations, you will see periodic output like this:
+
+```yml
+1000 of 50000, Atoms: 5424(A), 21232(P), ChiSq: 138364000, Time: 00:03:47 / 11:13:32
+1000 of 50000, Atoms: 5394(A), 20568(P), ChiSq: 133824536, Time: 00:03:46 / 11:10:34
+1000 of 50000, Atoms: 5393(A), 21161(P), ChiSq: 133621048, Time: 00:03:51 / 11:25:24
+1000 of 50000, Atoms: 5527(A), 22198(P), ChiSq: 137671296, Time: 00:04:00 / 11:52:06
+1000 of 50000, Atoms: 5900(A), 20628(P), ChiSq: 137228688, Time: 00:03:58 / 11:46:10
+```
+
+---
+
+5 . Now that all parameters are set, we are ready to run PyCoGAPS. Please note that this is the most time-consuming step of the procedure. Timing can take several hours and scales nlog(n) based on dataset size (see Timing section below), as well as the parameter values set for ‘nPatterns’ and ‘nIterations’. Time is increased when learning more patterns, when running more iterations, and when running a larger dataset, with iterations having the largest variable impact on the runtime of the NMF function.
+
+Run PyCoGAPS with the following command in terminal:
+
+```yml
+docker run -v $PWD:$PWD fertiglab/pycogaps $PWD/params.yaml
+```
+
+The result object will automatically save in the ‘output’ folder, with the name given by the ‘result_file’ parameter. 
+
+<strong>! PAUSE POINT -</strong> Now we have successfully generated and saved a CoGAPS result. The procedure may be paused. The following steps will walk through analyzing and visualizing the generated saved result.
+
+### Analyzing the PyCoGAPS Result
+
+<strong>Timing: 20-30 min</strong>
+
+6 . Download the analysis functions and requirements files with the following command:
+
+```yml
+curl -O https://raw.githubusercontent.com/FertigLab/pycogaps/master/PyCoGAPS/analysis_functions.py
+curl -O
+https://raw.githubusercontent.com/FertigLab/pycogaps/master/PyCoGAPS/requirements_analysis.txt 
+```
+
+7 . Install the analysis functions dependencies with the following command:
+
+```yml
+pip install -r analysis_requirements.txt
+```
+
+8 . Open a new Python file (in any preferred IDE, see Software section above) and include the following line:
+
+```yml
+from analysis_functions import *
+```
+
+?Troubleshooting
+
+8 . Please skip to the section above titled, “<strong>Analyzing the PyCoGAPS Result</strong>” in Procedure 1 Option A Step 13 to continue following the analysis and visualization workflow. 
