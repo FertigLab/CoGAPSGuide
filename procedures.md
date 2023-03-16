@@ -39,6 +39,36 @@ The single-cell protocol is demonstrated using preprocessed and harmonized scRNA
 
 All code and data needed to reproduce the results of these workflows can also be found hosted on Zenodo<sup>1</sup> at <a href="https://zenodo.org/record/7709664" target="_blank">zenodo.org/record/7709664</a>
 
+## Software
+
+<ul>
+  <li>Operating system: MacOS, Linux, Windows, or the Ubuntu subsystem for Windows (<a href="https://docs.microsoft.com/en-us/windows/wsl/install" target="_blank">docs.microsoft.com/en-us/windows/wsl/install</a>)</li>
+  </ul>
+If following Procedure 1 Option A, PyCoGAPS with Python scripts:
+<ul>
+  <li>Python v3.8 or later (<a href="https://www.python.org/downloads/release/python-380/" target="_blank">python.org/downloads/release/python-380</a> )</li>
+  <li>C++ compiler (Box 1)</li>
+  <li>Python IDE software such as VS Code, PyCharm, or Jupyter Notebook</li>
+  </ul>
+If following Procedure 1 Option B, PyCoGAPS with Docker:
+<ul>
+  <li>Docker (<a href="https://docs.docker.com/get-docker/" target="_blank">docs.docker.com/get-docker/</a>)</li>
+  <li>For Windows users only:</li>
+<ul>
+  <li>Ensure hyper V and virtualization is enabled</li>
+  <li>Install linux to get WSL2, with default Ubuntu</li>
+  </ul>
+  </ul>
+If following Procedure 2, CoGAPS:
+<ul>
+  <li>R (recommended v4 or later; known to be stable for R 4.2.1)</ul>
+<li>RStudio (<a href="https://www.rstudio.com/products/rstudio/download/" target="_blank">rstudio.com/products/rstudio/download/</a>)</li>
+  </ul>
+If following Procedure 3, GenePattern Notebook:
+<ul>
+  <li>No software is needed</li>
+</ul>
+
 ### References
 
 1. <em>zenodo: Research. Shared.</em> (Github).
