@@ -1,7 +1,7 @@
 - name: About
   link: /about/
 - name: Procedures
-  link: /#
+  link: /procedures/
   dropdown:
     - name: Procedure 1
       link: /procedureone/
