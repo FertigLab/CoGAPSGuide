@@ -681,3 +681,127 @@ plotPatternGSEA(gsea_res, whichPattern = 7)
 Generates this plot for pattern 7. This shows negative log quotient (degree of association) of the pattern’s gene set with statistically significant MSigDB Hallmark terms (FDR-corrected P-value reported by gseapy < 0.05)
 
 ![Pattern 7 Enriched Terms](images/pattern7enrichedterms.png)
+
+We note that pattern 7 was found to be associated with cancer cells and matched normal epithelial cells from adjacent tissue, but not in normal epithelial cells from true healthy control samples. Looking at the set of genes that are positively associated with pattern 7, we obtain these statistics and see the Hallmark set for inflammatory response and allograft rejection. We hypothesized this inflammatory process resulting from a transition during carcinogenesis resulting from interactions between epithelial cells and other cells in the microenvironment.  We observed a high correlation of this pattern with the presence of fibroblasts, and have tested this hypothesis with experimental validation using co-culture organoid experiments<sup>1</sup>.
+
+This section has demonstrated a basic analysis of both the A and P matrix (gene and sample associated pattern weights). These helper functions are a starting point for interpreting your single-cell NMF patterns, but most users will almost certainly wish to export their NMF result and incorporate it into their existing single-cell pipeline.
+
+## Option B: Running PyCoGAPS using Docker
+
+<strong>Software Setup</strong>
+
+<strong>Timing: 5 min</strong>
+
+1 . Pull the PyCoGAPS Docker container and set up the working directory.
+
+For Mac users, copy the commands and paste in terminal:
+
+```yml
+docker pull fertiglab/pycogaps
+mkdir PyCoGAPS
+cd PyCoGAPS
+curl -O https://raw.githubusercontent.com/FertigLab/pycogaps/master/params.yaml
+mkdir data
+cd data
+curl -O https://raw.githubusercontent.com/FertigLab/pycogaps/master/data/ModSimData.txt
+cd ..
+```
+
+For Windows (Ubuntu) users, copy the commands and paste in terminal:
+
+```yml
+docker pull fertiglab/pycogaps
+mkdir PyCoGAPS
+cd PyCoGAPS
+curl.exe -o index.html https://raw.githubusercontent.com/FertigLab/pycogaps/master/params.yaml
+mkdir data
+cd data
+curl.exe -o index.html https://raw.githubusercontent.com/FertigLab/pycogaps/master/data/GIST.csv
+cd..
+```
+
+?Troubleshooting
+
+### Running PyCoGAPS on Simulated Toy Data
+
+<strong>Timing: 2 min</strong>
+
+2 . To ensure PyCoGAPS is running properly on your computer, we will first perform a setup and run on the ModSim dataset (running PyCoGAPS on the single-cell data will be performed later in Step 3). The dataset has already been downloaded in Step 1. Run the following commands in terminal:
+
+```yml
+docker run -v $PWD:$PWD fertiglab/pycogaps $PWD/params.yaml
+```
+
+For users with an M1 processing chip, please add the following flag to the above command:
+
+```yml
+--platform linux/amd64
+```
+
+This produces a CoGAPS run on a simple dataset with default parameters. Please check that your output matches the expected in Box 11.
+
+---
+
+Box 11: Expected PyCoGAPS Docker Output
+
+```yml
+______      _____       _____   ___  ______  _____ 
+| ___ \    /  __ \     |  __ \ / _ \ | ___ \/  ___|
+| |_/ /   _| /  \/ ___ | |  \// /_\ \| |_/ /\ `--. 
+|  __/ | | | |    / _ \| | __ |  _  ||  __/  `--. |
+| |  | |_| | \__/\ (_) | |_\ \| | | || |    /\__/ /
+\_|   \__, |\____/\___/ \____/\_| |_/\_|    \____/ 
+       __/ |                                       
+      |___/ 
+   
+   
+pycogaps version  0.0.1
+This vignette was built using pycogaps version 0.0.1
+
+This is pycogaps version  0.0.1
+Running Standard CoGAPS on ModSimData.txt ( 25 genes and 20 samples) with parameters: 
+
+-- Standard Parameters --
+nPatterns:  3
+nIterations:  1000
+seed:  0
+sparseOptimization:  False
+
+
+-- Sparsity Parameters --
+alpha: 0.01
+maxGibbsMass:  100.0
+
+
+Data Model: Dense, Normal
+Sampler Type: Sequential
+Loading Data...Done! (00:00:00)
+-- Equilibration Phase --
+1000 of 1000, Atoms: 70(A), 54(P), ChiSq: 1351, Time: 00:00:00 / 00:00:00
+-- Sampling Phase --
+1000 of 1000, Atoms: 78(A), 48(P), ChiSq: 1185, Time: 00:00:00 / 00:00:00
+
+GapsResult result object with 25 features and 20 samples
+3 patterns were learned
+
+Pickling complete!
+```
+
+---
+
+CoGAPS has successfully completed running and has saved the result file as result.pkl in a created output/ folder. Your working directory is the PyCoGAPS folder with the following structure and files, shown in Box 12.
+
+---
+
+<strong>Box 12: PyCoGAPS Working Directory</strong>
+
+```yml
+PyCoGAPS
+├── data
+│   └── ModSimData.txt
+├── params.yaml
+├── output
+│   └── result.pkl
+```
+
+### Running PyCoGAPS on Single Cell Data
