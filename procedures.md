@@ -62,7 +62,7 @@ If following Procedure 1 Option B, PyCoGAPS with Docker:
 If following Procedure 2, CoGAPS:
 <ul>
   <li>R (recommended v4 or later; known to be stable for R 4.2.1)</ul>
-<li>RStudio (<a href="https://www.rstudio.com/products/rstudio/download/" target="_blank">rstudio.com/products/rstudio/download/</a>)</li>
+  <li>RStudio (<a href="https://www.rstudio.com/products/rstudio/download/" target="_blank">rstudio.com/products/rstudio/download/</a>)</li>
   </ul>
 If following Procedure 3, GenePattern Notebook:
 <ul>
