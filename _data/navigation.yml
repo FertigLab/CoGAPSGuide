@@ -2,7 +2,7 @@
   link: /about/
 - name: Procedures
   link: /procedures/
-    dropdown: 
+    items: 
     - name: Procedure 1
       link: /procedure-1/
     - name: Procedure 2
