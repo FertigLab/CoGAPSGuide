@@ -23,7 +23,7 @@ ModSim is a small simulated dataset that will be used to ensure proper setup and
 The single-cell protocol is demonstrated using preprocessed and harmonized scRNAseq data of 25,422 pancreatic epithelial cells from two studies of pancreatic ductal adenocarcinoma. In the python vignette this is retrieved from inputdata.h5ad, and in R it can be loaded as a Seurat object from inputdata.Rds. We note that this is the same data in two different formats necessitated by the different languages of the APIs.
 
 <ul>
-  <li>(Required) ModSim simulated dataset and a reference NMF result live in CoGAPS/pycogaps github repositories in the data/ directories.
+  <li>(Required) ModSim simulated dataset and a reference NMF result live in CoGAPS/pycogaps github repositories in the data/ directories.</li>
   <ul>
     <li>Name: ModSimData.txt (25 “genes” x 20 “cells”, simulated data)</li>
     <li>Reference result: ModSimResult.h5ad (anndata result object)</li>
@@ -32,7 +32,7 @@ The single-cell protocol is demonstrated using preprocessed and harmonized scRNA
 
   <ul>
   <li>(Optional) scRNA-seq PDAC dataset</li>
-<ul>
+ <ul> 
   <li>We encourage the user to start with the annotated and prepared .h5ad file available in the github repositories in the data/ directory.</li>
 <li>Reference dataset: inputdata.h5ad (Python) inputdata.Rds (R) (dimension: 15219 genes × 25422 cells, size: 1GB)</li>
 <li>Reference result: cogapsresult.h5ad (Python) cogapsresult.Rds (R) (dimension: 15219 genes × 25422 cells, objects size: 1GB)</li>
