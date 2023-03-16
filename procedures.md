@@ -71,7 +71,7 @@ If following Procedure 3, GenePattern Notebook:
   <li>No software is needed</li>
 </ul>
 
-### <strong>Box 1: C++ Compiler Information</strong>
+### Box 1: C++ Compiler Information
 
 Linux: comes standard with most if not all distributions
 MacOS: ensure XCode is installed on your machine. If using the M1 chip, we recommend updating your software to at least MacOS Monterey 12.2.1 as it fixes a crucial issue with compiler linkages.
