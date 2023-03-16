@@ -12,8 +12,20 @@ hero_darken: true
 
 NMF (Nonnegative Matrix Factorization) is a mathematical technique with a long history in the field of genomics for the analysis of bulk RNA sequencing data<sup>1,2</sup>, and it has been widely adopted as a powerful dimensionality reduction tool for single-cell data as well<sup>3,4,5–10</sup>.
 
+### What is CoGAPS?
 
-### References
+CoGAPS (Coordinated Gene Activity across Pattern Subsets) is a Bayesian NMF (Nonnegative Matrix Factorization) algorithm. It can be used to perform sparse matrix factorization on any data, and when this data represents biomolecules, to do gene set analysis. CoGAPS improves on other enrichment measurement methods by combining a Markov chain Monte Carlo (MCMC) matrix factorization algorithm (GAPS) with a threshold-independent statistic inferring activity on gene sets.
+
+### Who should use CoGAPS?
+
+Anyone can use CoGAPS; no machine learning experience is required.
+
+### What kind of data does CoGAPS work on?
+
+CoGAPS can be used to perform sparse matrix factorization on any data. And when this data represents biomolecules, to do gene set analysis.
+
+
+#### References
 
 1. <a href="http://dx.doi.org/10.1073/pnas.0308531101" target="_blank">Brunet, J.-P., -P. Brunet, J., Tamayo, P., Golub, T. R. & Mesirov, J. P. Metagenes and molecular pattern discovery using matrix factorization. <em>Proceedings of the National Academy of Sciences</em> vol. 101 4164–4169 Preprint at https://doi.org/10.1073/pnas.0308531101 (2004).</a>
   
