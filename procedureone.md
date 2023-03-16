@@ -13,9 +13,10 @@ We provide two options for running PyCoGAPS (Options A and B). Option A demonstr
 ## Option A
 
 ### Software Setup
+
 <strong>Timing: 5-10 min</strong>
-<ol>
-<li>To download PyCoGAPS from GitHub with all data included (~2 GB memory), please run the following command, otherwise to omit the data, please refer to Box 2:</li>
+
+1.To download PyCoGAPS from GitHub with all data included (~2 GB memory), please run the following command, otherwise to omit the data, please refer to Box 2:
 
 git clone https://github.com/FertigLab/pycogaps.git --recursive
 
@@ -54,8 +55,7 @@ Resolving deltas: 100% (10621/10621), done.
 Submodule path 'src/CoGAPS': checked out 'e1e002caa009866d41402f3aa5ad3f97b541d962'
 ```
 
-<li>Install the required package dependencies with the following command. We recommend installing these dependencies in an Anaconda<sup>2</sup> environment(Box 3):</li>
-</ol>
+2. Install the required package dependencies with the following command. We recommend installing these dependencies in an Anaconda<sup>2</sup> environment(Box 3):
 
 ```yml
 cd pycogaps
