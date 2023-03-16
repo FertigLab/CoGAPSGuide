@@ -16,7 +16,7 @@ We provide two options for running PyCoGAPS (Options A and B). Option A demonstr
 
 <strong>Timing: 5-10 min</strong>
 
-1 .To download PyCoGAPS from GitHub with all data included (~2 GB memory), please run the following command, otherwise to omit the data, please refer to Box 2:
+1 . To download PyCoGAPS from GitHub with all data included (~2 GB memory), please run the following command, otherwise to omit the data, please refer to Box 2:
 
 git clone https://github.com/FertigLab/pycogaps.git --recursive
 
