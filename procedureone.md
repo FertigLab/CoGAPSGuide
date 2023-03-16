@@ -18,7 +18,7 @@ We provide two options for running PyCoGAPS (Options A and B). Option A demonstr
 
 1 . To download PyCoGAPS from GitHub with all data included (~2 GB memory), please run the following command, otherwise to omit the data, please refer to Box 2:
 
-git clone https://github.com/FertigLab/pycogaps.git --recursive
+git clone <a href="https://github.com/FertigLab/pycogaps.git" target="_blank">https://github.com/FertigLab/pycogaps.git</a> --recursive
 
 ?Troubleshooting
 
@@ -479,3 +479,85 @@ The CoGAPS result is returned in Anndata format. CoGAPS stores the lower-dimensi
 <strong>PAUSE POINT</strong> - Now we have successfully generated and saved a CoGAPS result. The procedure may be paused. 
 
 The following steps will walk through analyzing and visualizing the generated saved result.
+
+### Analyzing the PyCoGAPS Result
+
+<strong>[reference code can be found in the file analyzepdac.py]</strong>
+
+<strong>Timing: 20-30 min</strong>
+
+13 . We will first load the saved result file, which can be your own NMF result generated from the previous step, or the precomputed one supplied in our repository:
+
+To use precomputed result:
+
+```yml
+import anndata
+import pandas as pd
+import scanpy as sc
+
+cogapsresult = anndata.read_h5ad("data/cogapsresult.h5ad")
+```
+?Troubleshooting
+
+To use your own object, simply replace the path with your own.
+
+To look at the object:
+
+```yml
+>> cogapsresult
+
+AnnData object with n_obs × n_vars = 15176 × 25442
+    obs: 'Pattern_1', 'Pattern_2', 'Pattern_3', 'Pattern_4', 'Pattern_5', 'Pattern_6', 'Pattern_7', 'Pattern_8'
+    var: 'Pattern_1', 'Pattern_2', 'Pattern_3', 'Pattern_4', 'Pattern_5', 'Pattern_6', 'Pattern_7', 'Pattern_8', 'cell_type'
+```
+
+Now, we are ready to call built-in PyCoGAPS functions to analyze and visualize the data.
+
+<strong>Note:</strong> Please see “Anticipated Results” section for more discussion of the result object
+
+14 . We will visualize patterns and compare it with clusters and annotations using UMAP and the scanpy package. <a href="https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html" target="_blank">scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html</a>
+
+We provide a wrapper function to perform basic clustering workflow in scanpy (all default parameters) and produce a plot of each pattern’s intensity displayed on the data’s UMAP embedding.
+
+Import analysis functions module (decoupled from NMF module)
+
+```yml
+from PyCoGAPS.analysis_functions import *
+```
+
+<strong>! CRITICAL -</strong> If you are at this step following the Docker procedure (Option B), you should have already imported analysis_functions, and do not need to include the line above (ie. you do not need to install the PyCoGAPS dependency).
+
+Call wrapper function:
+
+```yml
+plotPatternUMAP(cogapsresult)
+```
+
+Expected output in python console:
+
+```yml
+scanpy==1.9.1 anndata==0.7.8 umap==0.5.3 numpy==1.23.5 scipy==1.10.0 pandas==1.2.4 scikit-learn==1.0.1 statsmodels==0.13.5 pynndescent==0.5.8
+extracting highly variable genes
+    finished (0:00:01)
+--> added
+    'highly_variable', boolean vector (adata.var)
+    'means', float vector (adata.var)
+    'dispersions', float vector (adata.var)
+    'dispersions_norm', float vector (adata.var)
+/Users/fertiglab/pycogaps/venv/lib/python3.10/site-packages/scanpy/preprocessing/_simple.py:843: UserWarning: Received a view of an AnnData. Making a copy.
+  view_to_actual(adata)
+computing PCA
+    on highly variable genes
+    with n_comps=50
+    finished (0:00:15)
+computing neighbors
+    using 'X_pca' with n_pcs = 50
+    finished: added to `.uns['neighbors']`
+    `.obsp['distances']`, distances for each pair of neighbors
+    `.obsp['connectivities']`, weighted adjacency matrix (0:00:00)
+computing UMAP
+    finished: added
+    'X_umap', UMAP coordinates (adata.obsm) (0:00:07)
+WARNING: saving figure to file figures/umapepithelial_pycogaps_UMAP.png
+```
+
