@@ -598,4 +598,39 @@ pattern_names = [col for col in cogapsresult.var.columns if col.startswith('Patt
 
 sc.pl.stacked_violin(cogapsresult.T, [pattern_names], groupby='cell_type')
 ```
+<img src="/images/violinplot.png" alt="Violin plot">
 
+17 . We will now find the markers of each pattern using PyCoGAPS’ patternMarkers function. Identifying genes that are strongly correlated with each learned pattern allows us to begin to decipher what biological processes or states it may represent. 
+
+We will use the default threshold parameter, but this may be modified as described in Box 10.
+
+```yml
+pm = patternMarkers(cogapsresult, threshold="cut")
+```
+
+---
+
+Box 10: patternMarkers ‘threshold’ parameter
+
+The patternMarkers() CoGAPS function finds genes associated with each pattern and returns a dictionary of information containing lists of marker genes, their ranking, and their “score” for each pattern. This is vital because genes are often associated with multiple patterns.
+
+The three components of the returned dictionary <em>pm</em> are:
+<ul>
+    <li>PatternMarkers</li>
+        <ul>
+            <li>a list of marker genes for each pattern</li>
+            <li>Can be determined using two threshold metrics--see below, and the section of the text called “Assessing the biological function of gene signatures from the amplitude matrix”</li>
+        </ul>
+    <li>PatternMarkerRank</li>
+        <ul>
+            <li>each gene ranked by association for each pattern</li>
+            <li>Whole natural numbers, assigning each marker gene a place in the rank for each pattern</li>
+            <li>Lower rank indicates higher association and vice versa</li>
+        </ul>
+    <li>PatternMarkerScores</li>
+        <ul>
+            <li>scores describing how strongly a gene is associated with a pattern.</li>
+            <li>A higher score value indicates the gene is more associated with the pattern, and vice versa</li>
+            <li>Scores have nonnegative values mostly falling between 0 and 2</li>
+</ul>
+    
