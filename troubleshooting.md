@@ -29,3 +29,10 @@ hero_darken: true
 | **Step** | **Problem**                                                                                              | **Possible Reason**                                                                                               | **Solution**                                                                                                                                 |
 |----------|----------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | 8        | Runtime is prohibitively long, given reasonable scales of data (typical timing is as given in n*log(n)). | If run times are prohibitive within reasonable scales of data, this may result from algorithm overfitting zeros.  | We recommend filtering the data only to genes that are reasonably expressed or filtering to a limited subset of genes (e.g., high variance). |
+
+## Procedure 3: GenePattern Notebook
+
+| **Step** | **Problem**                           | **Possible Reason**                       | **Solution**                                                                                  |
+|----------|---------------------------------------|-------------------------------------------|-----------------------------------------------------------------------------------------------|
+| Step 6   | FileNotFoundError                     | Data file not uploaded to project folder. | Go to the project folder, and click ‘Upload’ to upload your file to the folder.               |
+| Step 6   | Error after running the PyCoGAPS cell | Path parameter not updated.               | Make sure to replace the default path parameter with the ‘Upload’ button to upload your data. |
