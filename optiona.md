@@ -709,4 +709,4 @@ This section has demonstrated a basic analysis of both the A and P matrix (gene 
 
 Distributed CoGAPS finds robust patterns across randomized gene or sample subsets. (a) Subsetting is performed to break the input matrices into smaller components that can each be handed off to a child process for NMF. (b) Subsetting for parallelization can be performed across either matrix dimension. (c) Each data subset yields its own NMF result. (d) To identify the patterns that manifest themselves consistently across all NMF results, clustering is performed and a consensus matrix is generated. (e) NMF is now run again on the same data subsets, this time with the consensus matrix provided as a ground truth from which the other matrix can be learned. This run is significantly faster than the first. (f) Once,Now that all threads have been forced to learn the same patterns, the portion of the NMF result that was not fixed can be stitched together to yield the final solution.
 
-![Figure 3](images/pattern7figurethree.png)
+![Figure 3](images/figurethree.png)
