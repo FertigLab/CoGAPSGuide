@@ -318,3 +318,34 @@ Metadata, which contains information for the run such as how it was parallelized
 
 ---
 
+PAUSE POINT - Now we have successfully generated and saved a CoGAPS result. The procedure may be paused. 
+
+The following steps will walk through analyzing and visualizing the generated saved result.
+
+<strong>Note</strong>: Please see “Anticipated Results” section for more discussion of the result object
+
+10 . It is recommended to immediately visualize pattern weights on a UMAP because you will immediately see whether they are showing strong signal and make common sense. 
+Since pattern weights are all continuous and nonnegative, they can be used to color a UMAP in the same way as one would color by gene expression. The sampleFactors matrix is essentially just <em>nPatterns</em> different annotations for each cell, and featureLoadings is likewise just <em>nPatterns</em> annotations for each gene. This makes it very simple to incorporate pattern data into any data structure and workflow. 
+
+To store CoGAPS patterns as an Assay within a Seurat object (recommended):
+
+```yml
+# make sure pattern matrix is in same order as the input data
+patterns_in_order <-t(cogapsresult@sampleFactors[colnames(pdac_data),])
+
+# add CoGAPS patterns as an assay
+pdac_data[["CoGAPS"]] <- CreateAssayObject(counts = patterns_in_order)
+```
+
+With the help of Seurat’s FeaturePlot function, we generate a UMAP embedding of the cells colored by the intensity of each pattern. 
+
+```yml
+DefaultAssay(inputdata) <- "CoGAPS"
+pattern_names = rownames(inputdata@assays$CoGAPS)
+
+library(viridis)
+color_palette <- viridis(n=10)
+
+FeaturePlot(inputdata, pattern_names, cols=color_palette, reduction = "umap") & NoLegend()
+```
+
