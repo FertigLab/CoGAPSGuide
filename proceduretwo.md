@@ -311,3 +311,5 @@ A and P matrices learned by CoGAPS. In this package, the A matrix of sample weig
 Standard deviation matrices <strong>factorStdDev</strong> and <strong>loadingStdDev</strong> corresponding to sampleFactors and featureLoadings
 
 Metadata, which contains information for the run such as how it was parallelized (<strong>subsets</strong>), the mean ChiSq value during the run (<strong>meanChiSq</strong>), and the parameters used in the run (<strong>params</strong>). Since the run parameters are attached to the result object, it can keep track of the provenance of your CoGAPS results. Other information may be present in the metadata depending on your run options.
+
+---
