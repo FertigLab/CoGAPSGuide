@@ -1,14 +1,15 @@
 - name: About
   link: /about/
-- name: Procedures
-  link: /procedures/
+- name: Procedure 1
   dropdown:
-    - name: Procedure 1
-      link: /procedureone/
-    - name: Procedure 2
-      link: /proceduretwo/
-    - name: Procedure 3
-      link: /procedurethree/
+    - name: Option A
+      link: /optiona/
+    - name: Option B
+      link: /optionb/
+- name: Procedure 2
+  link: /proceduretwo/
+- name: Procedure 3
+  link: /procedurethree/
 - name: Vignettes
   link: https://www.bioconductor.org/packages/devel/bioc/vignettes/CoGAPS/inst/doc/CoGAPS.html
 - name: Features
