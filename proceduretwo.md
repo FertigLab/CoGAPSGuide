@@ -408,3 +408,26 @@ pl_pattern7 <- plotPatternHallmarks(hallmarks, whichpattern = 7)
 pl_pattern7
 ```
 
+![Histogram](images/histogram.png)
+
+Previously we observed pattern 7 to be associated with a mixture of cancer and adjacent-normal epithelial cells. Now we see the marker genes of this pattern are significantly overrepresented in hallmark gene sets of inflammatory response and allograft rejection. We looked at how this pattern in epithelial cells varied between samples, and found it to be correlated with the presence of fibroblasts in the sequenced tumor biopsy sample. We hypothesized that pattern 7 represents a process of epithelial cell carcinogenesis, a transitional, inflammatory phenotype urged on by other cells in the tumor microenvironment, and tested this hypothesis in our lab using PDAC organoid and cancer-associated fibroblast co-culture experiments<sup>1</sup>.
+
+13 . To generate statistics on the association between certain sample groups and patterns, we provide a wrapper function, called runMANOVA.This will allow us to explore if the patterns we have discovered lend to statistically significant differences in the sample groups. We will first load in the original data (if not already done earlier): 
+
+```yml
+pdac_data <- readRDS("inputdata.rds")
+```
+
+Then, create a new matrix called “interestedVariables” consisting of the metadata variables of interest in conducting analysis on.
+
+```yml
+interestedVariables <- cbind(pdac_data@meta.data[["celltype"]], pdac_data@meta.data[["TN_assigned_cell_type"]])
+```
+
+Lastly, call the wrapper function, passing in the result object as well.
+
+```yml
+manovaResult <- MANOVA(interestedVariables, cogapsresult)
+```
+
+The function will print out the MANOVA results for each pattern learned based on the variables of interest. From the output, we can observe that all p-values have a value of 0.0, indicating that differences observed in the sample groups based on the patterns are statistically significant. 
