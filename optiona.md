@@ -357,11 +357,11 @@ Distributed parameters:
 
 If you wish to run distributed CoGAPS, which we recommend for most cases, set the “distributed” parameter to “genome-wide” (parallelize across genes), or “single-cell” (parallelize across cells). Please see Fig. 3 for a full explanation of the mechanism. 
 
-<sup>cut, minNS,</sup> and <sup>maxNS</sup> control the process of matching patterns across subsets and in general should not be changed from defaults. More information about these parameters can be found in the original papers.
+<sub>cut, minNS,</sub> and <sub>maxNS</sub> control the process of matching patterns across subsets and in general should not be changed from defaults. More information about these parameters can be found in the original papers.
 
-<sup>nSets</sup> controls how many subsets are run in parallel when using the distributed version of the algorithm. Setting <sup>nSets</sup> requires balancing available hardware and run time against the size of your data. In general, <sup>nSets</sup> should be less than or equal to the number of nodes/cores that are available. If that is true, then the more subsets you create, the faster CoGAPS will run - however, some robustness can be lost when the subsets get too small. The general rule of thumb is to set <sup>nSets</sup> so that each subset has between 1000 and 5000 genes or cells in order to give robust results, but ideally we would want as many cells per set as possible. More information on these parameters can be found in Table 2.
+<sub>nSets</sub> controls how many subsets are run in parallel when using the distributed version of the algorithm. Setting <sub>nSets</sub> requires balancing available hardware and run time against the size of your data. In general, <sub>nSets</sub> should be less than or equal to the number of nodes/cores that are available. If that is true, then the more subsets you create, the faster CoGAPS will run - however, some robustness can be lost when the subsets get too small. The general rule of thumb is to set <sub>nSets</sub> so that each subset has between 1000 and 5000 genes or cells in order to give robust results, but ideally we would want as many cells per set as possible. More information on these parameters can be found in Table 2.
 
-If <sup>explicitSets</sup> are not provided, the data will be randomly fragmented into the number of sets specified by <sup>nSets</sup> parameter, with the default being 4. Subsets can also be chosen randomly, but weighted according to a user-provided annotation in parameters <sup>samplingAnnotation</sup> and <sup>samplingWeight</sup>.
+If <sub>explicitSets</sub> are not provided, the data will be randomly fragmented into the number of sets specified by <sub>nSets</sub> parameter, with the default being 4. Subsets can also be chosen randomly, but weighted according to a user-provided annotation in parameters <sub>samplingAnnotation</sub> and <sub>samplingWeight</sub>.
 
 ---
 
@@ -468,7 +468,7 @@ result.write_csvs(dirname=’./’, skip_data=True, sep=',')
 
 <strong>Box 9: The PyCoGAPS Result Object</strong>
 
-The CoGAPS result is returned in Anndata format. CoGAPS stores the lower-dimensional representation of the samples (P matrix) in the <sup>.var</sup> slot and the weight of the features (A matrix) in the <sup>.obs</sup> slot. If you transpose the matrix before running CoGAPS, the opposite will be true. Running single-cell is equivalent in every way to transposing the data matrix and running single-cell. The standard deviation across sample points for each matrix as well as additional metrics are stored in the <sup.uns</sup> slots. Please refer to <a href="https://github.com/FertigLab/pycogaps#readme" target="_blank">github.com/FertigLab/pycogaps#readme</a> for complete documentation of output metrics.
+The CoGAPS result is returned in Anndata format. CoGAPS stores the lower-dimensional representation of the samples (P matrix) in the <sub>.var</sub> slot and the weight of the features (A matrix) in the <sub>.obs</sub> slot. If you transpose the matrix before running CoGAPS, the opposite will be true. Running single-cell is equivalent in every way to transposing the data matrix and running single-cell. The standard deviation across sample points for each matrix as well as additional metrics are stored in the <sub>.uns</sub> slots. Please refer to <a href="https://github.com/FertigLab/pycogaps#readme" target="_blank">github.com/FertigLab/pycogaps#readme</a> for complete documentation of output metrics.
 
 ---
 
