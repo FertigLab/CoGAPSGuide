@@ -431,3 +431,5 @@ manovaResult <- MANOVA(interestedVariables, cogapsresult)
 ```
 
 The function will print out the MANOVA results for each pattern learned based on the variables of interest. From the output, we can observe that all p-values have a value of 0.0, indicating that differences observed in the sample groups based on the patterns are statistically significant. 
+
+![MANOVA Results](images/manovaresults.png)
