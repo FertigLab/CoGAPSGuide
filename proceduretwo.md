@@ -312,4 +312,9 @@ Standard deviation matrices <strong>factorStdDev</strong> and <strong>loadingStd
 
 Metadata, which contains information for the run such as how it was parallelized (<strong>subsets</strong>), the mean ChiSq value during the run (<strong>meanChiSq</strong>), and the parameters used in the run (<strong>params</strong>). Since the run parameters are attached to the result object, it can keep track of the provenance of your CoGAPS results. Other information may be present in the metadata depending on your run options.
 
+![Box 17 Image 1](images/box17.1.png)
+
+![Box 17 Image 2](images/box17.2.png)
+
 ---
+
