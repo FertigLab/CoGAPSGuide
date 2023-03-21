@@ -11,6 +11,8 @@
   link: /proceduretwo/
 - name: Procedure 3
   link: /procedurethree/
+- name: Troubleshooting
+  link: /troubleshooting/
 - name: Vignettes
   link: https://www.bioconductor.org/packages/devel/bioc/vignettes/CoGAPS/inst/doc/CoGAPS.html
 - name: Features
