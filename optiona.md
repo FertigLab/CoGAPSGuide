@@ -630,6 +630,7 @@ The three components of the returned dictionary <em>pm</em> are:
             <li>A higher score value indicates the gene is more associated with the pattern, and vice versa</li>
             <li>Scores have nonnegative values mostly falling between 0 and 2</li>
 </ul>
+    </ul>
     
 patternMarkers can run in two modes, depending on the “threshold” parameter
 
