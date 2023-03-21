@@ -632,6 +632,7 @@ The three components of the returned dictionary <em>pm</em> are:
 </ul>
     </ul>
     
+    
 patternMarkers can run in two modes, depending on the “threshold” parameter
 
 If <strong>threshold=”all”</strong>, each gene is treated as a marker of one pattern (whichever it is most strongly associated with). The number of marker genes will always equal the number of input genes. If <strong>threshold=”cut”</strong>, a gene is considered a marker of a pattern if and only if it is less significant to at least one other pattern. Counterintuitively, this results in much shorter lists of patternMarkers and is a more convenient statistic to use when functionally annotating patterns.
