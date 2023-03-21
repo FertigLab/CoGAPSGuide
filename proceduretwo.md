@@ -35,6 +35,7 @@ When CoGAPS has installed correctly, you will see this message:
 
 ```yml
 library(CoGAPS)
+```
 
 ## Running CoGAPS on Simulated Toy Data
 
@@ -56,6 +57,7 @@ modsimdata
 
 > dim(modsimdata)
 [1] 25 20
+```
 
 4 . Next, we will set the parameters to be used by CoGAPS. First, we will create a CogapsParams object, then set parameters with the setParam function.
 
