@@ -231,6 +231,7 @@ setting distributed parameters - call this again if you change nPatterns
 Box 15 demonstrates viewing all parameters and their values that have been set.
 
 ---
+
 <strong>Box 15: Viewing all parameters</strong>
 
 ```yml
@@ -252,6 +253,7 @@ cut            8
 minNS          8 
 maxNS          23
 ```
+
 ---
 
 8 . With all parameters set, we are now ready to run CoGAPS. Please note that this is the most time-consuming step of the procedure. Timing can take several hours and scales nlog(n) based on dataset size (see Timing section below), as well as the parameter values set for ‘nPatterns’ and ‘nIterations’. Time is increased when learning more patterns, when running more iterations, and when running a larger dataset, with iterations having the largest variable impact on the runtime of the NMF function.
@@ -278,6 +280,7 @@ While CoGAPS is running it periodically prints status messages (Box 16).
 ?Troubleshooting
 
 ---
+
 <strong>Box 16: CoGAPS Status Messages:</strong>
 
 ```yml
@@ -285,6 +288,7 @@ While CoGAPS is running it periodically prints status messages (Box 16).
 ```
 
 This message tells us that CoGAPS is at iteration 20000 out of 25000 for this phase and that 29 seconds out of an estimated 1 minute 19 seconds have passed. It also tells us the size of the atomic domain which is a core component of the algorithm but can be ignored for now. Finally, the ChiSq value tells us how closely the A and P matrices reconstruct the original data. In general, we want this value to go down - but it is not a perfect measurement of how well CoGAPS is finding the biological processes contained in the data. CoGAPS also prints a message indicating which phase is currently happening. There are two phases to the algorithm - Equilibration and Sampling.
+
 ---
 
 ## Analyzing the CoGAPS Result
@@ -304,6 +308,7 @@ cogapsresult <- readRDS(“../data/pdac_epi_cogaps_result.Rds”)
 ```
 
 ---
+
 <strong>Box 17: The CoGAPS result object consists of:</strong>
 
 A and P matrices learned by CoGAPS. In this package, the A matrix of sample weights is called “<strong>sampleFactors</strong>” and the P matrix of gene weights is called “<strong>featureLoadings</strong>”.
@@ -347,5 +352,59 @@ library(viridis)
 color_palette <- viridis(n=10)
 
 FeaturePlot(inputdata, pattern_names, cols=color_palette, reduction = "umap") & NoLegend()
+```
+
+![FeaturePlot UMAP](images/featureplot.png)
+
+11 . To assess pattern marker genes, we provide a patternMarkers() CoGAPS function to find genes associated with each pattern and returns a dictionary of information containing lists of marker genes, their ranking, and their “score” for each pattern. This is vital because genes are often associated with multiple patterns.
+
+patternMarkers can run in two modes, depending on the “threshold” parameter
+
+If <strong>threshold=”all”</strong>, each gene is treated as a marker of one pattern (whichever it is most strongly associated with). The number of marker genes will always equal the number of input genes. If <strong>threshold=”cut”</strong>, a gene is considered a marker of a pattern if and only if it is less significant to at least one other pattern. Counterintuitively, this results in much shorter lists of patternMarkers and is a more convenient statistic to use when functionally annotating patterns.
+
+```yml
+pm <- patternMarkers(cogapsresult, threshold="cut")
+```
+
+The three components of the returned dictionary pm are:
+
+<ul>
+<li>PatternMarkers</li>
+    <ul>
+        <li>a list of marker genes for each pattern</li>
+        <li>Can be determined using two threshold metrics--see below, and the section of the text called “Assessing the biological function of gene signatures from the amplitude matrix”</li>
+        </ul>
+<li>PatternMarker Rank</li>
+    <ul>
+        <li>each gene ranked by association for each pattern</li>
+        <li>Whole natural numbers, assigning each marker gene a place in the rank for each pattern</li>
+        <li>Lower rank indicates higher association and vice versa</li>
+        </ul>
+<li>PatternMarkerScores</li>
+        <ul>
+            <li>scores describing how strongly a gene is associated with a pattern.</li>
+            <li>A higher score value indicates the gene is more associated with the pattern, and vice versa</li>
+            <li>Scores have nonnegative values mostly falling between 0 and 2</li>
+            </ul>
+                  </ul>
+                  
+12 . One way to explore and use CoGAPS patterns is to conduct gene set enrichment analysis by functionally annotating the genes which are significant for each pattern. 
+
+The PatternHallmarks function provides a wrapper around the fgsea<sup>74</sup> fora method and associates each pattern with msigDB<sup>75</sup> hallmark pathway annotations using the list of marker genes attained from the patternMarkers statistic. 
+
+To perform gene set analysis on pattern markers, please run:
+
+```yml
+hallmarks <- PatternHallmarks(cogapsresult)
+```
+
+hallmarks is a list of data frames, each containing hallmark overrepresentation statistics corresponding to one pattern. 
+
+To generate a histogram of the most significant hallmarks for any given pattern, please run:
+
+```yml
+pl_pattern7 <- plotPatternHallmarks(hallmarks, whichpattern = 7)
+
+pl_pattern7
 ```
 
