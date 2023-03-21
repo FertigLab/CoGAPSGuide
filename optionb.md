@@ -1,3 +1,11 @@
+---
+
+hero_image: /jubilant-bassoon/images/hero.jpg
+<!-- hero_height: is-fullwidth -->
+hero_darken: true
+
+---
+
 # Option B: Running PyCoGAPS using Docker
 
 <strong>Software Setup</strong>
