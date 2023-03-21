@@ -1,6 +1,7 @@
 - name: About
   link: /about/
 - name: Procedure 1
+  link: /procedureone/
   dropdown:
     - name: Option A
       link: /optiona/
