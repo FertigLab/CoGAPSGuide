@@ -54,7 +54,7 @@ Resolving deltas: 100% (10621/10621), done.
 Submodule path 'src/CoGAPS': checked out 'e1e002caa009866d41402f3aa5ad3f97b541d962'
 ```
 
-2 . Install the required package dependencies with the following command. We recommend installing these dependencies in an Anaconda<sup>2</sup> environment(Box 3):
+2 . Install the required package dependencies with the following command. We recommend installing these dependencies in an Anaconda<sup>70</sup> environment(Box 3):
 
 ```yml
 cd pycogaps
