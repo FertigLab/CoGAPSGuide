@@ -6,7 +6,7 @@ hero_darken: true
 
 ---
 
-# Option B: Running PyCoGAPS using Docker
+# Docker
 
 <strong>Software Setup</strong>
 
