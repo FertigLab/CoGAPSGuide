@@ -18,9 +18,9 @@ git clone <a href="https://github.com/FertigLab/pycogaps.git" target="_blank">ht
 
 ?Troubleshooting
 
-<strong>Box 2</strong>
-
 ---
+
+<strong>Box 2</strong>
 
 To download PyCoGAPS without the large files (inputresult.h5ad and cogapsresult.h5ad), run the following command:
 
@@ -61,9 +61,9 @@ cd pycogaps
 pip install -r requirements.txt
 ```
 
-<strong>Box 3: Anaconda Environment</strong>
-
 ---
+
+<strong>Box 3: Anaconda Environment</strong>
 
 Install Anaconda from here: <a href="https://docs.anaconda.com/anaconda/install/" target="_blank">docs.anaconda.com/anaconda/install/</a>
 
@@ -272,7 +272,7 @@ if __name__ == "__main__":
 
 ---
 
-Box 4: Handling multithreading for single-cell data
+<strong>Box 4: Handling multithreading for single-cell data</strong>
 
 Important: Whenever distributed (ie multithreaded) options are used, all calling code <strong>must</strong> be wrapped in a check like this so it will only be called by the parent process. Missing this line will send calling code into infinite recursion. All subsequent calling code, not just the imports, must fall under this check such that it will only be executed when the check succeeds.
 
@@ -289,7 +289,7 @@ adata = sc.read_h5ad(path)
 
 ---
 
-Box 5: Data input format
+<strong>Box 5: Data input format</strong>
 
 While CoGAPS can handle multiple data formats, we strongly recommend converting your data to Anndata format using the anndata package61 or another utility designed for translating between data structures62. The returned object will be in Anndata format.
 
@@ -351,7 +351,7 @@ The ‘distributed’ parameter enables parallelization to decrease runtimes whi
 
 ---
 
-<strong>Box 6:</strong> Running Distributed PyCoGAPS
+<strong>Box 6: Running Distributed PyCoGAPS</strong>
 
 Distributed parameters:
 
@@ -371,7 +371,7 @@ A description and guide for setting key PyCoGAPS parameters can be found in Tabl
 
 ---
 
-<strong>Box 7</strong>: Viewing all Parameters
+<strong>Box 7: Viewing all Parameters</strong>
 
 To see all parameters that have been set, call:
 
@@ -420,7 +420,8 @@ Otherwise, you may start the run as so:
 While CoGAPS is running, you will see periodic status messages, described in Box 8.
 
 ---
-<strong>Box 8:</strong> PyCoGAPS Status Messages
+
+<strong>Box 8: PyCoGAPS Status Messages</strong>
 
 While CoGAPS is running, you will see periodic status messages saying how many iterations have been completed, the current ChiSq value, and how much time has elapsed out of the estimated total runtime.
 
@@ -607,7 +608,7 @@ pm = patternMarkers(cogapsresult, threshold="cut")
 
 ---
 
-Box 10: patternMarkers ‘threshold’ parameter
+<strong>Box 10: patternMarkers ‘threshold’ parameter</strong>
 
 The patternMarkers() CoGAPS function finds genes associated with each pattern and returns a dictionary of information containing lists of marker genes, their ranking, and their “score” for each pattern. This is vital because genes are often associated with multiple patterns.
 
