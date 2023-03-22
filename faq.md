@@ -24,6 +24,11 @@ Anyone can use CoGAPS; no machine learning experience is required.
 
 CoGAPS can be used to perform sparse matrix factorization on any data. And when this data represents biomolecules, to do gene set analysis.
 
+## How do I cite CoGAPS?
+
+If you use the CoGAPS package for your analysis, please cite Fertig et al. (2010)
+
+If you use the gene set statistic, please cite Ochs et al. (2009)
 
 ### References
 
