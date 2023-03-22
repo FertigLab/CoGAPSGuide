@@ -25,6 +25,8 @@ Non-negative matrix factorization (NMF) is an unsupervised learning method well 
 ![Figure 1](images/figure1.png)
 <figcaption>NMF factorizes expression data into lower-dimensional amplitude (A) gene weights matrix and pattern (P) weights matrix whose product approximates the input.</figcaption>
 
+<img align="center" width="800" height="412" src="images/figure1.png">
+
 ## Citing CoGAPS
 
 If you use the CoGAPS package for your analysis, please cite Fertig et al. (2010)
