@@ -3,7 +3,7 @@
   dropdown:
     - name: Python Scripts
       link: /optiona/
-    - name: Option B
+    - name: Docker
       link: /optionb/
 - name: R CoGAPS API
   link: /proceduretwo/
