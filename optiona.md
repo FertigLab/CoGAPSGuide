@@ -257,7 +257,7 @@ This indicates that PyCoGAPS has been set up and run correctly, and we can now p
 
 ## Running PyCoGAPS on Single Cell Data
 
-<strong>this code can be found in the reference file pdacvignette.py]</strong>
+<strong>[this code can be found in the reference file pdacvignette.py]</strong>
 
 <strong>Timing: 5 min - 2 days (depending on whether user runs NMF or uses precomputed result)</strong>
 
