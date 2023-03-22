@@ -11,6 +11,7 @@ hero_darken: true
 ## Software Setup
 
 <strong>Timing: 1-5 minutes</strong>
+
 1 . CoGAPS can be installed directly from the FertigLab GitHub Repository using R devtools:
 
 ```yml
