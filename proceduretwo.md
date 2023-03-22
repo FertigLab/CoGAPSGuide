@@ -6,7 +6,7 @@ hero_darken: true
 
 ---
 
-# Procedure 2: Running CoGAPS — User startup guide for the R CoGAPS API
+# R CoGAPS API
 
 ## Software Setup
 
