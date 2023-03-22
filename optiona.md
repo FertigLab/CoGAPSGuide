@@ -6,7 +6,7 @@ hero_darken: true
 
 ---
 
-# Option A
+# Python Scripts
 
 ## Software Setup
 
