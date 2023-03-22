@@ -62,7 +62,7 @@ This produces a CoGAPS run on a simple dataset with default parameters. Please c
 
 ---
 
-Box 11: Expected PyCoGAPS Docker Output
+<strong>Box 11: Expected PyCoGAPS Docker Output</strong>
 
 ```yml
 ______      _____       _____   ___  ______  _____ 
