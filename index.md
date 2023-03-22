@@ -3,7 +3,7 @@
 layout: page
 title: CoGAPS
 subtitle: (Coordinated Gene Association in Pattern Sets)
-hero_image: /jubilant-bassoon/images/hero.jpg
+hero_image: /CoGAPS/images/hero.jpg
 <!-- hero_height: is-fullwidth -->
 hero_darken: true
 show_sidebar: false
@@ -14,7 +14,7 @@ hero_link_text: GitHub Repository
 
 <!-- <img src="/images/CoGAPSLogoSmall.png" alt="CoGAPS Logo" style="float:left;width:150px;height:166px;" style= "margin:right;5px;"> -->
 
-## Introduction
+# Introduction
 
 [![Bioc](https://bioconductor.org/images/logo_bioconductor.gif)](https://bioconductor.org/packages/CoGAPS)
 [![downloads](https://bioconductor.org/shields/downloads/release/CoGAPS.svg)](http://bioconductor.org/packages/stats/bioc/CoGAPS/)
