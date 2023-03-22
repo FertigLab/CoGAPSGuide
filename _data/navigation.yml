@@ -1,4 +1,4 @@
-- name: Procedure 1
+- name: Python API
   link: /procedureone/
   dropdown:
     - name: Option A
@@ -7,7 +7,7 @@
       link: /optionb/
 - name: R CoGAPS API
   link: /proceduretwo/
-- name: Procedure 3
+- name: GenePattern Notebook
   link: /procedurethree/
 - name: Troubleshooting
   link: /troubleshooting/
