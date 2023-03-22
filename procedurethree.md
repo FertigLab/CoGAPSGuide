@@ -56,7 +56,7 @@ Further metrics are stored in the .uns slot of the result object. This includes 
 
 ---
 
-Box 18: PyCoGAPS Anndata Result & Metadata
+<strong>Box 18: PyCoGAPS Anndata Result & Metadata</strong>
 
 ```yml
 AnnData object with n_obs × n_vars = 15219 × 25442
@@ -77,7 +77,7 @@ Additionally, metadata contains information for the run such as how it was paral
 
 ---
 
-Box 19: CoGAPS Result & Metadata
+<strong>Box 19: CoGAPS Result & Metadata</strong>
 
 ```yml
 > cogapsresult
