@@ -1,5 +1,3 @@
-- name: About
-  link: /about/
 - name: Procedure 1
   link: /procedureone/
   dropdown:
@@ -15,7 +13,5 @@
   link: /troubleshooting/
 - name: Vignettes
   link: https://www.bioconductor.org/packages/devel/bioc/vignettes/CoGAPS/inst/doc/CoGAPS.html
-- name: Features
-  link: /features/
 - name: FAQ
   link: /faq/
