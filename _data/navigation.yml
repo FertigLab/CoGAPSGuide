@@ -1,7 +1,7 @@
 - name: Python API
   link: /procedureone/
   dropdown:
-    - name: Option A
+    - name: Python Scripts
       link: /optiona/
     - name: Option B
       link: /optionb/
