@@ -19,7 +19,8 @@ hero_darken: true
 | 2        | **src/bindings.cpp:1:10: fatal error: 'CoGAPS/src/GapsRunner.h' file not found** #include "CoGAPS/src/GapsRunner.h"          ^~~~~~~~~~~~~~~~~~~~~~~~~ 1 error generated. error: command 'gcc' failed with exit status 1 | CoGAPS library was not downloaded                                                                                 | Make sure you use --recursive flag when installing pycogaps.  git clone https://github.com/FertigLab/pycogaps.git --recursive                |
 | 11       | Runtime is prohibitively long, given reasonable scales of data (typical timing is as given in n*log(n)).                                                                                                                 | If run times are prohibitive within reasonable scales of data, this may result from algorithm overfitting zeros.  | We recommend filtering the data only to genes that are reasonably expressed or filtering to a limited subset of genes (e.g., high variance). |
 
-## Procedure 1B: PyCoGAPS in Docker
+## Procedure 1B
+### PyCoGAPS in Docker
 
 | **Step** | **Problem**                                                                                       | **Possible Reason**                                                               | **Solution**                                                                                                  |
 |----------|---------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
