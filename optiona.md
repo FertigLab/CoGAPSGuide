@@ -363,15 +363,15 @@ If you wish to run distributed CoGAPS, which we recommend for most cases, set th
 
 <sub>cut, minNS,</sub> and <sub>maxNS</sub> control the process of matching patterns across subsets and in general **should not** be changed from defaults. More information about these parameters can be found in the **original papers**.
 
-```nSets``` controls how many subsets are run in parallel when using the distributed version of the algorithm. Setting <sub>nSets</sub> requires balancing available hardware and run time against the size of your data. In general, <sub>nSets</sub> should be **less than** or **equal to** the number of nodes/cores that are available. If that is true, then the **more** subsets you create, the **faster** CoGAPS will run - however, **some robustness can be lost when the subsets get too small**. The general rule of thumb is to set <sub>nSets</sub> so that each subset has between 1000 and 5000 genes or cells in order to give robust results, but ideally we would want as many cells per set as possible. More information on these parameters can be found in <a href="/CoGAPS/optiona/#table-2-key-parameters-for-cogapspycogaps-and-guidance-on-setting-their-values">Table 2</a>.
+```nSets``` controls how many subsets are run in parallel when using the distributed version of the algorithm. Setting ```nSets``` requires balancing available hardware and run time against the size of your data. In general, ```nSets``` should be **less than** or **equal to** the number of nodes/cores that are available. If that is true, then the **more** subsets you create, the **faster** CoGAPS will run - however, **some robustness can be lost when the subsets get too small**. The general rule of thumb is to set ```nSets``` so that each subset has between **1000 and 5000 genes or cells** in order to give robust results, but ideally we would want **as many cells per set as possible**. More information on these parameters can be found in <a href="/CoGAPS/optiona/#table-2-key-parameters-for-cogapspycogaps-and-guidance-on-setting-their-values">Table 2</a>.
 
-If <sub>explicitSets</sub> are not provided, the data will be randomly fragmented into the number of sets specified by <sub>nSets</sub> parameter, with the default being 4. Subsets can also be chosen randomly, but weighted according to a user-provided annotation in parameters <sub>samplingAnnotation</sub> and <sub>samplingWeight</sub>.
+If ```explicitSets``` are not provided, the data will be randomly fragmented into the number of sets specified by ```nSets``` parameter, with the default being 4. Subsets can also be chosen randomly, but weighted according to a user-provided annotation in parameters ```samplingAnnotation``` and ```samplingWeight```.
 
 ---
 
-<strong>!CRITICAL</strong> - If you are using the distributed CoGAPS option, all of your calling code must be wrapped in a check to make sure the main thread is running (demonstrated in Step 7). Otherwise, child processes will attempt to call this code, because none of them actually “know” they are not the main thread. This causes infinite recursion to occur and makes the program unrunnable. 
+<strong>!CRITICAL</strong> - If you are using the distributed CoGAPS option, all of your calling code **must** be wrapped in a check to make sure the main thread is running (demonstrated in <a href="/CoGAPS/optiona/#running-pycogaps-on-single-cell-data">Step 7</a>). Otherwise, child processes will attempt to call this code, because none of them actually “know” they are not the main thread. This causes **infinite recursion** to occur and makes the program **unrunnable**. 
 
-A description and guide for setting key PyCoGAPS parameters can be found in Table 2. To view the parameter values that have been set, we include a printParams function (Box 7). There are many more additional parameters that can be set depending on your goals, which we invite the reader to explore in our GitHub documentation.
+A description and guide for setting key PyCoGAPS parameters can be found in <a href="/CoGAPS/optiona/#table-2-key-parameters-for-cogapspycogaps-and-guidance-on-setting-their-values">Table 2</a>. To view the parameter values that have been set, we include a printParams function (**Box 7**). There are many more additional parameters that can be set depending on your goals, which we invite the reader to explore in our **GitHub documentation**.
 
 ---
 
@@ -408,9 +408,9 @@ maxNS:  11
 
 ---
 
-11 . With all parameters set, we are now ready to run PyCoGAPS. Please note that this is the most time-consuming step of the procedure. Timing can take several hours and scales nlog(n) based on dataset size (see Timing section below), as well as the parameter values set for ‘nPatterns’ and ‘nIterations’. Time is increased when learning more patterns, when running more iterations, and when running a larger dataset, with iterations having the largest variable impact on the runtime of the NMF function.
+11 . With all parameters set, we are now ready to **run PyCoGAPS**. Please note that this is the **most time-consuming step** of the procedure. Timing can take **several hours** and scales nlog(n) based on dataset size (see Timing section below), as well as the parameter values set for ‘nPatterns’ and ‘nIterations’. Time is increased when learning more patterns, when running more iterations, and when running a larger dataset, with iterations having the largest variable impact on the runtime of the NMF function.
 
-<strong>CRITICAL! -</strong> This step has a long runtime. For users who want to load an already-complete NMF run and proceed to the analysis portion of this vignette, please skip to step 13. 
+<strong>CRITICAL! -</strong> This step has a **long** runtime. For users who want to load an already-complete NMF run and proceed to the analysis portion of this vignette, please skip to <a href="/CoGAPS/optiona/#analyzing-the-pycogaps-result">step 13</a>. 
 
 Otherwise, you may start the run as so:
 
@@ -421,7 +421,7 @@ Otherwise, you may start the run as so:
    print("TIME:", end - start)
 ```
 
-While CoGAPS is running, you will see periodic status messages, described in Box 8.
+While CoGAPS is running, you will see periodic status messages, described in **Box 8**.
 
 ---
 
@@ -455,9 +455,9 @@ AnnData object with n_obs × n_vars = 15219 × 25442
     varm: 'X_aligned', 'X_pca', 'X_umap'
 ```
 
-12 . When CoGAPS has finished running, write the NMF result to disk. We strongly recommend saving your result object as soon as it returns. 
+12 . When CoGAPS has finished running, **write the NMF result to disk**. We **strongly recommend** saving your result object as soon as it returns. 
 
-You can do this by directly saving the anndata object (Box 9):
+You can do this by directly saving the anndata object (**Box 9**):
 
 ```yml
 result.write("data/my_pdac_result.h5ad")
@@ -473,11 +473,11 @@ result.write_csvs(dirname=’./’, skip_data=True, sep=',')
 
 <strong>Box 9: The PyCoGAPS Result Object</strong>
 
-The CoGAPS result is returned in Anndata format. CoGAPS stores the lower-dimensional representation of the samples (P matrix) in the <sub>.var</sub> slot and the weight of the features (A matrix) in the <sub>.obs</sub> slot. If you transpose the matrix before running CoGAPS, the opposite will be true. Running single-cell is equivalent in every way to transposing the data matrix and running single-cell. The standard deviation across sample points for each matrix as well as additional metrics are stored in the <sub>.uns</sub> slots. Please refer to <a href="https://github.com/FertigLab/pycogaps#readme" target="_blank">github.com/FertigLab/pycogaps#readme</a> for complete documentation of output metrics.
+The CoGAPS result is returned in **Anndata format**. CoGAPS stores the lower-dimensional representation of the samples (P matrix) in the ```.var``` slot and the weight of the features (A matrix) in the ```.obs``` slot. If you transpose the matrix before running CoGAPS, the opposite will be true. Running single-cell is equivalent in every way to transposing the data matrix and running single-cell. The standard deviation across sample points for each matrix as well as additional metrics are stored in the ```.uns``` slots. Please refer to <a href="https://github.com/FertigLab/pycogaps#readme" target="_blank">github.com/FertigLab/pycogaps#readme</a> for complete documentation of output metrics.
 
 ---
 
-<strong>PAUSE POINT</strong> - Now we have successfully generated and saved a CoGAPS result. The procedure may be paused. 
+<strong>PAUSE POINT</strong> - Now we have successfully generated and saved a CoGAPS result. **The procedure may be paused**. 
 
 The following steps will walk through analyzing and visualizing the generated saved result.
 
@@ -487,7 +487,7 @@ The following steps will walk through analyzing and visualizing the generated sa
 
 <strong>Timing: 20-30 min</strong>
 
-13 . We will first load the saved result file, which can be your own NMF result generated from the previous step, or the precomputed one supplied in our repository:
+13 . We will first **load the saved result file**, which can be your own NMF result generated from the previous step, or the precomputed one supplied in our repository:
 
 To use precomputed result:
 
@@ -513,7 +513,7 @@ AnnData object with n_obs × n_vars = 15176 × 25442
     var: 'Pattern_1', 'Pattern_2', 'Pattern_3', 'Pattern_4', 'Pattern_5', 'Pattern_6', 'Pattern_7', 'Pattern_8', 'cell_type'
 ```
 
-Now, we are ready to call built-in PyCoGAPS functions to analyze and visualize the data.
+Now, we are ready to call built-in PyCoGAPS functions to **analyze** and **visualize** the data.
 
 <strong>Note:</strong> Please see “Anticipated Results” section for more discussion of the result object
 
