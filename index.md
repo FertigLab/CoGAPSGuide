@@ -2,7 +2,7 @@
 
 layout: page
 title: CoGAPS
-subtitle: (Coordinated Gene Association in Pattern Sets)
+<!-- subtitle: (Coordinated Gene Association in Pattern Sets) -->
 hero_image: /CoGAPS/images/hero.jpg
 <!-- hero_height: is-fullwidth -->
 hero_darken: true
