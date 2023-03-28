@@ -3,8 +3,10 @@
 hero_image: /CoGAPS/images/hero.jpg
 <!-- hero_height: is-fullwidth -->
 hero_darken: true
+subtitle: User Startup Guide
 hero_link: https://www.bioconductor.org/packages/devel/bioc/vignettes/CoGAPS/inst/doc/CoGAPS.html
 hero_link_text: CoGAPS Bioconductor Vignette
+toc: true
 
 ---
 
@@ -44,7 +46,7 @@ library(CoGAPS)
 
 <strong>Timing: 3-5 min</strong>
 
-3 . To ensure CoGAPS is working properly, we will first load in the simulated toy data for a test run. Single-cell data will be loaded later in step 6.
+3 . To ensure CoGAPS is working properly, we will first load in the simulated toy data for a test run. Single-cell data will be loaded later in <a href="/CoGAPS/proceduretwo/#running-cogaps-on-single-cell-data">step 6</a>.
 
 ```yml
 modsimdata <- read.table("../data/ModSimData.txt")
