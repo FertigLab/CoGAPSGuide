@@ -9,7 +9,7 @@ hero_darken: true
 show_sidebar: false
 hero_link: https://github.com/FertigLab/pycogaps
 hero_link_text: PyCoGAPS GitHub Repository
-callouts: procedureone_callouts
+<!-- callouts: procedureone_callouts -->
 
 ---
 
