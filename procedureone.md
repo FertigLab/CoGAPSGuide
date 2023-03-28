@@ -17,7 +17,7 @@ hero_link_text: PyCoGAPS GitHub Repository
 
 ## User startup guide for the Python CoGAPS API
 
-We provide two options for running PyCoGAPS (Options A and B). Both options are functionally equivalent, so the user’s choice of interface should depend on factors such as familiarity with Python and desire for flexibility and modification. Please refer to the decision tree below to determine which option is most appropriate to follow.
+We provide two options for running PyCoGAPS (Options A and B). Both options are functionally equivalent, so the user’s choice of interface should depend on factors such as familiarity with Python and desire for flexibility and modification. Please refer to the **decision tree** below to determine which option is most appropriate to follow.
 
 ### [Option A: Python Scripts](/CoGAPS/optiona)
 <ul>
