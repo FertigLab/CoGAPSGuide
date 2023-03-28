@@ -7,6 +7,9 @@
       link: /optionb/
 - name: R CoGAPS API
   link: /proceduretwo/
+  dropdown: 
+    - name: CoGAPS GitHub Repository
+      link: https://github.com/FertigLab/CoGAPS
 - name: GenePattern Notebook
   link: /procedurethree/
 - name: Troubleshooting
