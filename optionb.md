@@ -40,7 +40,7 @@ curl.exe -o index.html https://raw.githubusercontent.com/FertigLab/pycogaps/mast
 cd..
 ```
 
-?Troubleshooting
+<strong><a href="/CoGAPS/troubleshooting/#procedure-1b" target="_blank">TROUBLESHOOTING</a></strong>
 
 ## Running PyCoGAPS on Simulated Toy Data
 
@@ -256,12 +256,12 @@ pip install -r analysis_requirements.txt
 from analysis_functions import *
 ```
 
-?Troubleshooting
+<strong><a href="/CoGAPS/troubleshooting/#procedure-1b" target="_blank">TROUBLESHOOTING</a></strong>
 
-8 . Please skip to the section above titled, “<strong>Analyzing the PyCoGAPS Result</strong>” in Procedure 1 Option A Step 13 to continue following the analysis and visualization workflow. 
+8 . Please skip to the section above titled, “<strong>Analyzing the PyCoGAPS Result</strong>” in <a href="/CoGAPS/optiona/#analyzing-the-pycogaps-result" target="_blank">Procedure 1 Option A Step 13</a> to continue following the analysis and visualization workflow. 
 
 
-###Table 2: Key parameters for CoGAPS/PyCoGAPS and guidance on setting their values.
+### Table 2: Key parameters for CoGAPS/PyCoGAPS and guidance on setting their values.
 
 | **Parameter**         | **Description**                                                                                                                                         | **Guide to Setting**                                                                                                                                                                                                                                                                                                                                            |
 |-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
