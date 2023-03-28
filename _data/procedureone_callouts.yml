@@ -2,12 +2,12 @@ style: is-light
 items:
   - title: Option A
     subtitle: Python Scripts
-    icon: fa-grin-stars
+    icon: fa-python
     call_to_action_name: User Startup Guide
     call_to_action_link: /CoGAPS/optiona
   - title: Option B
     subtitle: Docker
-    icon: fa-github
+    icon: fa-docker
     call_to_action_name: User Startup Guide
     call_to_action_link: /CoGAPS/optionb
     icon_brand: true
