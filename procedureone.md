@@ -31,6 +31,10 @@ We provide two options for running PyCoGAPS (Options A and B). Both options are 
   <li>Deploy and run PyCoGAPS in fewer steps with limited flexibility</li>
   </ul>
 
+## Decision Tree
+
+![Decision Tree](images/decisiontree.png)
+
 ## Workflow Comparison
 
 | **Procedure Choice**               | **<a href="https://github.com/FertigLab/pycogaps">Procedure 1: PyCoGAPS</a>** |                                                                        |
@@ -44,6 +48,3 @@ We provide two options for running PyCoGAPS (Options A and B). Both options are 
 | Parameter handling                 | Call functions                                               | Easy plug-in                                                           |
 | Run location                       | Locally or own server                                        | Locally or own server                                                  |
 
-## Decision Tree
-
-![Decision Tree](images/decisiontree.png)
