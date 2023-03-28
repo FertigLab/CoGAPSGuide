@@ -2,7 +2,7 @@ style: is-light
 items:
   - title: Option A
     subtitle: Python Scripts
-    icon: fa-python
+    icon: fa-wrench
     call_to_action_name: User Startup Guide
     call_to_action_link: /CoGAPS/optiona
   - title: Option B
