@@ -14,7 +14,7 @@ toc: true
 
 <strong>Timing: 5-10 min</strong>
 
-1 . To download PyCoGAPS from GitHub with all data included (~2 GB memory), please run the following command, otherwise to omit the data, please refer to Box 2:
+1 . To download PyCoGAPS from **GitHub** with all data included (~2 GB memory), please **run the following command**, otherwise to omit the data, please refer to **Box 2**:
 
 ```yml
 git clone <a href="https://github.com/FertigLab/pycogaps.git" target="_blank">https://github.com/FertigLab/pycogaps.git</a> --recursive
@@ -26,13 +26,13 @@ git clone <a href="https://github.com/FertigLab/pycogaps.git" target="_blank">ht
 
 <strong>Box 2</strong>
 
-To download PyCoGAPS without the large files (inputresult.h5ad and cogapsresult.h5ad), run the following command:
+To download PyCoGAPS without the large files (inputresult.h5ad and cogapsresult.h5ad), **run the following command**:
 
 ```yml
 GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/FertigLab/pycogaps.git --recursive
 ```
 
-Please note that if you would like to use the files (inputresult.h5ad and cogapsresulth5ad) later, you may download them from the repository as described in the Data section.
+Please note that if you would like to use the files (inputresult.h5ad and cogapsresulth5ad) later, you may download them from the [GitHub repository](https://github.com/FertigLab/pycogaps).
 
 ---
 
@@ -58,7 +58,7 @@ Resolving deltas: 100% (10621/10621), done.
 Submodule path 'src/CoGAPS': checked out 'e1e002caa009866d41402f3aa5ad3f97b541d962'
 ```
 
-2 . Install the required package dependencies with the following command. We recommend installing these dependencies in an Anaconda<sup>70</sup> environment(Box 3):
+2 . Install the required package dependencies with the following command. We recommend installing these dependencies in an **Anaconda<sup>70</sup> environment(Box 3)**:
 
 ```yml
 cd pycogaps
@@ -73,19 +73,19 @@ Install Anaconda from here: <a href="https://docs.anaconda.com/anaconda/install/
 
 Instructions for setting up a conda environment can be found here: <a href="https://conda.io/projects/conda/en/latest/user-guide/getting-started.html" target="_blank">conda.io/projects/conda/en/latest/user-guide/getting-started.html</a>
 
-We recommend the user create a conda environment called ‘pycogaps’ and install all requirements and run code from within here.
+We recommend the user create a conda environment called ‘**pycogaps**’ and install all requirements and run code from within here.
 
 <strong><a href="/CoGAPS/troubleshooting/#procedure-1a" target="_blank">TROUBLESHOOTING</a></strong>
 
 ---
 
-Now run the setup script. This installs the C++ core CoGAPS library.
+Now run the **setup script**. This installs the **C++ core CoGAPS library**.
 
 ```yml
 python3 setup.py install
 ```
 
-When PyCoGAPS has installed and built correctly, you should see this message, indicating PyCoGAPS is ready to use:
+When PyCoGAPS has installed and built correctly, you should see this message, indicating **PyCoGAPS is ready to use**:
 
 ```yml
 Finished processing dependencies for pycogaps==0.0.1
@@ -99,9 +99,9 @@ Finished processing dependencies for pycogaps==0.0.1
 
 <strong>Timing: 3-5 min</strong>
 
-To ensure PyCoGAPS is running properly on your computer, we will first perform a setup and run on a small, simulated toy dataset (single-cell data analysis will begin in Step 7). 
+To ensure PyCoGAPS is running properly on your computer, we will first perform a setup and run on a small, simulated toy dataset (single-cell data analysis will begin in <a href="CoGAPS/optiona/#running-pycogaps-on-single-cell-data">Step 7</a>). 
 
-3 . Import libraries. In your python script (file ending in .py), import the PyCoGAPS functions with the following lines:
+3 . **Import libraries**. In your python script (file ending in .py), import the PyCoGAPS functions with the following lines:
 
 ```yml
 from PyCoGAPS.parameters import *
@@ -123,14 +123,14 @@ modsim
 AnnData object with n_obs × n_vars = 25 × 20
 ```
 
-5 . Next, we will set the parameters to be used by PyCoGAPS. First, we will create a CoParams object, then set parameters with the setParams function. 
+5 . Next, we will set the parameters to be used by PyCoGAPS. First, we will **create a CoParams object**, then **set parameters with the setParams function**. 
 
 ```yml
 params = CoParams(path=modsimpath)
 params.printParams()
 ```
 
-printParams() displays all parameters currently set for the parameter object. Since we just generated this object using the constructor, all default parameters are currently set.
+printParams() displays all parameters currently set for the parameter object. Since we just generated this object using the constructor, **all default parameters are currently set**.
 
 ```yml
 -- Standard Parameters --
@@ -143,7 +143,7 @@ alpha: 0.01
 maxGibbsMass:  100.0
 ```
 
-Since we want to simulate a full-length run on this very small matrix, we need to change nIterations. Many parameters can be changed at once using this dictionary syntax:
+Since we want to simulate a full-length run on this very small matrix, we need to change **nIterations**. Many parameters can be changed at once using this dictionary syntax:
 
 ```yml
 setParams(params, {
@@ -153,8 +153,8 @@ setParams(params, {
 })
 ```
 
-For now, we will only modify the ‘nIterations’, ‘seed’, and ‘nPatterns’ parameters. 
-Setting the seed fixes the random number generator so that the stochastic, MCMC algorithm used to solve for the A and P matrices in CoGAPS provides identical solutions between runs. More description of the parameters and parameter tuning can be found in Table 2. 
+For now, we will only modify the ‘**nIterations**’, ‘**seed**’, and ‘**nPatterns**’ parameters. 
+Setting the seed fixes the random number generator so that the stochastic, MCMC algorithm used to solve for the A and P matrices in CoGAPS provides identical solutions between runs. More description of the parameters and parameter tuning can be found in <a href="/CoGAPS/optiona/#table-2-key-parameters-for-cogapspycogaps-and-guidance-on-setting-their-values">Table 2</a>. 
 
 Verify nIterations was updated as anticipated:
 
@@ -171,7 +171,7 @@ alpha: 0.01
 maxGibbsMass:  100.0
 ```
 
-6 . Since our parameters and data are now ready, we can start our PyCoGAPS run. As a best practice, we recommend always timing CoGAPS runs for your own records.
+6 . Since our parameters and data are now ready, we can start our **PyCoGAPS run**. As a best practice, we recommend always timing CoGAPS runs for your own records.
 
 ```yml
 start = time.time()
@@ -179,7 +179,7 @@ modsimresult = CoGAPS(modsim, params)
 print("TIME:", end - start)
 ```
 
-Since modsim is a small, toy dataset, the expected runtime is only about 3 seconds. Verify that the following output appears:
+Since modsim is a small, toy dataset, the expected runtime is only about **3 seconds**. Verify that the following output appears:
 
 ```yml
 This is pycogaps version  0.0.1
@@ -229,7 +229,7 @@ GapsResult result object with 25 features and 20 samples
 3 patterns were learned
 ```
 
-Now we’ll take a quick look at the result object, to make sure there are two resulting base matrices filled with plausible values.
+Now we’ll take a quick look at the result object, to make sure there are **two resulting base matrices filled with plausible values**.
 
 ```yml
 >> modsimresult
@@ -257,7 +257,7 @@ AnnData object with n_obs × n_vars = 25 × 20
 4  0.391151  0.002598  0.640158
 ```
 
-This indicates that PyCoGAPS has been set up and run correctly, and we can now proceed to analyzing experimental single-cell data.
+This indicates that PyCoGAPS has been **set up and run correctly**, and we can now proceed to analyzing **experimental single-cell data**.
 
 ## Running PyCoGAPS on Single Cell Data
 
@@ -265,7 +265,7 @@ This indicates that PyCoGAPS has been set up and run correctly, and we can now p
 
 <strong>Timing: 5 min - 2 days (depending on whether user runs NMF or uses precomputed result)</strong>
 
-7 . Import necessary libraries wrapped in check (Box 4):
+7 . Import necessary libraries wrapped in check (**Box 4**):
 
 ```yml
 if __name__ == "__main__":
@@ -278,13 +278,13 @@ if __name__ == "__main__":
 
 <strong>Box 4: Handling multithreading for single-cell data</strong>
 
-Important: Whenever distributed (ie multithreaded) options are used, all calling code <strong>must</strong> be wrapped in a check like this so it will only be called by the parent process. Missing this line will send calling code into infinite recursion. All subsequent calling code, not just the imports, must fall under this check such that it will only be executed when the check succeeds.
+Important: Whenever distributed (ie multithreaded) options are used, all calling code **must** be wrapped in a check like this so it will only be called by the parent process. **Missing this line will send calling code into infinite recursion**. All subsequent calling code, not just the imports, **must** fall under this check such that it will only be executed when the check succeeds.
 
-NOTE: Single-threaded CoGAPS, such as the run demonstrated above with ModSim data, does not require this check. It is a perfectly valid and correct way to run CoGAPS. We show distributed-friendly code here because it will be relevant to the majority of single-cell analysis users, who stand to gain both in performance and robustness of solution.
+NOTE: Single-threaded CoGAPS, such as the run demonstrated above with ModSim data, does **not** require this check. It is a perfectly valid and correct way to run CoGAPS. We show distributed-friendly code here because it will be relevant to the majority of single-cell analysis users, who stand to gain both in performance and robustness of solution.
 
 ---
 
-8 . A single-cell dataset has been provided for this vignette, already located in the ‘data’ folder when we cloned the repository. We will read in the data as an anndata object (Box 5).
+8 . A single-cell dataset has been provided for this vignette, already located in the ‘data’ folder when we cloned the repository. We will read in the data as an anndata object (**Box 5**).
 
 ```yml
 path = "data/inputdata.h5ad"
@@ -295,11 +295,11 @@ adata = sc.read_h5ad(path)
 
 <strong>Box 5: Data input format</strong>
 
-While CoGAPS can handle multiple data formats, we strongly recommend converting your data to Anndata format using the anndata package61 or another utility designed for translating between data structures62. The returned object will be in Anndata format.
+While CoGAPS can handle multiple data formats, we **strongly** recommend converting your data to Anndata format using the **anndata package61** or another utility designed for translating between data structures62. The returned object will be in **Anndata format**.
 
 ---
 
-9 . It is strongly recommended to normalize data before running PyCoGAPS. The data matrix is stored in Sparse Compressed Row format, and we now decompress and normalize it. Here we make use of the scanpy package<sup>71</sup> to perform log-normalization.
+9 . It is **strongly** recommended to normalize data before running PyCoGAPS. The data matrix is stored in Sparse Compressed Row format, and we now **decompress** and **normalize** it. Here we make use of the scanpy package<sup>71</sup> to perform **log-normalization**.
 
 ```yml
 sc.pp.log1p(adata)
@@ -314,7 +314,7 @@ CoGAPS expects genes in .obs and cells in .var, which is the opposite of scanpy�
 adata = adata.T
 ```
 
-Now let's examine adata:
+Now let's examine **adata**:
 
 ```yml
 >> adata
@@ -325,13 +325,13 @@ AnnData object with n_obs × n_vars = 15219 × 25442
     varm: 'X_aligned', 'X_pca', 'X_umap'
 ```
 
-This is an anndata object consisting of scRNAseq data from 25,422 Pancreatic epithelial cells, with reads from 15,219 genes. The .obs and .var matrices contain metadata such as gene names, cell annotations, and clustering results.
+This is an anndata object consisting of scRNAseq data from 25,422 Pancreatic epithelial cells, with reads from 15,219 genes. The .obs and .var matrices contain metadata such as **gene names**, **cell annotations**, and **clustering results**.
 
-<strong>!CRITICAL</strong> - Any transformation or scaling you choose to perform on your count matrix must result in all non-negative values due to the core constraint of NMF.
+<strong>!CRITICAL</strong> - Any transformation or scaling you choose to perform on your count matrix **must** result in all non-negative values due to the core constraint of NMF.
 
 10 . Next we create a parameters object that stores run options in a dictionary format. 
 
-Note that the easiest way to decrease runtime is to run for fewer iterations, and you may want to set nIterations=1000 for a test run before starting a complete CoGAPS run on your data.
+Note that the easiest way to decrease runtime is to **run for fewer iterations**, and you may want to set nIterations=1000 for a test run before starting a complete CoGAPS run on your data.
 
 ```yml
 params = CoParams(adata=adata)
@@ -345,13 +345,13 @@ setParams(params, {
 })
 ```
 
-If you are running distributed, you must run this line, and you can specify how many sets will be created and parallelized across, as well as specify cutoffs for how stringently a consensus matrix is determined. 
+If you are running distributed, you **must** run this line, and you can specify how many sets will be created and parallelized across, as well as specify cutoffs for how stringently a consensus matrix is determined. 
 
 ```yml
 params.setDistributedParams(nSets=7)
 ```
 
-The ‘distributed’ parameter enables parallelization to decrease runtimes which we recommended for most cases. Please refer to Box 6 for how to run distributed PyCoGAPS.
+The ‘distributed’ parameter enables parallelization to **decrease runtimes** which we recommended for most cases. Please refer to **Box 6** for how to run distributed PyCoGAPS.
 
 ---
 
@@ -359,11 +359,11 @@ The ‘distributed’ parameter enables parallelization to decrease runtimes whi
 
 Distributed parameters:
 
-If you wish to run distributed CoGAPS, which we recommend for most cases, set the “distributed” parameter to “genome-wide” (parallelize across genes), or “single-cell” (parallelize across cells). Please see Fig. 3 for a full explanation of the mechanism. 
+If you wish to run distributed CoGAPS, which we recommend for most cases, set the “distributed” parameter to “**genome-wide**” (parallelize across genes), or “**single-cell**” (parallelize across cells). Please see <a href="/CoGAPS/optiona/#figure-3">Fig. 3</a> for a full explanation of the mechanism. 
 
-<sub>cut, minNS,</sub> and <sub>maxNS</sub> control the process of matching patterns across subsets and in general should not be changed from defaults. More information about these parameters can be found in the original papers.
+<sub>cut, minNS,</sub> and <sub>maxNS</sub> control the process of matching patterns across subsets and in general **should not** be changed from defaults. More information about these parameters can be found in the **original papers**.
 
-<sub>nSets</sub> controls how many subsets are run in parallel when using the distributed version of the algorithm. Setting <sub>nSets</sub> requires balancing available hardware and run time against the size of your data. In general, <sub>nSets</sub> should be less than or equal to the number of nodes/cores that are available. If that is true, then the more subsets you create, the faster CoGAPS will run - however, some robustness can be lost when the subsets get too small. The general rule of thumb is to set <sub>nSets</sub> so that each subset has between 1000 and 5000 genes or cells in order to give robust results, but ideally we would want as many cells per set as possible. More information on these parameters can be found in Table 2.
+```ymlnSets``` controls how many subsets are run in parallel when using the distributed version of the algorithm. Setting <sub>nSets</sub> requires balancing available hardware and run time against the size of your data. In general, <sub>nSets</sub> should be **less than** or **equal to** the number of nodes/cores that are available. If that is true, then the **more** subsets you create, the **faster** CoGAPS will run - however, **some robustness can be lost when the subsets get too small**. The general rule of thumb is to set <sub>nSets</sub> so that each subset has between 1000 and 5000 genes or cells in order to give robust results, but ideally we would want as many cells per set as possible. More information on these parameters can be found in <a href="/CoGAPS/optiona/#table-2-key-parameters-for-cogapspycogaps-and-guidance-on-setting-their-values">Table 2</a>.
 
 If <sub>explicitSets</sub> are not provided, the data will be randomly fragmented into the number of sets specified by <sub>nSets</sub> parameter, with the default being 4. Subsets can also be chosen randomly, but weighted according to a user-provided annotation in parameters <sub>samplingAnnotation</sub> and <sub>samplingWeight</sub>.
 
