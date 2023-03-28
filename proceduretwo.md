@@ -3,6 +3,8 @@
 hero_image: /CoGAPS/images/hero.jpg
 <!-- hero_height: is-fullwidth -->
 hero_darken: true
+hero_link: https://www.bioconductor.org/packages/devel/bioc/vignettes/CoGAPS/inst/doc/CoGAPS.html
+hero_link_text: CoGAPS Bioconductor Vignette
 
 ---
 
