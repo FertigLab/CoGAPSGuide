@@ -14,9 +14,9 @@ hero_darken: true
 
 1 . To download PyCoGAPS from GitHub with all data included (~2 GB memory), please run the following command, otherwise to omit the data, please refer to Box 2:
 
+```yml
 git clone <a href="https://github.com/FertigLab/pycogaps.git" target="_blank">https://github.com/FertigLab/pycogaps.git</a> --recursive
-
-?Troubleshooting
+```
 
 ---
 
@@ -73,8 +73,6 @@ We recommend the user create a conda environment called ‘pycogaps’ and insta
 
 ---
 
-?Troubleshooting
-
 Now run the setup script. This installs the C++ core CoGAPS library.
 
 ```yml
@@ -86,8 +84,6 @@ When PyCoGAPS has installed and built correctly, you should see this message, in
 ```yml
 Finished processing dependencies for pycogaps==0.0.1
 ```
-
-?Troubleshooting
 
 ## Running PyCoGAPS
 
@@ -437,8 +433,6 @@ NOTE: when running multithreaded, each thread will output to the console separat
 
 ---
 
-?Troubleshooting
-
 When the run is finished, CoGAPS will print a message like this:
 
 ```yml
@@ -494,7 +488,6 @@ import scanpy as sc
 
 cogapsresult = anndata.read_h5ad("data/cogapsresult.h5ad")
 ```
-?Troubleshooting
 
 To use your own object, simply replace the path with your own.
 
