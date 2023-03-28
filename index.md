@@ -3,7 +3,7 @@
 layout: page
 title: CoGAPS
 subtitle: Coordinated Gene Association in Pattern Sets
-hero_image: /CoGAPS/images/herowithlogo.png
+hero_image: /CoGAPS/images/herowithlargelogo.png
 <!-- hero_height: is-fullwidth -->
 hero_darken: false
 show_sidebar: false
