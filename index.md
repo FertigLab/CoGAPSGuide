@@ -3,9 +3,9 @@
 layout: page
 title: CoGAPS
 subtitle: Coordinated Gene Association in Pattern Sets
-hero_image: /CoGAPS/images/hero.jpg
+hero_image: /CoGAPS/images/herowithlogo.png
 <!-- hero_height: is-fullwidth -->
-hero_darken: true
+hero_darken: false
 show_sidebar: false
 <!-- hero_link: https://github.com/FertigLab/CoGAPS
 hero_link_text: GitHub Repository -->
