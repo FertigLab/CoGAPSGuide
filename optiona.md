@@ -106,7 +106,7 @@ Finished processing dependencies for pycogaps==0.0.1
 
 <strong>Timing: 3-5 min</strong>
 
-To ensure PyCoGAPS is running properly on your computer, we will first perform a setup and run on a small, simulated toy dataset (single-cell data analysis will begin in <a href="CoGAPS/optiona/#running-pycogaps-on-single-cell-data">Step 7</a>). 
+To ensure PyCoGAPS is running properly on your computer, we will first perform a setup and run on a small, simulated toy dataset (single-cell data analysis will begin in <a href="/CoGAPS/optiona/#running-pycogaps-on-single-cell-data">Step 7</a>). 
 
 **3** . **Import libraries**. In your python script (file ending in .py), import the PyCoGAPS functions with the following lines:
 
