@@ -16,7 +16,7 @@ toc: true
 
 <strong>Timing: 1-5 minutes</strong>
 
-1 . CoGAPS can be installed directly from the FertigLab GitHub Repository using R devtools:
+1 . CoGAPS can be installed directly from the **FertigLab GitHub Repository** using R devtools:
 
 ```yml
 devtools::install_github("FertigLab/CoGAPS")
@@ -36,7 +36,7 @@ When CoGAPS has installed correctly, you will see this message:
 <strong>R Script Setup</strong>
 <strong>Timing: 1 min</strong>
 
-2 . Import the CoGAPS library with the following command:
+2 . **Import** the CoGAPS library with the following command:
 
 ```yml
 library(CoGAPS)
@@ -64,7 +64,7 @@ modsimdata
 [1] 25 20
 ```
 
-4 . Next, we will set the parameters to be used by CoGAPS. First, we will create a CogapsParams object, then set parameters with the setParam function.
+4 . Next, we will **set the parameters** to be used by CoGAPS. First, we will create a **CogapsParams object**, then **set parameters** with the **setParam** function.
 
 ```yml
 # create new parameters object
@@ -94,7 +94,7 @@ getParam(params, "nPatterns")
 [1] 3
 ```
 
-5 . Run CoGAPS on the ModSim data. Since this is a small dataset, the expected runtime is only about 5-10 seconds.
+5 . **Run** CoGAPS on the **ModSim** data. Since this is a small dataset, the expected runtime is only about 5-10 seconds.
 
 ```yml
 cogapsresult <- CoGAPS(modsimdata, params, outputFrequency = 10000)
@@ -133,7 +133,7 @@ Loading Data...Done! (00:00:00)
 50000 of 50000, Atoms: 76(A), 48(P), ChiSq: 124, Time: 00:00:01 / 00:00:01
 ```
 
-This means that the underlying C++ library has run correctly, and everything is installed how it should be. We now examine the result object.
+This means that **the underlying C++ library has run correctly**, and everything is installed how it should be. We now **examine** the result object.
 
 ```yml
 > cogapsresult
@@ -191,13 +191,13 @@ Gene_24 14.986680 7.265126705 3.1958113
 Gene_25 15.624031 7.858362675 2.9668522
 ```
 
-If both matrices--sampleFactors and featureLoadings--have reasonable values like this, we have confidence that CoGAPS is working as expected. We now continue with single-cell analysis.
+If both matrices--sampleFactors and featureLoadings--have reasonable values like this, we have confidence that **CoGAPS is working as expected**. We now continue with single-cell analysis.
 
 ## Running CoGAPS on Single Cell Data
 
 <strong>Timing: 5 min - 2 days (depending on whether user runs NMF or uses precomputed result)</strong>
 
-6 . We will now read in the single cell dataset, which we will demonstrate with the provided input file in the repository.
+6 . We will now **read in** the single cell dataset, which we will demonstrate with the provided input file in the repository.
 
 ```yml
 pdac_data <- readRDS("inputdata.rds")
@@ -217,7 +217,7 @@ We also want to extract the counts matrix to provide directly to CoGAPS
 pdac_epi_counts <- as.matrix(pdac_data@assays$originalexp@counts)
 ```
 
-7 . Most of the time we will set some parameters before running CoGAPS. Parameters are managed with a CogapsParams object. This object will store all parameters needed to run CoGAPS and provides a simple interface for viewing and setting the parameter values
+7 . Most of the time we will set some parameters before running CoGAPS. Parameters are managed with a **CogapsParams** object. This object will store all parameters needed to run CoGAPS and provides a simple interface for viewing and setting the parameter values
 
 ```yml
 library(CoGAPS)
@@ -228,14 +228,14 @@ pdac_params <- CogapsParams(nIterations=100, # run for 100 iterations
                   distributed="genome-wide") # parallelize across sets
 ```
 
-If you wish to run distributed CoGAPS, which is recommended to improve the computational efficiency for most large datasets, you must also call the setDistributedParams function. For a complete description of the parallelization strategy used in distributed CoGAPS, please refer to the section titled “Finding robust patterns using consensus across parallel sets”, as well as Fig. 3.
+If you wish to run **distributed CoGAPS**, which is recommended to improve the computational efficiency for most large datasets, you must also call the **setDistributedParams** function. For a complete description of the parallelization strategy used in distributed CoGAPS, please refer to the section titled “**Finding robust patterns using consensus across parallel sets**”, as well as [Fig. 3](/CoGAPS/troubleshooting/#procedure-2).
 
 ```yml
 > pdac_params <- setDistributedParams(pdac_params, nSets=7)
 setting distributed parameters - call this again if you change nPatterns
 ```
 
-Box 15 demonstrates viewing all parameters and their values that have been set.
+**Box 15** demonstrates viewing all parameters and their values that have been set.
 
 ---
 
@@ -263,9 +263,9 @@ maxNS          23
 
 ---
 
-8 . With all parameters set, we are now ready to run CoGAPS. Please note that this is the most time-consuming step of the procedure. Timing can take several hours and scales nlog(n) based on dataset size (see Timing section below), as well as the parameter values set for ‘nPatterns’ and ‘nIterations’. Time is increased when learning more patterns, when running more iterations, and when running a larger dataset, with iterations having the largest variable impact on the runtime of the NMF function.
+8 . With all parameters set, we are now ready to **run CoGAPS**. Please note that this is the most time-consuming step of the procedure. Timing can take several hours and scales nlog(n) based on dataset size (see **Timing** section below), as well as the parameter values set for ‘**nPatterns**’ and ‘**nIterations**’. Time is increased when learning more patterns, when running more iterations, and when running a larger dataset, with iterations having the largest variable impact on the runtime of the NMF function.
 
-<strong>CRITICAL! -</strong>This step has a long runtime. For users who want to load an already-complete NMF run and proceed to the analysis portion of this vignette, please skip to step 13. 
+<strong>CRITICAL! -</strong>This step has a long runtime. For users who want to load an already-complete NMF run and proceed to the analysis portion of this vignette, please **skip to step 13**. 
 
 Otherwise, you may start the run as so:
 
@@ -282,9 +282,9 @@ To save as a .csv file, use the following line:
    saveCSV(pdac_epi_result, “path/to/location/pdac_epi_result.csv”)
 ```
 
-While CoGAPS is running it periodically prints status messages (Box 16). 
+While CoGAPS is running it periodically prints status messages (**Box 16**). 
 
-?Troubleshooting
+<a href="/CoGAPS/troubleshooting/#procedure-2" target="_blank">TROUBLESHOOTING</a>
 
 ---
 
@@ -294,15 +294,15 @@ While CoGAPS is running it periodically prints status messages (Box 16).
 20000 of 25000, Atoms: 2932(80), ChiSq: 9728, time: 00:00:29 / 00:01:19
 ```
 
-This message tells us that CoGAPS is at iteration 20000 out of 25000 for this phase and that 29 seconds out of an estimated 1 minute 19 seconds have passed. It also tells us the size of the atomic domain which is a core component of the algorithm but can be ignored for now. Finally, the ChiSq value tells us how closely the A and P matrices reconstruct the original data. In general, we want this value to go down - but it is not a perfect measurement of how well CoGAPS is finding the biological processes contained in the data. CoGAPS also prints a message indicating which phase is currently happening. There are two phases to the algorithm - Equilibration and Sampling.
+This message tells us that CoGAPS is at iteration 20000 out of 25000 for this phase and that 29 seconds out of an estimated 1 minute 19 seconds have passed. It also tells us the size of the atomic domain which is a core component of the algorithm but can be ignored for now. Finally, the ChiSq value tells us how closely the A and P matrices reconstruct the original data. In general, we want this value to go down - but it is not a perfect measurement of how well CoGAPS is finding the biological processes contained in the data. CoGAPS also prints a message indicating which phase is currently happening. There are two phases to the algorithm - **Equilibration** and **Sampling**.
 
 ---
 
 ## Analyzing the CoGAPS Result
 
-9 . Now that the CoGAPS run is complete, learned patterns can be investigated. Due to the stochastic nature of the MCMC sampling in CoGAPS and long run time, it is generally a good idea to immediately save your CoGAPS result object to a file to have (Box 17), then read it in for downstream analysis. 
+9 . Now that the CoGAPS run is complete, learned patterns can be investigated. Due to the stochastic nature of the MCMC sampling in CoGAPS and long run time, it is generally a good idea to **immediately save** your CoGAPS result object to a file to have (**Box 17**), then **read it in** for downstream analysis. 
 
-If you wish to load and examine a precomputed result object, please do so by:
+If you wish to **load** and **examine** a precomputed result object, please do so by:
 
 ```yml
 cogapsresult <- readRDS("data/cogapsresult.Rds")
@@ -330,13 +330,14 @@ Metadata, which contains information for the run such as how it was parallelized
 
 ---
 
-PAUSE POINT - Now we have successfully generated and saved a CoGAPS result. The procedure may be paused. 
+PAUSE POINT - Now we have successfully **generated** and **saved** a CoGAPS result. The procedure may be **paused**. 
 
-The following steps will walk through analyzing and visualizing the generated saved result.
+The following steps will walk through **analyzing** and **visualizing** the generated saved result.
 
-<strong>Note</strong>: Please see “Anticipated Results” section for more discussion of the result object
+<strong>Note</strong>: Please see “**Anticipated Results**” section for more discussion of the result object
 
-10 . It is recommended to immediately visualize pattern weights on a UMAP because you will immediately see whether they are showing strong signal and make common sense. 
+10 . It is recommended to **immediately visualize** pattern weights on a UMAP because you will immediately see whether they are showing strong signal and make common sense. 
+
 Since pattern weights are all continuous and nonnegative, they can be used to color a UMAP in the same way as one would color by gene expression. The sampleFactors matrix is essentially just <em>nPatterns</em> different annotations for each cell, and featureLoadings is likewise just <em>nPatterns</em> annotations for each gene. This makes it very simple to incorporate pattern data into any data structure and workflow. 
 
 To store CoGAPS patterns as an Assay within a Seurat object (recommended):
@@ -363,7 +364,7 @@ FeaturePlot(inputdata, pattern_names, cols=color_palette, reduction = "umap") & 
 
 ![FeaturePlot UMAP](images/featureplot.png)
 
-11 . To assess pattern marker genes, we provide a patternMarkers() CoGAPS function to find genes associated with each pattern and returns a dictionary of information containing lists of marker genes, their ranking, and their “score” for each pattern. This is vital because genes are often associated with multiple patterns.
+11 . To assess pattern marker genes, we provide a patternMarkers() CoGAPS function to find genes associated with each pattern and returns a dictionary of information containing lists of marker genes, their ranking, and their “score” for each pattern. This is **vital** because genes are often associated with multiple patterns.
 
 patternMarkers can run in two modes, depending on the “threshold” parameter
 
@@ -395,7 +396,7 @@ The three components of the returned dictionary pm are:
             </ul>
                   </ul>
                   
-12 . One way to explore and use CoGAPS patterns is to conduct gene set enrichment analysis by functionally annotating the genes which are significant for each pattern. 
+12 . One way to **explore** and **use** CoGAPS patterns is to conduct gene set enrichment analysis by functionally annotating the genes which are significant for each pattern. 
 
 The PatternHallmarks function provides a wrapper around the fgsea<sup>74</sup> fora method and associates each pattern with msigDB<sup>75</sup> hallmark pathway annotations using the list of marker genes attained from the patternMarkers statistic. 
 
@@ -407,7 +408,7 @@ hallmarks <- PatternHallmarks(cogapsresult)
 
 hallmarks is a list of data frames, each containing hallmark overrepresentation statistics corresponding to one pattern. 
 
-To generate a histogram of the most significant hallmarks for any given pattern, please run:
+To **generate** a histogram of the most significant hallmarks for any given pattern, please **run**:
 
 ```yml
 pl_pattern7 <- plotPatternHallmarks(hallmarks, whichpattern = 7)
@@ -419,24 +420,24 @@ pl_pattern7
 
 Previously we observed pattern 7 to be associated with a mixture of cancer and adjacent-normal epithelial cells. Now we see the marker genes of this pattern are significantly overrepresented in hallmark gene sets of inflammatory response and allograft rejection. We looked at how this pattern in epithelial cells varied between samples, and found it to be correlated with the presence of fibroblasts in the sequenced tumor biopsy sample. We hypothesized that pattern 7 represents a process of epithelial cell carcinogenesis, a transitional, inflammatory phenotype urged on by other cells in the tumor microenvironment, and tested this hypothesis in our lab using PDAC organoid and cancer-associated fibroblast co-culture experiments<sup>1</sup>.
 
-13 . To generate statistics on the association between certain sample groups and patterns, we provide a wrapper function, called runMANOVA.This will allow us to explore if the patterns we have discovered lend to statistically significant differences in the sample groups. We will first load in the original data (if not already done earlier): 
+13 . To generate statistics on the association between certain sample groups and patterns, we provide a wrapper function, called **runMANOVA**. This will allow us to explore if the patterns we have discovered lend to statistically significant differences in the sample groups. We will first **load in** the original data (if not already done earlier): 
 
 ```yml
 pdac_data <- readRDS("inputdata.rds")
 ```
 
-Then, create a new matrix called “interestedVariables” consisting of the metadata variables of interest in conducting analysis on.
+Then, **create** a new matrix called “**interestedVariables**” consisting of the metadata variables of interest in conducting analysis on.
 
 ```yml
 interestedVariables <- cbind(pdac_data@meta.data[["celltype"]], pdac_data@meta.data[["TN_assigned_cell_type"]])
 ```
 
-Lastly, call the wrapper function, passing in the result object as well.
+Lastly, **call** the wrapper function, **passing in** the result object as well.
 
 ```yml
 manovaResult <- MANOVA(interestedVariables, cogapsresult)
 ```
 
-The function will print out the MANOVA results for each pattern learned based on the variables of interest. From the output, we can observe that all p-values have a value of 0.0, indicating that differences observed in the sample groups based on the patterns are statistically significant. 
+The function will **print out** the MANOVA results for each pattern learned based on the variables of interest. From the output, we can observe that all p-values have a value of 0.0, indicating that differences observed in the sample groups based on the patterns are **statistically significant**. 
 
 ![MANOVA Results](images/manovaresults.png)
