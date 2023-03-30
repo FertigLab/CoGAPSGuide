@@ -78,8 +78,10 @@ Instructions for setting up a conda environment can be found here: <a href="http
 
 We recommend the user create a conda environment called ‘**pycogaps**’ and install all requirements and run code from within here.
 
+<p style="margin-left: 25px;">
 <strong><a href="/CoGAPS/troubleshooting/#procedure-1a" target="_blank">TROUBLESHOOTING</a></strong>
-
+</p>
+    
 ---
 
 Now run the **setup script**. This installs the **C++ core CoGAPS library**.
@@ -94,8 +96,10 @@ When PyCoGAPS has installed and built correctly, you should see this message, in
 Finished processing dependencies for pycogaps==0.0.1
 ```
 
+<p style="margin-left: 25px;">
 <strong><a href="/CoGAPS/troubleshooting/#procedure-1a" target="_blank">TROUBLESHOOTING</a></strong>
-
+</p>
+    
 ## Running PyCoGAPS
 
 <strong>[this code can be found in the reference file modsimvignette.py]</strong>
@@ -442,8 +446,10 @@ While CoGAPS is running, you will see periodic status messages saying how many i
 NOTE: when running multithreaded, each thread will output to the console separately. For n threads, you will see each message repeated n times. They may come in different orders
 ```
 
+<p style="margin-left: 25px;">
 <strong><a href="/CoGAPS/troubleshooting/#procedure-1a" target="_blank">TROUBLESHOOTING</a></strong>
-
+</p>
+    
 ---
 
 When the run is finished, CoGAPS will print a message like this:
@@ -502,8 +508,10 @@ import scanpy as sc
 cogapsresult = anndata.read_h5ad("data/cogapsresult.h5ad")
 ```
 
+<p style="margin-left: 25px;">
 <strong><a href="/CoGAPS/troubleshooting/#procedure-1a" target="_blank">TROUBLESHOOTING</a></strong>
-
+</p>
+    
 To use your own object, simply replace the path with your own.
 
 To look at the object:
