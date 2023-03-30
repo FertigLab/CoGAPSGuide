@@ -17,7 +17,7 @@ toc: true
 
 **1** . To download PyCoGAPS from **GitHub** with all data included (~2 GB memory), please run the following command, otherwise to omit the data, please refer to **Box 2**:
 
-```yml
+```py
 git clone <a href="https://github.com/FertigLab/pycogaps.git" target="_blank">https://github.com/FertigLab/pycogaps.git</a> --recursive
 ```
 
