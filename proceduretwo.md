@@ -334,7 +334,7 @@ PAUSE POINT - Now we have successfully **generated** and **saved** a CoGAPS resu
 
 The following steps will walk through **analyzing** and **visualizing** the generated saved result.
 
-<strong>Note</strong>: Please see “**Anticipated Results**” section for more discussion of the result object
+<strong>Note</strong>: Please see “[Anticipated Results](/CoGAPS/anticipatedresults)” section for more discussion of the result object
 
 10 . It is recommended to **immediately visualize** pattern weights on a UMAP because you will immediately see whether they are showing strong signal and make common sense. 
 
