@@ -515,7 +515,7 @@ AnnData object with n_obs × n_vars = 15176 × 25442
 
 Now, we are ready to call built-in PyCoGAPS functions to **analyze** and **visualize** the data.
 
-<strong>Note:</strong> Please see “**Anticipated Results**” section for more discussion of the result object
+<strong>Note:</strong> Please see “[Anticipated Results](/CoGAPS/anticipatedresults)” section for more discussion of the result object
 
 14 . We will visualize patterns and compare it with clusters and annotations using **UMAP** and the **scanpy package**. <a href="https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html" target="_blank">scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html</a>
 
