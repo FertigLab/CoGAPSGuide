@@ -3,12 +3,13 @@
 hero_image: /CoGAPS/images/hero.jpg
 <!-- hero_height: is-fullwidth -->
 hero_darken: true
+title: Python Scripts
 subtitle: User Startup Guide
 toc: true
 
 ---
 
-# Python Scripts
+# Option A
 
 ## Software Setup
 
