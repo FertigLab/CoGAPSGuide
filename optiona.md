@@ -280,7 +280,7 @@ if __name__ == "__main__":
 
 Important: Whenever distributed (ie multithreaded) options are used, all calling code **must** be wrapped in a check like this so it will only be called by the parent process. **Missing this line will send calling code into infinite recursion**. All subsequent calling code, not just the imports, **must** fall under this check such that it will only be executed when the check succeeds.
 
-NOTE: Single-threaded CoGAPS, such as the run demonstrated above with ModSim data, does **not** require this check. It is a perfectly valid and correct way to run CoGAPS. We show distributed-friendly code here because it will be relevant to the majority of single-cell analysis users, who stand to gain both in performance and robustness of solution.
+**NOTE**: Single-threaded CoGAPS, such as the run demonstrated above with ModSim data, does **not** require this check. It is a perfectly valid and correct way to run CoGAPS. We show distributed-friendly code here because it will be relevant to the majority of single-cell analysis users, who stand to gain both in performance and robustness of solution.
 
 ---
 
