@@ -58,7 +58,7 @@ Resolving deltas: 100% (10621/10621), done.
 Submodule path 'src/CoGAPS': checked out 'e1e002caa009866d41402f3aa5ad3f97b541d962'
 ```
 
-2 . Install the required package dependencies with the following command. We recommend installing these dependencies in an **Anaconda<sup>70</sup> environment(Box 3)**:
+2 . Install the required package dependencies with the following command. We recommend installing these dependencies in an **Anaconda<sup>70</sup> environment (Box 3)**:
 
 ```yml
 cd pycogaps
@@ -515,19 +515,19 @@ AnnData object with n_obs × n_vars = 15176 × 25442
 
 Now, we are ready to call built-in PyCoGAPS functions to **analyze** and **visualize** the data.
 
-<strong>Note:</strong> Please see “Anticipated Results” section for more discussion of the result object
+<strong>Note:</strong> Please see “**Anticipated Results**” section for more discussion of the result object
 
-14 . We will visualize patterns and compare it with clusters and annotations using UMAP and the scanpy package. <a href="https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html" target="_blank">scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html</a>
+14 . We will visualize patterns and compare it with clusters and annotations using **UMAP** and the **scanpy package**. <a href="https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html" target="_blank">scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html</a>
 
 We provide a wrapper function to perform basic clustering workflow in scanpy (all default parameters) and produce a plot of each pattern’s intensity displayed on the data’s UMAP embedding.
 
-Import analysis functions module (decoupled from NMF module)
+**Import analysis functions module** (decoupled from NMF module)
 
 ```yml
 from PyCoGAPS.analysis_functions import *
 ```
 
-<strong>! CRITICAL -</strong> If you are at this step following the Docker procedure (Option B), you should have already imported analysis_functions, and do not need to include the line above (ie. you do not need to install the PyCoGAPS dependency).
+<strong>! CRITICAL -</strong> If you are at this step following the Docker procedure ([Option B](/CoGAPS/optionb)), you should have already imported analysis_functions, and **do not** need to include the line above (ie. you do not need to install the PyCoGAPS dependency).
 
 Call wrapper function:
 
@@ -570,26 +570,26 @@ Each pattern is enriched in a different part of the UMAP embedding, and all patt
 
 By visual inspection it is apparent that pattern 5 seems to associate only with those epithelial cells annotated as “normal”. Pattern 2, pattern 4, pattern 6, and pattern 8 appear to light up specific, distinct groupings of epithelial cells annotated as “cancer”.
 
-Patterns 1, 3, and 7, however, show signal in both classes of epithelial cells. We note that the epithelial normal cluster is mixed between cells from true normal samples and normal cells that are tumor-adjacent. This leads to hypotheses about  which patterns might represent gene programs that distinguish, or co-occur, in malignant epithelial cells or related to signaling associated with field carcinization or unannotated precancer neoplastic cells in the sample.
+Patterns 1, 3, and 7, however, show signal in both classes of epithelial cells. We note that the epithelial normal cluster is mixed between cells from true normal samples and normal cells that are tumor-adjacent. This leads to hypotheses about which patterns might represent gene programs that distinguish, or co-occur, in malignant epithelial cells or related to signaling associated with field carcinization or unannotated precancer neoplastic cells in the sample.
 
-15 . To generate statistics on the association between certain sample groups and patterns, we provide a wrapper function around statsmodels’ MANOVA function<sup>72</sup>. This will allow us to explore if the patterns we have discovered lend to statistically significant differences in the sample groups. First, we will load in the original data.
+15 . To generate statistics on the association between certain sample groups and patterns, we provide a wrapper function around statsmodels’ MANOVA function<sup>72</sup>. This will allow us to explore if the patterns we have discovered lend to statistically significant differences in the sample groups. First, we will **load in the original data**.
 
 ```yml
 orig = anndata.read_h5ad("data/inputdata.h5ad").T
 ```
 
-Our original data contains many sample groups, however we are only interested in exploring the associations of a subset of the groups with biological relevance, in this case ‘celltype’ and ‘TN_assigned_cell_type’.
+Our original data contains many sample groups, however we are only interested in exploring the associations of a subset of the groups with biological relevance, in this case ‘**celltype**’ and ‘**TN_assigned_cell_type**’.
 
 ```yml
 interested_vars = ['celltype', 'TN_assigned_cell_type']
 manova_result = MANOVA(cogapsresult, orig, interested_vars)
 ```
 
-The function will print out the MANOVA results for each pattern learned based on the variables of interest. From the output, we can observe that all p-values have a value of 0.0, indicating that differences observed in the sample groups based on the patterns are statistically significant.
+The function will print out the MANOVA results for each pattern learned based on the variables of interest. From the output, we can observe that all p-values have a value of 0.0, indicating that differences observed in the sample groups based on the patterns are **statistically significant**.
 
 ![Multivariate linear model data](images/multivariatelinearmodel.png)
 
-Further, we introduced some technical sample groups (['celltype', 'TN_assigned_cell_type', 'Size_Factor', 'TN_cluster_resolution_5', 'nCount_RNA']) to show insignificance of associations, where resulting p-values for patterns were equivalent to 1.
+Further, we introduced some technical sample groups (['**celltype**', '**TN_assigned_cell_type**', '**Size_Factor**', '**TN_cluster_resolution_5**', '**nCount_RNA**']) to show insignificance of associations, where resulting p-values for patterns were equivalent to 1.
 
 16 . Using violin plots, we can visualize association between patterns and annotated cell types.
 
@@ -605,7 +605,7 @@ sc.pl.stacked_violin(cogapsresult.T, [pattern_names], groupby='cell_type')
 
 17 . We will now find the markers of each pattern using PyCoGAPS’ patternMarkers function. Identifying genes that are strongly correlated with each learned pattern allows us to begin to decipher what biological processes or states it may represent. 
 
-We will use the default threshold parameter, but this may be modified as described in Box 10.
+We will use the default threshold parameter, but this may be modified as described in **Box 10**.
 
 ```yml
 pm = patternMarkers(cogapsresult, threshold="cut")
@@ -615,14 +615,14 @@ pm = patternMarkers(cogapsresult, threshold="cut")
 
 <strong>Box 10: patternMarkers ‘threshold’ parameter</strong>
 
-The patternMarkers() CoGAPS function finds genes associated with each pattern and returns a dictionary of information containing lists of marker genes, their ranking, and their “score” for each pattern. This is vital because genes are often associated with multiple patterns.
+The patternMarkers() CoGAPS function finds genes associated with each pattern and returns a dictionary of information containing lists of marker genes, their ranking, and their “score” for each pattern. This is **vital** because genes are often associated with multiple patterns.
 
 The three components of the returned dictionary <em>pm</em> are:
 <ul>
     <li>PatternMarkers</li>
         <ul>
             <li>a list of marker genes for each pattern</li>
-            <li>Can be determined using two threshold metrics--see below, and the section of the text called “Assessing the biological function of gene signatures from the amplitude matrix”</li>
+            <li>Can be determined using two threshold metrics--see below, and the section of the text called “<strong>Assessing the biological function of gene signatures from the amplitude matrix</strong>”</li>
         </ul>
     <li>PatternMarkerRank</li>
         <ul>
@@ -641,7 +641,7 @@ The three components of the returned dictionary <em>pm</em> are:
     
 patternMarkers can run in two modes, depending on the “threshold” parameter
 
-If <strong>threshold=”all”</strong>, each gene is treated as a marker of one pattern (whichever it is most strongly associated with). The number of marker genes will always equal the number of input genes. If <strong>threshold=”cut”</strong>, a gene is considered a marker of a pattern if and only if it is less significant to at least one other pattern. Counterintuitively, this results in much shorter lists of patternMarkers and is a more convenient statistic to use when functionally annotating patterns.
+If <strong>threshold="all"</strong>, each gene is treated as a marker of one pattern (whichever it is most strongly associated with). The number of marker genes will **always** equal the number of input genes. If <strong>threshold="cut"</strong>, a gene is considered a marker of a pattern if and only if it is less significant to at least one other pattern. Counterintuitively, this results in much shorter lists of patternMarkers and is a more convenient statistic to use when functionally annotating patterns.
     
 ---
     
@@ -668,7 +668,7 @@ gsea_res.keys()
 dict_keys(['Pattern1', 'Pattern2', 'Pattern3', 'Pattern4', 'Pattern5', 'Pattern6', 'Pattern7', 'Pattern8'])
 ```
     
-To demonstrate the utility of this gene set analysis, we focus on Pattern 7. To view a pattern’s GSEA result:
+To demonstrate the utility of this gene set analysis, we focus on **Pattern 7**. To view a pattern’s GSEA result:
     
 ```yml
 gsea_res[“Pattern7”]
@@ -686,10 +686,9 @@ Generates this plot for pattern 7. This shows negative log quotient (degree of a
 
 ![Pattern 7 Enriched Terms](images/pattern7enrichedterms.png)
 
-We note that pattern 7 was found to be associated with cancer cells and matched normal epithelial cells from adjacent tissue, but not in normal epithelial cells from true healthy control samples. Looking at the set of genes that are positively associated with pattern 7, we obtain these statistics and see the Hallmark set for inflammatory response and allograft rejection. We hypothesized this inflammatory process resulting from a transition during carcinogenesis resulting from interactions between epithelial cells and other cells in the microenvironment.  We observed a high correlation of this pattern with the presence of fibroblasts, and have tested this hypothesis with experimental validation using co-culture organoid experiments<sup>1</sup>.
+We note that pattern 7 was found to be associated with cancer cells and matched normal epithelial cells from adjacent tissue, but not in normal epithelial cells from true healthy control samples. Looking at the set of genes that are positively associated with pattern 7, we obtain these statistics and see the Hallmark set for inflammatory response and allograft rejection. We hypothesized this inflammatory process resulting from a transition during carcinogenesis resulting from interactions between epithelial cells and other cells in the microenvironment. We observed a high correlation of this pattern with the presence of fibroblasts, and have tested this hypothesis with experimental validation using co-culture organoid experiments<sup>1</sup>.
 
 This section has demonstrated a basic analysis of both the A and P matrix (gene and sample associated pattern weights). These helper functions are a starting point for interpreting your single-cell NMF patterns, but most users will almost certainly wish to export their NMF result and incorporate it into their existing single-cell pipeline.
-
 
 ### Table 2: Key parameters for CoGAPS/PyCoGAPS and guidance on setting their values.
 
