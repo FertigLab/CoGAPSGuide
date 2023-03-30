@@ -1,9 +1,9 @@
 - name: Python API
   link: /procedureone/
   dropdown:
-    - name: Install Option A
+    - name: Python Scripts
       link: /optiona/
-    - name: Install Option B
+    - name: Docker
       link: /optionb/
 - name: R CoGAPS API
   link: /proceduretwo/
