@@ -18,7 +18,7 @@ toc: true
 
 1 . CoGAPS can be installed directly from the **FertigLab GitHub Repository** using R devtools:
 
-```yml
+```r
 devtools::install_github("FertigLab/CoGAPS")
 ```
 
