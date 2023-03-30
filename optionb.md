@@ -16,7 +16,7 @@ toc: true
 
 1 . Pull the PyCoGAPS Docker container and set up the working directory.
 
-For Mac users, copy the commands and paste in terminal:
+For Mac users, **copy** the commands and **paste** in terminal:
 
 ```yml
 docker pull fertiglab/pycogaps
@@ -29,7 +29,7 @@ curl -O https://raw.githubusercontent.com/FertigLab/pycogaps/master/data/ModSimD
 cd ..
 ```
 
-For Windows (Ubuntu) users, copy the commands and paste in terminal:
+For Windows (Ubuntu) users, **copy** the commands and **paste** in terminal:
 
 ```yml
 docker pull fertiglab/pycogaps
@@ -48,19 +48,19 @@ cd..
 
 <strong>Timing: 2 min</strong>
 
-2 . To ensure PyCoGAPS is running properly on your computer, we will first perform a setup and run on the ModSim dataset (running PyCoGAPS on the single-cell data will be performed later in Step 3). The dataset has already been downloaded in Step 1. Run the following commands in terminal:
+2 . To ensure PyCoGAPS is running properly on your computer, we will first perform a setup and run on the ModSim dataset (running PyCoGAPS on the single-cell data will be performed later in [Step 3](/CoGAPS/optionb/#running-pycogaps-on-single-cell-data). The dataset has already been downloaded in Step 1. **Run the following commands** in terminal:
 
 ```yml
 docker run -v $PWD:$PWD fertiglab/pycogaps $PWD/params.yaml
 ```
 
-For users with an M1 processing chip, please add the following flag to the above command:
+For users with an **M1 processing chip**, please add the following flag to the above command:
 
 ```yml
 --platform linux/amd64
 ```
 
-This produces a CoGAPS run on a simple dataset with default parameters. Please check that your output matches the expected in Box 11.
+This produces a CoGAPS run on a simple dataset with default parameters. Please check that your output matches the expected in **Box 11**.
 
 ---
 
@@ -111,7 +111,7 @@ Pickling complete!
 
 ---
 
-CoGAPS has successfully completed running and has saved the result file as result.pkl in a created output/ folder. Your working directory is the PyCoGAPS folder with the following structure and files, shown in Box 12.
+CoGAPS has successfully **completed running** and has **saved** the result file as **result.pkl** in a created **output/ folder**. Your working directory is the PyCoGAPS folder with the following structure and files, shown in **Box 12**.
 
 ---
 
@@ -131,30 +131,30 @@ PyCoGAPS
 
 <strong>Timing: 5 min - 2 days (depending on whether user runs NMF or uses precomputed result)</strong>
 
-3 . Now that PyCoGAPS has been set up and run correctly, we can now proceed to analyzing experimental single-cell data. Navigate to the ‘data’ folder created earlier, and run the following command:
+3 . Now that PyCoGAPS has been set up and run correctly, we can now proceed to analyzing experimental single-cell data. Navigate to the ‘**data**’ folder created earlier, and **run the following command**:
 
 ```yml
 cd data
 curl -O https://raw.githubusercontent.com/FertigLab/pycogaps/master/data/inputdata.h5ad
 ```
 
-<strong>! CRITICAL -</strong> Always make sure to move the data you seek to analyze into the created ‘data’ folder. 
+<strong>! CRITICAL -</strong> Always make sure to move the data you seek to analyze into the created ‘**data**’ folder. 
 
-4 . We will then modify the default parameters before running PyCoGAPS. All parameter values can be modified directly in the params.yaml file already downloaded earlier in Step 1.
+4 . We will then modify the default parameters before running PyCoGAPS. All parameter values can be modified directly in the **params.yaml file** already downloaded earlier in **Step 1**.
 
-We will do this by first opening params.yaml with any text or code editor. Then, modify the following line to:
+We will do this by first opening **params.yaml** with any text or code editor. Then, **modify the following line to**:
 
 ```yml
 path: ‘data/inputdata.h5ad’
 ```
 
-Then, modify any additional desired parameters and save the file (Box 13). 
+Then, **modify** any additional desired parameters and **save the file** (**Box 13**). 
 
 ---
 
 <strong>Box 13: Example snippet of params.yaml</strong>
 
-The params.yaml file holds all parameters that can be inputted to PyCoGAPS. A snippet of params.yaml is shown below, where we have changed some default parameter values to our own specified example values.
+The **params.yaml** file holds all parameters that can be inputted to PyCoGAPS. A snippet of **params.yaml** is shown below, where we have changed some default parameter values to our own specified example values.
 
 ```yml
 ## This file holds all parameters to be passed into PyCoGAPS.
@@ -179,19 +179,19 @@ standard_params:
 ...
 ```
 
-A complete list of input options and their descriptions can be found as comments in params.yaml and guide to setting key parameters in Table 2.
+A complete list of input options and their descriptions can be found as comments in **params.yaml** and guide to setting key parameters in [Table 2](/CoGAPS/optionb/#table-2-key-parameters-for-cogapspycogaps-and-guidance-on-setting-their-values).
 
 ---
 
-Note the ‘distributed’ parameter enables parallelization to decrease runtimes which we recommended for most cases. Please refer to Box 14 for how to run distributed PyCoGAPS.
+Note the ‘**distributed**’ parameter enables parallelization to decrease runtimes which we recommended for most cases. Please refer to **Box 14** for how to run distributed PyCoGAPS.
 
-A description and guide for setting key PyCoGAPS parameters can be found in Table 2. There are many more additional parameters that can be set depending on your goals, which we invite the reader to explore in our GitHub documentation.
+A description and guide for setting key PyCoGAPS parameters can be found in [Table 2](/CoGAPS/optionb/#table-2-key-parameters-for-cogapspycogaps-and-guidance-on-setting-their-values). There are many more additional parameters that can be set depending on your goals, which we invite the reader to explore in our **GitHub documentation**.
 
 ---
 
 <strong>Box 14: Distributed PyCoGAPS in Docker</strong>
 
-A snippet of <sub>params.yaml</sub> is shown below where <sub>distributed_params</sub> parameters are modified.
+A snippet of ```params.yaml``` is shown below where ```distributed_params``` parameters are modified.
 
 ```yml
 ## This file holds all parameters to be passed into PyCoGAPS.
@@ -222,23 +222,23 @@ For Distributed PyCoGAPS, once all worker threads have started running their ite
 
 ---
 
-5 . Now that all parameters are set, we are ready to run PyCoGAPS. Please note that this is the most time-consuming step of the procedure. Timing can take several hours and scales nlog(n) based on dataset size (see Timing section below), as well as the parameter values set for ‘nPatterns’ and ‘nIterations’. Time is increased when learning more patterns, when running more iterations, and when running a larger dataset, with iterations having the largest variable impact on the runtime of the NMF function.
+5 . Now that all parameters are set, we are ready to **run PyCoGAPS**. Please note that this is the most time-consuming step of the procedure. Timing can take several hours and scales nlog(n) based on dataset size (see **Timing** section below), as well as the parameter values set for ‘**nPatterns**’ and ‘**nIterations**’. Time is increased when learning more patterns, when running more iterations, and when running a larger dataset, with iterations having the largest variable impact on the runtime of the NMF function.
 
-Run PyCoGAPS with the following command in terminal:
+**Run PyCoGAPS** with the following command in terminal:
 
 ```yml
 docker run -v $PWD:$PWD fertiglab/pycogaps $PWD/params.yaml
 ```
 
-The result object will automatically save in the ‘output’ folder, with the name given by the ‘result_file’ parameter. 
+The result object will automatically save in the ‘**output**’ folder, with the name given by the ‘**result_file**’ parameter. 
 
-<strong>! PAUSE POINT -</strong> Now we have successfully generated and saved a CoGAPS result. The procedure may be paused. The following steps will walk through analyzing and visualizing the generated saved result.
+<strong>! PAUSE POINT -</strong> Now we have successfully **generated** and **saved** a CoGAPS result. The procedure may be **paused**. The following steps will walk through **analyzing** and **visualizing** the generated saved result.
 
 ## Analyzing the PyCoGAPS Result
 
 <strong>Timing: 20-30 min</strong>
 
-6 . Download the analysis functions and requirements files with the following command:
+6 . **Download** the analysis functions and requirements files with the following command:
 
 ```yml
 curl -O https://raw.githubusercontent.com/FertigLab/pycogaps/master/PyCoGAPS/analysis_functions.py
@@ -246,13 +246,13 @@ curl -O
 https://raw.githubusercontent.com/FertigLab/pycogaps/master/PyCoGAPS/requirements_analysis.txt 
 ```
 
-7 . Install the analysis functions dependencies with the following command:
+7 . **Install** the analysis functions dependencies with the following command:
 
 ```yml
 pip install -r analysis_requirements.txt
 ```
 
-8 . Open a new Python file (in any preferred IDE, see Software section above) and include the following line:
+8 . **Open** a new Python file (in any preferred IDE, see **Software** section above) and **include the following line**:
 
 ```yml
 from analysis_functions import *
