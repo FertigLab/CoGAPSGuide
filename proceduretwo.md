@@ -24,7 +24,7 @@ devtools::install_github("FertigLab/CoGAPS")
 
 When CoGAPS has installed correctly, you will see this message:
 
-```yml
+```r
 ** installing vignettes
 ** testing if installed package can be loaded from temporary location
 ** checking absolute paths in shared objects and dynamic libraries
@@ -38,7 +38,7 @@ When CoGAPS has installed correctly, you will see this message:
 
 2 . **Import** the CoGAPS library with the following command:
 
-```yml
+```r
 library(CoGAPS)
 ```
 
@@ -48,7 +48,7 @@ library(CoGAPS)
 
 3 . To ensure CoGAPS is working properly, we will first load in the simulated toy data for a test run. Single-cell data will be loaded later in <a href="/CoGAPS/proceduretwo/#running-cogaps-on-single-cell-data">step 6</a>.
 
-```yml
+```r
 modsimdata <- read.table("../data/ModSimData.txt")
 modsimdata
 
@@ -66,7 +66,7 @@ modsimdata
 
 4 . Next, we will **set the parameters** to be used by CoGAPS. First, we will create a **CogapsParams object**, then **set parameters** with the **setParam** function.
 
-```yml
+```r
 # create new parameters object
 params <- new("CogapsParams")
 
@@ -96,13 +96,13 @@ getParam(params, "nPatterns")
 
 5 . **Run** CoGAPS on the **ModSim** data. Since this is a small dataset, the expected runtime is only about 5-10 seconds.
 
-```yml
+```r
 cogapsresult <- CoGAPS(modsimdata, params, outputFrequency = 10000)
 ```
 
 **Verify** that this output appears:
 
-```yml
+```r
 This is CoGAPS version 3.19.1 
 Running Standard CoGAPS on modsimdata (25 genes and 20 samples) with parameters:
 
@@ -135,7 +135,7 @@ Loading Data...Done! (00:00:00)
 
 This means that **the underlying C++ library has run correctly**, and everything is installed how it should be. We now **examine** the result object.
 
-```yml
+```r
 > cogapsresult
 [1] "CogapsResult object with 25 features and 20 samples"
 [1] "3 patterns were learned"
@@ -199,7 +199,7 @@ If both matrices--sampleFactors and featureLoadings--have reasonable values like
 
 6 . We will now **read in** the single cell dataset, which we will demonstrate with the provided input file in the repository.
 
-```yml
+```r
 pdac_data <- readRDS("inputdata.rds")
 
 
@@ -213,13 +213,13 @@ Active assay: originalexp (15176 features, 2000 variable features)
 
 We also want to extract the counts matrix to provide directly to CoGAPS
 
-```yml
+```r
 pdac_epi_counts <- as.matrix(pdac_data@assays$originalexp@counts)
 ```
 
 7 . Most of the time we will set some parameters before running CoGAPS. Parameters are managed with a **CogapsParams** object. This object will store all parameters needed to run CoGAPS and provides a simple interface for viewing and setting the parameter values
 
-```yml
+```r
 library(CoGAPS)
 pdac_params <- CogapsParams(nIterations=100, # run for 100 iterations 
                	seed=42, # for consistency across stochastic runs
@@ -230,7 +230,7 @@ pdac_params <- CogapsParams(nIterations=100, # run for 100 iterations
 
 If you wish to run **distributed CoGAPS**, which is recommended to improve the computational efficiency for most large datasets, you must also call the **setDistributedParams** function. For a complete description of the parallelization strategy used in distributed CoGAPS, please refer to the section titled “**Finding robust patterns using consensus across parallel sets**”, as well as [Fig. 3](/CoGAPS/troubleshooting/#procedure-2).
 
-```yml
+```r
 > pdac_params <- setDistributedParams(pdac_params, nSets=7)
 setting distributed parameters - call this again if you change nPatterns
 ```
@@ -241,7 +241,7 @@ setting distributed parameters - call this again if you change nPatterns
 
 <strong>Box 15: Viewing all parameters</strong>
 
-```yml
+```r
 > pdac_params
 -- Standard Parameters --
 nPatterns            8 
@@ -269,7 +269,7 @@ maxNS          23
 
 Otherwise, you may start the run as so:
 
-```yml
+```r
 startTime <- Sys.time()
   
 pdac_epi_result <- CoGAPS(pdac_epi_counts, pdac_params)
@@ -292,7 +292,7 @@ While CoGAPS is running it periodically prints status messages (**Box 16**).
 
 <strong>Box 16: CoGAPS Status Messages:</strong>
 
-```yml
+```r
 20000 of 25000, Atoms: 2932(80), ChiSq: 9728, time: 00:00:29 / 00:01:19
 ```
 
@@ -306,7 +306,7 @@ This message tells us that CoGAPS is at iteration 20000 out of 25000 for this ph
 
 If you wish to **load** and **examine** a precomputed result object, please do so by:
 
-```yml
+```r
 cogapsresult <- readRDS("data/cogapsresult.Rds")
 > cogapsresult
 [1] "CogapsResult object with 15176 features and 25442 samples"
@@ -344,7 +344,7 @@ Since pattern weights are all continuous and nonnegative, they can be used to co
 
 To store CoGAPS patterns as an Assay within a Seurat object (recommended):
 
-```yml
+```r
 # make sure pattern matrix is in same order as the input data
 patterns_in_order <-t(cogapsresult@sampleFactors[colnames(pdac_data),])
 
@@ -354,7 +354,7 @@ pdac_data[["CoGAPS"]] <- CreateAssayObject(counts = patterns_in_order)
 
 With the help of Seurat’s FeaturePlot function, we generate a UMAP embedding of the cells colored by the intensity of each pattern. 
 
-```yml
+```r
 DefaultAssay(inputdata) <- "CoGAPS"
 pattern_names = rownames(inputdata@assays$CoGAPS)
 
@@ -372,7 +372,7 @@ patternMarkers can run in two modes, depending on the “threshold” parameter
 
 If <strong>threshold=”all”</strong>, each gene is treated as a marker of one pattern (whichever it is most strongly associated with). The number of marker genes will always equal the number of input genes. If <strong>threshold=”cut”</strong>, a gene is considered a marker of a pattern if and only if it is less significant to at least one other pattern. Counterintuitively, this results in much shorter lists of patternMarkers and is a more convenient statistic to use when functionally annotating patterns.
 
-```yml
+```r
 pm <- patternMarkers(cogapsresult, threshold="cut")
 ```
 
@@ -404,7 +404,7 @@ The PatternHallmarks function provides a wrapper around the fgsea<sup>74</sup> f
 
 To perform gene set analysis on pattern markers, please run:
 
-```yml
+```r
 hallmarks <- PatternHallmarks(cogapsresult)
 ```
 
@@ -412,7 +412,7 @@ hallmarks is a list of data frames, each containing hallmark overrepresentation 
 
 To **generate** a histogram of the most significant hallmarks for any given pattern, please **run**:
 
-```yml
+```r
 pl_pattern7 <- plotPatternHallmarks(hallmarks, whichpattern = 7)
 
 pl_pattern7
@@ -424,19 +424,19 @@ Previously we observed pattern 7 to be associated with a mixture of cancer and a
 
 13 . To generate statistics on the association between certain sample groups and patterns, we provide a wrapper function, called **runMANOVA**. This will allow us to explore if the patterns we have discovered lend to statistically significant differences in the sample groups. We will first **load in** the original data (if not already done earlier): 
 
-```yml
+```r
 pdac_data <- readRDS("inputdata.rds")
 ```
 
 Then, **create** a new matrix called “**interestedVariables**” consisting of the metadata variables of interest in conducting analysis on.
 
-```yml
+```r
 interestedVariables <- cbind(pdac_data@meta.data[["celltype"]], pdac_data@meta.data[["TN_assigned_cell_type"]])
 ```
 
 Lastly, **call** the wrapper function, **passing in** the result object as well.
 
-```yml
+```r
 manovaResult <- MANOVA(interestedVariables, cogapsresult)
 ```
 
