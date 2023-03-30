@@ -100,7 +100,7 @@ getParam(params, "nPatterns")
 cogapsresult <- CoGAPS(modsimdata, params, outputFrequency = 10000)
 ```
 
-Verify that this output appears:
+**Verify** that this output appears:
 
 ```yml
 This is CoGAPS version 3.19.1 
