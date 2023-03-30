@@ -21,8 +21,10 @@ toc: true
 git clone <a href="https://github.com/FertigLab/pycogaps.git" target="_blank">https://github.com/FertigLab/pycogaps.git</a> --recursive
 ```
 
+<p style="margin-left: 25px;">
 <strong><a href="/CoGAPS/troubleshooting/#procedure-1a" target="_blank">TROUBLESHOOTING</a></strong>
-
+</p>
+    
 ---
 
 <strong>Box 2</strong>
