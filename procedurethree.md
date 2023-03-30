@@ -32,8 +32,10 @@ toc: true
 
 Please note that once a run has been submitted, the status in the cell will change from “Pending” to “Running” to “Completed.” 
 
+<p style="margin-left: 25px;">
 <strong><a href="/CoGAPS/troubleshooting/#procedure-3" target="_blank">TROUBLESHOOTING</a></strong>
-
+</p>
+  
 7 . As described in the notebook instructions, please make sure to save the result file locally first, then re-upload it to the project notebook. 
 
 ## Running PyCoGAPS on Single Cell Data
