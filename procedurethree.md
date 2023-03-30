@@ -40,13 +40,13 @@ Please note that once a run has been submitted, the status in the cell will chan
 
 <strong>Timing: 5 min - 2 days (depending on whether user runs NMF or uses precomputed result)</strong>
 
-8 . Click the ‘+’ button of the PyCoGAPS cell to display the parameter inputs again. You may reset the parameters by selecting the settings icon. To run PyCoGAPS, on the provided PDAC dataset, the link to the file can be found here and directly passed into the ‘input_file’ cell (there is no need to download the data and re-upload it to the project folder): https://datasets.genepattern.org/?prefix=data/module_support_files/PyCoGAPS/inputdata.h5ad.
+8 . Click the ‘+’ button of the PyCoGAPS cell to display the parameter inputs again. You may reset the parameters by selecting the settings icon. To run PyCoGAPS, on the provided PDAC dataset, the link to the file can be found here and directly passed into the ‘input_file’ cell (there is no need to download the data and re-upload it to the project folder): <a href="https://datasets.genepattern.org/?prefix=data/module_support_files/PyCoGAPS/inputdata.h5ad" target="_blank">datasets.genepattern.org/?prefix=data/module_support_files/PyCoGAPS/inputdata.h5ad</a>.
 
 9 . Once desired parameters have been set, run the cell to submit the job.
 
-<strong>Analyzing the PyCoGAPS Result
+<strong>Analyzing the PyCoGAPS Result</strong>
 
-Timing 20-30 min</strong>
+<strong>Timing 20-30 min</strong>
 
 10 . Follow and run the cells to perform analysis of your output PyCoGAPS results. These cells will call the various functions described in other procedures of this manuscript to allow you to visualize and interpret your data.
 
