@@ -14,7 +14,7 @@ toc: true
 
 <strong>Timing: 5 min</strong>
 
-1 . Pull the PyCoGAPS Docker container and set up the working directory.
+**1** . Pull the PyCoGAPS Docker container and set up the working directory.
 
 For Mac users, **copy** the commands and **paste** in terminal:
 
@@ -48,7 +48,7 @@ cd..
 
 <strong>Timing: 2 min</strong>
 
-2 . To ensure PyCoGAPS is running properly on your computer, we will first perform a setup and run on the ModSim dataset (running PyCoGAPS on the single-cell data will be performed later in [Step 3](/CoGAPS/optionb/#running-pycogaps-on-single-cell-data). The dataset has already been downloaded in Step 1. **Run the following commands** in terminal:
+**2** . To ensure PyCoGAPS is running properly on your computer, we will first perform a setup and run on the ModSim dataset (running PyCoGAPS on the single-cell data will be performed later in [Step 3](/CoGAPS/optionb/#running-pycogaps-on-single-cell-data). The dataset has already been downloaded in Step 1. **Run the following commands** in terminal:
 
 ```yml
 docker run -v $PWD:$PWD fertiglab/pycogaps $PWD/params.yaml
@@ -131,7 +131,7 @@ PyCoGAPS
 
 <strong>Timing: 5 min - 2 days (depending on whether user runs NMF or uses precomputed result)</strong>
 
-3 . Now that PyCoGAPS has been set up and run correctly, we can now proceed to analyzing experimental single-cell data. Navigate to the ‘**data**’ folder created earlier, and **run the following command**:
+**3** . Now that PyCoGAPS has been set up and run correctly, we can now proceed to analyzing experimental single-cell data. Navigate to the ‘**data**’ folder created earlier, and **run the following command**:
 
 ```yml
 cd data
@@ -140,7 +140,7 @@ curl -O https://raw.githubusercontent.com/FertigLab/pycogaps/master/data/inputda
 
 <strong>! CRITICAL -</strong> Always make sure to move the data you seek to analyze into the created ‘**data**’ folder. 
 
-4 . We will then modify the default parameters before running PyCoGAPS. All parameter values can be modified directly in the **params.yaml file** already downloaded earlier in **Step 1**.
+**4** . We will then modify the default parameters before running PyCoGAPS. All parameter values can be modified directly in the **params.yaml file** already downloaded earlier in **Step 1**.
 
 We will do this by first opening **params.yaml** with any text or code editor. Then, **modify the following line to**:
 
@@ -222,7 +222,7 @@ For Distributed PyCoGAPS, once all worker threads have started running their ite
 
 ---
 
-5 . Now that all parameters are set, we are ready to **run PyCoGAPS**. Please note that this is the most time-consuming step of the procedure. Timing can take several hours and scales nlog(n) based on dataset size (see **Timing** section below), as well as the parameter values set for ‘**nPatterns**’ and ‘**nIterations**’. Time is increased when learning more patterns, when running more iterations, and when running a larger dataset, with iterations having the largest variable impact on the runtime of the NMF function.
+**5** . Now that all parameters are set, we are ready to **run PyCoGAPS**. Please note that this is the most time-consuming step of the procedure. Timing can take several hours and scales nlog(n) based on dataset size (see **Timing** section below), as well as the parameter values set for ‘**nPatterns**’ and ‘**nIterations**’. Time is increased when learning more patterns, when running more iterations, and when running a larger dataset, with iterations having the largest variable impact on the runtime of the NMF function.
 
 **Run PyCoGAPS** with the following command in terminal:
 
@@ -238,7 +238,7 @@ The result object will automatically save in the ‘**output**’ folder, with t
 
 <strong>Timing: 20-30 min</strong>
 
-6 . **Download** the analysis functions and requirements files with the following command:
+**6** . **Download** the analysis functions and requirements files with the following command:
 
 ```yml
 curl -O https://raw.githubusercontent.com/FertigLab/pycogaps/master/PyCoGAPS/analysis_functions.py
@@ -246,13 +246,13 @@ curl -O
 https://raw.githubusercontent.com/FertigLab/pycogaps/master/PyCoGAPS/requirements_analysis.txt 
 ```
 
-7 . **Install** the analysis functions dependencies with the following command:
+**7** . **Install** the analysis functions dependencies with the following command:
 
 ```yml
 pip install -r analysis_requirements.txt
 ```
 
-8 . **Open** a new Python file (in any preferred IDE, see **Software** section above) and **include the following line**:
+**8** . **Open** a new Python file (in any preferred IDE, see **Software** section above) and **include the following line**:
 
 ```yml
 from analysis_functions import *
@@ -260,7 +260,7 @@ from analysis_functions import *
 
 <strong><a href="/CoGAPS/troubleshooting/#procedure-1b" target="_blank">TROUBLESHOOTING</a></strong>
 
-8 . Please skip to the section above titled, “<strong>Analyzing the PyCoGAPS Result</strong>” in <a href="/CoGAPS/optiona/#analyzing-the-pycogaps-result" target="_blank">Procedure 1 Option A Step 13</a> to continue following the analysis and visualization workflow. 
+Please **skip to the section above** titled, “<strong>Analyzing the PyCoGAPS Result</strong>” in <a href="/CoGAPS/optiona/#analyzing-the-pycogaps-result" target="_blank">Procedure 1 Option A Step 13</a> to continue following the analysis and visualization workflow. 
 
 
 ### Table 2: Key parameters for CoGAPS/PyCoGAPS and guidance on setting their values.
