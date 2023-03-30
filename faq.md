@@ -26,7 +26,9 @@ CoGAPS can be used to perform sparse matrix factorization on any data. And when 
 
 ## How do I cite CoGAPS?
 
-If you use the CoGAPS package for your analysis, please cite Fertig et al. (2010)
+If you use the CoGAPS package for your analysis, please cite:
+
+Fertig EJ, Ding J, Favorov AV, Parmigiani G, Ochs MF (2010). “CoGAPS: an integrated R/C++ package to identify overlapping patterns of activation of biological processes from expression data.” <em>Bioinformatics</em>, **26**(21), 2792–2793.
 
 If you use the gene set statistic, please cite Ochs et al. (2009)
 
