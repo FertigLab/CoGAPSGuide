@@ -19,7 +19,7 @@ toc: true
 
 For Mac users, **copy** the commands and **paste** in terminal:
 
-```yml
+```docker
 docker pull fertiglab/pycogaps
 mkdir PyCoGAPS
 cd PyCoGAPS
