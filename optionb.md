@@ -32,7 +32,7 @@ cd ..
 
 For Windows (Ubuntu) users, **copy** the commands and **paste** in terminal:
 
-```yml
+```docker
 docker pull fertiglab/pycogaps
 mkdir PyCoGAPS
 cd PyCoGAPS
@@ -53,13 +53,13 @@ cd..
 
 **2** . To ensure PyCoGAPS is running properly on your computer, we will first perform a setup and run on the ModSim dataset (running PyCoGAPS on the single-cell data will be performed later in [Step 3](/CoGAPS/optionb/#running-pycogaps-on-single-cell-data). The dataset has already been downloaded in Step 1. **Run the following commands** in terminal:
 
-```yml
+```docker
 docker run -v $PWD:$PWD fertiglab/pycogaps $PWD/params.yaml
 ```
 
 For users with an **M1 processing chip**, please add the following flag to the above command:
 
-```yml
+```docker
 --platform linux/amd64
 ```
 
@@ -69,7 +69,7 @@ This produces a CoGAPS run on a simple dataset with default parameters. Please c
 
 <strong>Box 11: Expected PyCoGAPS Docker Output</strong>
 
-```yml
+```docker
 ______      _____       _____   ___  ______  _____ 
 | ___ \    /  __ \     |  __ \ / _ \ | ___ \/  ___|
 | |_/ /   _| /  \/ ___ | |  \// /_\ \| |_/ /\ `--. 
@@ -120,7 +120,7 @@ CoGAPS has successfully **completed running** and has **saved** the result file 
 
 <strong>Box 12: PyCoGAPS Working Directory</strong>
 
-```yml
+```docker
 PyCoGAPS
 ├── data
 │   └── ModSimData.txt
@@ -136,7 +136,7 @@ PyCoGAPS
 
 **3** . Now that PyCoGAPS has been set up and run correctly, we can now proceed to analyzing experimental single-cell data. Navigate to the ‘**data**’ folder created earlier, and **run the following command**:
 
-```yml
+```docker
 cd data
 curl -O https://raw.githubusercontent.com/FertigLab/pycogaps/master/data/inputdata.h5ad
 ```
@@ -147,7 +147,7 @@ curl -O https://raw.githubusercontent.com/FertigLab/pycogaps/master/data/inputda
 
 We will do this by first opening **params.yaml** with any text or code editor. Then, **modify the following line to**:
 
-```yml
+```docker
 path: ‘data/inputdata.h5ad’
 ```
 
@@ -159,7 +159,7 @@ Then, **modify** any additional desired parameters and **save the file** (**Box 
 
 The **params.yaml** file holds all parameters that can be inputted to PyCoGAPS. A snippet of **params.yaml** is shown below, where we have changed some default parameter values to our own specified example values.
 
-```yml
+```docker
 ## This file holds all parameters to be passed into PyCoGAPS.
 ## To modify default parameters, simply replace parameter values below with user-specified values, and save file. 
 
@@ -196,7 +196,7 @@ A description and guide for setting key PyCoGAPS parameters can be found in [Tab
 
 A snippet of ```params.yaml``` is shown below where ```distributed_params``` parameters are modified.
 
-```yml
+```docker
 ## This file holds all parameters to be passed into PyCoGAPS.
 ...
 
@@ -215,7 +215,7 @@ distributed_params:
 
 For Distributed PyCoGAPS, once all worker threads have started running their iterations, you will see periodic output like this:
 
-```yml
+```docker
 1000 of 50000, Atoms: 5424(A), 21232(P), ChiSq: 138364000, Time: 00:03:47 / 11:13:32
 1000 of 50000, Atoms: 5394(A), 20568(P), ChiSq: 133824536, Time: 00:03:46 / 11:10:34
 1000 of 50000, Atoms: 5393(A), 21161(P), ChiSq: 133621048, Time: 00:03:51 / 11:25:24
@@ -229,7 +229,7 @@ For Distributed PyCoGAPS, once all worker threads have started running their ite
 
 **Run PyCoGAPS** with the following command in terminal:
 
-```yml
+```docker
 docker run -v $PWD:$PWD fertiglab/pycogaps $PWD/params.yaml
 ```
 
@@ -243,7 +243,7 @@ The result object will automatically save in the ‘**output**’ folder, with t
 
 **6** . **Download** the analysis functions and requirements files with the following command:
 
-```yml
+```docker
 curl -O https://raw.githubusercontent.com/FertigLab/pycogaps/master/PyCoGAPS/analysis_functions.py
 curl -O
 https://raw.githubusercontent.com/FertigLab/pycogaps/master/PyCoGAPS/requirements_analysis.txt 
@@ -251,13 +251,13 @@ https://raw.githubusercontent.com/FertigLab/pycogaps/master/PyCoGAPS/requirement
 
 **7** . **Install** the analysis functions dependencies with the following command:
 
-```yml
+```docker
 pip install -r analysis_requirements.txt
 ```
 
 **8** . **Open** a new Python file (in any preferred IDE, see **Software** section above) and **include the following line**:
 
-```yml
+```docker
 from analysis_functions import *
 ```
 
