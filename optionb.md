@@ -43,8 +43,10 @@ curl.exe -o index.html https://raw.githubusercontent.com/FertigLab/pycogaps/mast
 cd..
 ```
 
+<p style="margin-left: 25px;">
 <strong><a href="/CoGAPS/troubleshooting/#procedure-1b" target="_blank">TROUBLESHOOTING</a></strong>
-
+</p>
+       
 ## Running PyCoGAPS on Simulated Toy Data
 
 <strong>Timing: 2 min</strong>
@@ -259,8 +261,10 @@ pip install -r analysis_requirements.txt
 from analysis_functions import *
 ```
 
+<p style="margin-left: 25px;">
 <strong><a href="/CoGAPS/troubleshooting/#procedure-1b" target="_blank">TROUBLESHOOTING</a></strong>
-
+</p>
+       
 Please **skip to the section above** titled, “<strong>Analyzing the PyCoGAPS Result</strong>” in <a href="/CoGAPS/optiona/#analyzing-the-pycogaps-result" target="_blank">Procedure 1 Option A Step 13</a> to continue following the analysis and visualization workflow. 
 
 
