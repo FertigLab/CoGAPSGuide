@@ -14,7 +14,7 @@ toc: true
 
 <strong>Timing: 5 min</strong>
 
-1 . Log in to the <strong>GenePattern Notebook</strong> workspace, <a href="http://notebook.genepattern.org" target="_blank">notebook.genepattern.org</a>. If you do not have an account, click the "<strong>Register a new GenePattern Account</strong>" button, provide the registration information, and log in. Registration for GenePattern Notebook is free.
+1 . **Log in** to the <strong>GenePattern Notebook</strong> workspace, <a href="http://notebook.genepattern.org" target="_blank">notebook.genepattern.org</a>. If you do not have an account, click the "<strong>Register a new GenePattern Account</strong>" button, provide the registration information, and **log in**. Registration for GenePattern Notebook is free.
 
 2 . Scroll to “<strong>Public Library</strong>.” You will see a list of available public project notebooks.
 
