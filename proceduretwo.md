@@ -284,8 +284,10 @@ To save as a .csv file, use the following line:
 
 While CoGAPS is running it periodically prints status messages (**Box 16**). 
 
+<p style="margin-left: 25px;">
 <a href="/CoGAPS/troubleshooting/#procedure-2" target="_blank">TROUBLESHOOTING</a>
-
+</p>
+        
 ---
 
 <strong>Box 16: CoGAPS Status Messages:</strong>
