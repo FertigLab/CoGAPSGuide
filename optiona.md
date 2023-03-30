@@ -14,7 +14,7 @@ toc: true
 
 <strong>Timing: 5-10 min</strong>
 
-1 . To download PyCoGAPS from **GitHub** with all data included (~2 GB memory), please run the following command, otherwise to omit the data, please refer to **Box 2**:
+**1** . To download PyCoGAPS from **GitHub** with all data included (~2 GB memory), please run the following command, otherwise to omit the data, please refer to **Box 2**:
 
 ```yml
 git clone <a href="https://github.com/FertigLab/pycogaps.git" target="_blank">https://github.com/FertigLab/pycogaps.git</a> --recursive
@@ -58,7 +58,7 @@ Resolving deltas: 100% (10621/10621), done.
 Submodule path 'src/CoGAPS': checked out 'e1e002caa009866d41402f3aa5ad3f97b541d962'
 ```
 
-2 . Install the required package dependencies with the following command. We recommend installing these dependencies in an **Anaconda<sup>70</sup> environment (Box 3)**:
+**2** . Install the required package dependencies with the following command. We recommend installing these dependencies in an **Anaconda<sup>70</sup> environment (Box 3)**:
 
 ```yml
 cd pycogaps
@@ -101,7 +101,7 @@ Finished processing dependencies for pycogaps==0.0.1
 
 To ensure PyCoGAPS is running properly on your computer, we will first perform a setup and run on a small, simulated toy dataset (single-cell data analysis will begin in <a href="CoGAPS/optiona/#running-pycogaps-on-single-cell-data">Step 7</a>). 
 
-3 . **Import libraries**. In your python script (file ending in .py), import the PyCoGAPS functions with the following lines:
+**3** . **Import libraries**. In your python script (file ending in .py), import the PyCoGAPS functions with the following lines:
 
 ```yml
 from PyCoGAPS.parameters import *
@@ -109,7 +109,7 @@ from PyCoGAPS.pycogaps_main import CoGAPS
 import scanpy as sc
 ```
 
-4 . Load sample data from directory.
+**4** . Load sample data from directory.
 
 ```yml
 modsimpath = "data/ModSimData.txt"
@@ -123,7 +123,7 @@ modsim
 AnnData object with n_obs × n_vars = 25 × 20
 ```
 
-5 . Next, we will set the parameters to be used by PyCoGAPS. First, we will **create a CoParams object**, then **set parameters with the setParams function**. 
+**5** . Next, we will set the parameters to be used by PyCoGAPS. First, we will **create a CoParams object**, then **set parameters with the setParams function**. 
 
 ```yml
 params = CoParams(path=modsimpath)
@@ -171,7 +171,7 @@ alpha: 0.01
 maxGibbsMass:  100.0
 ```
 
-6 . Since our parameters and data are now ready, we can start our **PyCoGAPS run**. As a best practice, we recommend always timing CoGAPS runs for your own records.
+**6** . Since our parameters and data are now ready, we can start our **PyCoGAPS run**. As a best practice, we recommend always timing CoGAPS runs for your own records.
 
 ```yml
 start = time.time()
@@ -265,7 +265,7 @@ This indicates that PyCoGAPS has been **set up and run correctly**, and we can n
 
 <strong>Timing: 5 min - 2 days (depending on whether user runs NMF or uses precomputed result)</strong>
 
-7 . Import necessary libraries wrapped in check (**Box 4**):
+**7** . Import necessary libraries wrapped in check (**Box 4**):
 
 ```yml
 if __name__ == "__main__":
@@ -284,7 +284,7 @@ Important: Whenever distributed (ie multithreaded) options are used, all calling
 
 ---
 
-8 . A single-cell dataset has been provided for this vignette, already located in the ‘data’ folder when we cloned the repository. We will read in the data as an anndata object (**Box 5**).
+**8** . A single-cell dataset has been provided for this vignette, already located in the ‘data’ folder when we cloned the repository. We will read in the data as an anndata object (**Box 5**).
 
 ```yml
 path = "data/inputdata.h5ad"
@@ -299,7 +299,7 @@ While CoGAPS can handle multiple data formats, we **strongly** recommend convert
 
 ---
 
-9 . It is **strongly** recommended to normalize data before running PyCoGAPS. The data matrix is stored in Sparse Compressed Row format, and we now **decompress** and **normalize** it. Here we make use of the scanpy package<sup>71</sup> to perform **log-normalization**.
+**9** . It is **strongly** recommended to normalize data before running PyCoGAPS. The data matrix is stored in Sparse Compressed Row format, and we now **decompress** and **normalize** it. Here we make use of the scanpy package<sup>71</sup> to perform **log-normalization**.
 
 ```yml
 sc.pp.log1p(adata)
@@ -329,7 +329,7 @@ This is an anndata object consisting of scRNAseq data from 25,422 Pancreatic epi
 
 <strong>!CRITICAL</strong> - Any transformation or scaling you choose to perform on your count matrix **must** result in all non-negative values due to the core constraint of NMF.
 
-10 . Next we create a parameters object that stores run options in a dictionary format. 
+**10** . Next we create a parameters object that stores run options in a dictionary format. 
 
 Note that the easiest way to decrease runtime is to **run for fewer iterations**, and you may want to set nIterations=1000 for a test run before starting a complete CoGAPS run on your data.
 
@@ -408,7 +408,7 @@ maxNS:  11
 
 ---
 
-11 . With all parameters set, we are now ready to **run PyCoGAPS**. Please note that this is the **most time-consuming step** of the procedure. Timing can take **several hours** and scales nlog(n) based on dataset size (see Timing section below), as well as the parameter values set for ‘nPatterns’ and ‘nIterations’. Time is increased when learning more patterns, when running more iterations, and when running a larger dataset, with iterations having the largest variable impact on the runtime of the NMF function.
+**11** . With all parameters set, we are now ready to **run PyCoGAPS**. Please note that this is the **most time-consuming step** of the procedure. Timing can take **several hours** and scales nlog(n) based on dataset size (see Timing section below), as well as the parameter values set for ‘nPatterns’ and ‘nIterations’. Time is increased when learning more patterns, when running more iterations, and when running a larger dataset, with iterations having the largest variable impact on the runtime of the NMF function.
 
 <strong>CRITICAL! -</strong> This step has a **long** runtime. For users who want to load an already-complete NMF run and proceed to the analysis portion of this vignette, please skip to <a href="/CoGAPS/optiona/#analyzing-the-pycogaps-result">step 13</a>. 
 
@@ -455,7 +455,7 @@ AnnData object with n_obs × n_vars = 15219 × 25442
     varm: 'X_aligned', 'X_pca', 'X_umap'
 ```
 
-12 . When CoGAPS has finished running, **write the NMF result to disk**. We **strongly recommend** saving your result object as soon as it returns. 
+**12** . When CoGAPS has finished running, **write the NMF result to disk**. We **strongly recommend** saving your result object as soon as it returns. 
 
 You can do this by directly saving the anndata object (**Box 9**):
 
@@ -487,7 +487,7 @@ The following steps will walk through analyzing and visualizing the generated sa
 
 <strong>Timing: 20-30 min</strong>
 
-13 . We will first **load the saved result file**, which can be your own NMF result generated from the previous step, or the precomputed one supplied in our repository:
+**13** . We will first **load the saved result file**, which can be your own NMF result generated from the previous step, or the precomputed one supplied in our repository:
 
 To use precomputed result:
 
@@ -517,7 +517,7 @@ Now, we are ready to call built-in PyCoGAPS functions to **analyze** and **visua
 
 <strong>Note:</strong> Please see “[Anticipated Results](/CoGAPS/anticipatedresults)” section for more discussion of the result object
 
-14 . We will visualize patterns and compare it with clusters and annotations using **UMAP** and the **scanpy package**. <a href="https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html" target="_blank">scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html</a>
+**14** . We will visualize patterns and compare it with clusters and annotations using **UMAP** and the **scanpy package**. <a href="https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html" target="_blank">scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html</a>
 
 We provide a wrapper function to perform basic clustering workflow in scanpy (all default parameters) and produce a plot of each pattern’s intensity displayed on the data’s UMAP embedding.
 
@@ -572,7 +572,7 @@ By visual inspection it is apparent that pattern 5 seems to associate only with 
 
 Patterns 1, 3, and 7, however, show signal in both classes of epithelial cells. We note that the epithelial normal cluster is mixed between cells from true normal samples and normal cells that are tumor-adjacent. This leads to hypotheses about which patterns might represent gene programs that distinguish, or co-occur, in malignant epithelial cells or related to signaling associated with field carcinization or unannotated precancer neoplastic cells in the sample.
 
-15 . To generate statistics on the association between certain sample groups and patterns, we provide a wrapper function around statsmodels’ MANOVA function<sup>72</sup>. This will allow us to explore if the patterns we have discovered lend to statistically significant differences in the sample groups. First, we will **load in the original data**.
+**15** . To generate statistics on the association between certain sample groups and patterns, we provide a wrapper function around statsmodels’ MANOVA function<sup>72</sup>. This will allow us to explore if the patterns we have discovered lend to statistically significant differences in the sample groups. First, we will **load in the original data**.
 
 ```yml
 orig = anndata.read_h5ad("data/inputdata.h5ad").T
@@ -591,7 +591,7 @@ The function will print out the MANOVA results for each pattern learned based on
 
 Further, we introduced some technical sample groups (['**celltype**', '**TN_assigned_cell_type**', '**Size_Factor**', '**TN_cluster_resolution_5**', '**nCount_RNA**']) to show insignificance of associations, where resulting p-values for patterns were equivalent to 1.
 
-16 . Using violin plots, we can visualize association between patterns and annotated cell types.
+**16** . Using violin plots, we can visualize association between patterns and annotated cell types.
 
 First let’s gather a list of the names of each pattern:
 
@@ -603,7 +603,7 @@ sc.pl.stacked_violin(cogapsresult.T, [pattern_names], groupby='cell_type')
 
 ![Violin Plot](images/violinplot.png)
 
-17 . We will now find the markers of each pattern using PyCoGAPS’ patternMarkers function. Identifying genes that are strongly correlated with each learned pattern allows us to begin to decipher what biological processes or states it may represent. 
+**17** . We will now find the markers of each pattern using PyCoGAPS’ patternMarkers function. Identifying genes that are strongly correlated with each learned pattern allows us to begin to decipher what biological processes or states it may represent. 
 
 We will use the default threshold parameter, but this may be modified as described in **Box 10**.
 
@@ -653,7 +653,7 @@ pm["PatternMarkers"]["Pattern_7"]
 ['SPEF2', 'PAH', 'FAM117B', 'SFTPA2', 'PDLIM4', 'ZNF503', 'CITED2', 'GTPBP4', 'ZSWIM8', 'CHD5', 'TNFRSF9', 'CD3EAP', 'AMIGO2', 'STX3', 'CAMK2G', 'RACGAP1', 'SOWAHB', 'ABRACL', 'LTBP2', 'CDK11B', 'MFAP1', 'UNK', 'PLEKHH3', 'C1orf115', 'SATB1', 'BBOX1', 'SPN', 'UHRF1BP1', 'PVR', 'NLRP4', 'CAMK4', 'ZNF324', 'WWTR1', 'DYDC2', 'SHANK2', 'GBF1', 'HSPH1', 'VDAC2', 'FAM229A', 'COG3', 'RFTN1', 'KRT81', 'GLP2R', 'NR3C1', 'BNIP1', 'SLFN13', 'RABL3', 'TNKS', 'RAB30', 'ARHGAP21', 'ABTB2', 'ETNK1', 'DUS4L', 'PDK4', 'SLC35A3', 'ABCC5', 'NRK', 'ZNF439', 'TYSND1', 'SYAP1', 'GAR1', 'NOS3', 'POLR2M', 'SERPINI1']
 ```
     
-18 . We next perform gene set enrichment analysis (GSEA) on lists of marker genes for each pattern in order to annotate the molecular processes in the learned patterns. We accomplish this using a wrapper around the GSEApy library<sup>73</sup>
+**18** . We next perform gene set enrichment analysis (GSEA) on lists of marker genes for each pattern in order to annotate the molecular processes in the learned patterns. We accomplish this using a wrapper around the GSEApy library<sup>73</sup>
     
 ```yml
 gsea_res = patternGSEA(cogapsresult, patternmarkers=None, verbose=True,     gene_sets = ['MSigDB_Hallmark_2020'], organism="human")
