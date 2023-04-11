@@ -16,7 +16,7 @@ Further metrics are stored in the .uns slot of the result object. This includes 
 
 **Box 18: PyCoGAPS Anndata Result & Metadata**
 
-```yml
+```py
 AnnData object with n_obs × n_vars = 15219 × 25442
     obs: 'Pattern1', 'Pattern2', 'Pattern3', 'Pattern4', 'Pattern5', 'Pattern6', 'Pattern7', 'Pattern8'
     var: 'Pattern1', 'Pattern2', 'Pattern3', 'Pattern4', 'Pattern5', 'Pattern6', 'Pattern7', 'Pattern8'
@@ -36,7 +36,7 @@ Additionally, metadata contains information for the run such as how it was paral
 
 **Box 19: CoGAPS Result & Metadata**
 
-```yml
+```r
 > cogapsresult
 [1] "CogapsResult object with 15176 features and 25442 samples"
 [1] "8 patterns were learned"
@@ -44,7 +44,7 @@ Additionally, metadata contains information for the run such as how it was paral
 
 ![Box 19](images/box19.png)
 
-```yml
+```r
 > names(cogapsresult@metadata)
 [1] "meanChiSq"         "firstPass"         "unmatchedPatterns" "clusteredPatterns"
 [5] "CorrToMeanPattern" "subsets"           "params"            "version"          
