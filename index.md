@@ -15,7 +15,7 @@ hero_link_text: GitHub Repository -->
 # Introduction
 
 [![downloads](https://bioconductor.org/shields/downloads/release/CoGAPS.svg)](http://bioconductor.org/packages/stats/bioc/CoGAPS/)
-[![Build Status](https://travis-ci.org/FertigLab/CoGAPS.svg?branch=master)](https://travis-ci.org/FertigLab/CoGAPS)
+<!-- [![Build Status](https://travis-ci.org/FertigLab/CoGAPS.svg?branch=master)](https://travis-ci.org/FertigLab/CoGAPS) -->
 
 <img src="images/CoGAPSLogoSmall.png" align="left" style="margin: 0px 20px 0px 0px;" />Non-negative matrix factorization (NMF) is an unsupervised learning method well suited to high-throughput biology. Still, inferring biological processes requires additional post hoc statistics and annotation for interpretation of features learned from software packages developed for NMF implementation.
 <p>Here, we aim to introduce a suite of computational tools that implement NMF and provide methods for accurate, clear biological interpretation and analysis. A generalized discussion of NMF covering its benefits, limitations, and open questions in the field is followed by <strong>three procedures</strong> for the Bayesian NMF algorithm CoGAPS (Coordinated Gene Activity across Pattern Subsets). Each procedure will demonstrate NMF analysis to quantify cell state transitions in public domain single-cell RNA-sequencing (scRNA-seq) data of 25,422 epithelial cells from pancreatic ductal adenocarcinoma (PDAC) tumors and control samples. <strong>The first</strong> demonstrates <strong><a href="https://github.com/FertigLab/pycogaps" target="_blank">PyCoGAPS</a></strong>, our new Python implementation of CoGAPS that enhances runtime of Bayesian NMF for large datasets.</p>
