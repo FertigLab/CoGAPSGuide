@@ -3,7 +3,7 @@
 layout: page
 title: Python API
 subtitle: User startup guide for the Python CoGAPS API
-hero_image: /cogaps/images/hero.jpg
+hero_image: /CoGAPSGuide/images/hero.jpg
 <!-- hero_height: is-fullwidth -->
 hero_darken: true
 show_sidebar: false
@@ -19,13 +19,13 @@ hero_link_text: PyCoGAPS GitHub Repository
 
 We provide two options for running PyCoGAPS (Options A and B). Both options are functionally equivalent, so the user’s choice of interface should depend on factors such as familiarity with Python and desire for flexibility and modification. Please refer to the **decision tree** below to determine which option is most appropriate to follow.
 
-### [Option A: Python Scripts](/cogaps/optiona)
+### [Option A: Python Scripts](/CoGAPSGuide/optiona)
 <ul>
   <li>Running PyCoGAPS as a package in a Python script with an IDE</li>
   <li>Provides a full walkthrough of PyCoGAPS package functions</li>
   </ul> 
 
-### [Option B: Docker](/cogaps/optionb)
+### [Option B: Docker](/CoGAPSGuide/optionb)
 <ul>
   <li>Automatic deployment and running NMF using a Docker image</li>
   <li>Deploy and run PyCoGAPS in fewer steps with limited flexibility</li>
@@ -39,7 +39,7 @@ We provide two options for running PyCoGAPS (Options A and B). Both options are 
 
 | **Procedure Choice**               | **<a href="https://github.com/FertigLab/pycogaps">Procedure 1: PyCoGAPS</a>** |                                                                        |
 |------------------------------------|--------------------------------------------------------------|------------------------------------------------------------------------|
-| Option Choice                      | **<a href="/cogaps/optiona">Option A: Python Scripts</a>**   | **<a href="/cogaps/optionb">Option B: Docker</a>**                     |
+| Option Choice                      | **<a href="/CoGAPSGuide/optiona">Option A: Python Scripts</a>**   | **<a href="/CoGAPSGuide/optionb">Option B: Docker</a>**                     |
 | Overview                           | Write and call functions in any Python supported IDE.        | Easily plug in parameters and run code in a prepared Docker container. |
 | Preferred programming language     | Python                                                       | Python / no preference                                                 |
 | Recommended programming experience | Experienced                                                  | Little to none                                                         |
