@@ -3,7 +3,7 @@
 layout: page
 title: CoGAPS
 subtitle: Coordinated Gene Association in Pattern Sets
-hero_image: /cogaps/images/hero.jpg
+hero_image: /CoGAPSGuide/images/hero.jpg
 <!-- hero_height: is-fullwidth -->
 hero_darken: true
 show_sidebar: false
@@ -25,8 +25,8 @@ hero_link_text: GitHub Repository -->
 
 |                                    |                                                       |                         **Workflow Comparison**                        |                                      |                                                                                        |
 |:----------------------------------:|:-----------------------------------------------------:|:----------------------------------------------------------------------:|:------------------------------------:|:--------------------------------------------------------------------------------------:|
-|        **Procedure Choice**        |               [**Procedure 1:  PyCoGAPS**](/cogaps/procedureone)              |                                                                        |       [**Procedure 2:  CoGAPS**](/cogaps/proceduretwo)      |                         [**Procedure 3:  GenePattern Notebook**](/cogaps/procedurethree)                         |
-|            Option Choice           |               [Option A:  Python scripts](/cogaps/optiona)               |                            [Option B:  Docker](/cogaps/optionb)                           |                  --                  |                                           --                                           |
+|        **Procedure Choice**        |               [**Procedure 1:  PyCoGAPS**](/CoGAPSGuide/procedureone)              |                                                                        |       [**Procedure 2:  CoGAPS**](/CoGAPSGuide/proceduretwo)      |                         [**Procedure 3:  GenePattern Notebook**](/CoGAPSGuide/procedurethree)                         |
+|            Option Choice           |               [Option A:  Python scripts](/CoGAPSGuide/optiona)               |                            [Option B:  Docker](/CoGAPSGuide/optionb)                           |                  --                  |                                           --                                           |
 |              Overview              | Write and call functions in any Python supported IDE. | Easily plug in parameters and run code in a prepared Docker container. | Write and call functions in RStudio. | Easily plug in parameters and run pre-written code cells in a web browser environment. |
 |   Preferred programming language   | Python                                                | Python / no preference                                                 | R                                    | Python / no preference                                                                 |
 | Recommended programming experience | Experienced                                           | Little to none                                                         | Experienced                          | Little to none                                                                         |
