@@ -1,6 +1,6 @@
 ---
 
-hero_image: /cogaps/images/hero.jpg
+hero_image: /CoGAPSGuide/images/hero.jpg
 <!-- hero_height: is-fullwidth -->
 hero_darken: true
 
