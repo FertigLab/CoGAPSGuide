@@ -1,10 +1,1 @@
-# - name: Site created by Julia Bowden
-#   link: //
-- name: Home
-  link: /
-- name: Blog
-  link: /blog/
-- name: Products
-  link: /products/
-- name: Privacy Policy
-  link: /privacy-policy/
+- name: Site created by Julia Bowden
