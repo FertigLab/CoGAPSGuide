@@ -1,6 +1,6 @@
 ---
 
-hero_image: /cogaps/images/hero.jpg
+hero_image: /CoGAPSGuide/images/hero.jpg
 <!-- hero_height: is-fullwidth -->
 hero_darken: true
 subtitle: User startup guide for the web-based CoGAPS API
@@ -28,12 +28,12 @@ toc: true
 
 5 . Open the file called “<strong>Single-cell Analysis with PyCoGAPS.ipynb</strong>” which describes each step in this protocol and contains cells that will allow you to input datasets and set parameters. In the first cell, <strong>log in to your account</strong>.
 
-6 . Follow the instructions in each blue panel, providing information where requested. You will need to input the “<strong>input_file</strong>” parameter, which in this simulated toy data case, is the “<strong>ModSimData.txt</strong>” file in the project folder. “<strong>num patterns</strong>” and “<strong>num iterations</strong>” are the most important parameters, but all parameter descriptions can be explored in the cell, or in <a href="/cogaps/procedurethree/#table-2">Table 2</a> for guidance on setting these and other key parameters. Click run once you have set desired parameters. 
+6 . Follow the instructions in each blue panel, providing information where requested. You will need to input the “<strong>input_file</strong>” parameter, which in this simulated toy data case, is the “<strong>ModSimData.txt</strong>” file in the project folder. “<strong>num patterns</strong>” and “<strong>num iterations</strong>” are the most important parameters, but all parameter descriptions can be explored in the cell, or in <a href="/CoGAPSGuide/procedurethree/#table-2">Table 2</a> for guidance on setting these and other key parameters. Click run once you have set desired parameters. 
 
 Please note that once a run has been submitted, the status in the cell will change from “Pending” to “Running” to “Completed.” 
 
 <p style="margin-left: 25px;">
-<strong><a href="/cogaps/troubleshooting/#procedure-3" target="_blank">TROUBLESHOOTING</a></strong>
+<strong><a href="/CoGAPSGuide/troubleshooting/#procedure-3" target="_blank">TROUBLESHOOTING</a></strong>
 </p>
   
 7 . As described in the notebook instructions, please make sure to save the result file locally first, then re-upload it to the project notebook. 
