@@ -1,6 +1,6 @@
 ---
 
-hero_image: /cogaps/images/hero.jpg
+hero_image: /CoGAPSGuide/images/hero.jpg
 <!-- hero_height: is-fullwidth -->
 hero_darken: true
 title: Python Scripts
@@ -22,7 +22,7 @@ git clone <a href="https://github.com/FertigLab/pycogaps.git" target="_blank">ht
 ```
 
 <p style="margin-left: 25px;">
-<strong><a href="/cogaps/troubleshooting/#procedure-1a" target="_blank">TROUBLESHOOTING</a></strong>
+<strong><a href="/CoGAPSGuide/troubleshooting/#procedure-1a" target="_blank">TROUBLESHOOTING</a></strong>
 </p>
     
 ---
@@ -79,7 +79,7 @@ Instructions for setting up a conda environment can be found here: <a href="http
 We recommend the user create a conda environment called ‘**pycogaps**’ and install all requirements and run code from within here.
 
 <p style="margin-left: 25px;">
-<strong><a href="/cogaps/troubleshooting/#procedure-1a" target="_blank">TROUBLESHOOTING</a></strong>
+<strong><a href="/CoGAPSGuide/troubleshooting/#procedure-1a" target="_blank">TROUBLESHOOTING</a></strong>
 </p>
     
 ---
@@ -97,7 +97,7 @@ Finished processing dependencies for pycogaps==0.0.1
 ```
 
 <p style="margin-left: 25px;">
-<strong><a href="/cogaps/troubleshooting/#procedure-1a" target="_blank">TROUBLESHOOTING</a></strong>
+<strong><a href="/CoGAPSGuide/troubleshooting/#procedure-1a" target="_blank">TROUBLESHOOTING</a></strong>
 </p>
     
 ## Running PyCoGAPS
@@ -106,7 +106,7 @@ Finished processing dependencies for pycogaps==0.0.1
 
 <strong>Timing: 3-5 min</strong>
 
-To ensure PyCoGAPS is running properly on your computer, we will first perform a setup and run on a small, simulated toy dataset (single-cell data analysis will begin in <a href="/cogaps/optiona/#running-pycogaps-on-single-cell-data">Step 7</a>). 
+To ensure PyCoGAPS is running properly on your computer, we will first perform a setup and run on a small, simulated toy dataset (single-cell data analysis will begin in <a href="/CoGAPSGuide/optiona/#running-pycogaps-on-single-cell-data">Step 7</a>). 
 
 **3** . **Import libraries**. In your python script (file ending in .py), import the PyCoGAPS functions with the following lines:
 
@@ -161,7 +161,7 @@ setParams(params, {
 ```
 
 For now, we will only modify the ‘**nIterations**’, ‘**seed**’, and ‘**nPatterns**’ parameters. 
-Setting the seed fixes the random number generator so that the stochastic, MCMC algorithm used to solve for the A and P matrices in CoGAPS provides identical solutions between runs. More description of the parameters and parameter tuning can be found in <a href="/cogaps/optiona/#table-2-key-parameters-for-cogapspycogaps-and-guidance-on-setting-their-values">Table 2</a>. 
+Setting the seed fixes the random number generator so that the stochastic, MCMC algorithm used to solve for the A and P matrices in CoGAPS provides identical solutions between runs. More description of the parameters and parameter tuning can be found in <a href="/CoGAPSGuide/optiona/#table-2-key-parameters-for-cogapspycogaps-and-guidance-on-setting-their-values">Table 2</a>. 
 
 Verify nIterations was updated as anticipated:
 
@@ -366,19 +366,19 @@ The ‘distributed’ parameter enables parallelization to **decrease runtimes**
 
 Distributed parameters:
 
-If you wish to run distributed CoGAPS, which we recommend for most cases, set the “distributed” parameter to “**genome-wide**” (parallelize across genes), or “**single-cell**” (parallelize across cells). Please see <a href="/cogaps/optiona/#figure-3">Fig. 3</a> for a full explanation of the mechanism. 
+If you wish to run distributed CoGAPS, which we recommend for most cases, set the “distributed” parameter to “**genome-wide**” (parallelize across genes), or “**single-cell**” (parallelize across cells). Please see <a href="/CoGAPSGuide/optiona/#figure-3">Fig. 3</a> for a full explanation of the mechanism. 
 
 <sub>cut, minNS,</sub> and <sub>maxNS</sub> control the process of matching patterns across subsets and in general **should not** be changed from defaults. More information about these parameters can be found in the **original papers**.
 
-```nSets``` controls how many subsets are run in parallel when using the distributed version of the algorithm. Setting ```nSets``` requires balancing available hardware and run time against the size of your data. In general, ```nSets``` should be **less than** or **equal to** the number of nodes/cores that are available. If that is true, then the **more** subsets you create, the **faster** CoGAPS will run - however, **some robustness can be lost when the subsets get too small**. The general rule of thumb is to set ```nSets``` so that each subset has between **1000 and 5000 genes or cells** in order to give robust results, but ideally we would want **as many cells per set as possible**. More information on these parameters can be found in <a href="/cogaps/optiona/#table-2-key-parameters-for-cogapspycogaps-and-guidance-on-setting-their-values">Table 2</a>.
+```nSets``` controls how many subsets are run in parallel when using the distributed version of the algorithm. Setting ```nSets``` requires balancing available hardware and run time against the size of your data. In general, ```nSets``` should be **less than** or **equal to** the number of nodes/cores that are available. If that is true, then the **more** subsets you create, the **faster** CoGAPS will run - however, **some robustness can be lost when the subsets get too small**. The general rule of thumb is to set ```nSets``` so that each subset has between **1000 and 5000 genes or cells** in order to give robust results, but ideally we would want **as many cells per set as possible**. More information on these parameters can be found in <a href="/CoGAPSGuide/optiona/#table-2-key-parameters-for-cogapspycogaps-and-guidance-on-setting-their-values">Table 2</a>.
 
 If ```explicitSets``` are not provided, the data will be randomly fragmented into the number of sets specified by ```nSets``` parameter, with the default being 4. Subsets can also be chosen randomly, but weighted according to a user-provided annotation in parameters ```samplingAnnotation``` and ```samplingWeight```.
 
 ---
 
-<strong>!CRITICAL</strong> - If you are using the distributed CoGAPS option, all of your calling code **must** be wrapped in a check to make sure the main thread is running (demonstrated in <a href="/cogaps/optiona/#running-pycogaps-on-single-cell-data">Step 7</a>). Otherwise, child processes will attempt to call this code, because none of them actually “know” they are not the main thread. This causes **infinite recursion** to occur and makes the program **unrunnable**. 
+<strong>!CRITICAL</strong> - If you are using the distributed CoGAPS option, all of your calling code **must** be wrapped in a check to make sure the main thread is running (demonstrated in <a href="/CoGAPSGuide/optiona/#running-pycogaps-on-single-cell-data">Step 7</a>). Otherwise, child processes will attempt to call this code, because none of them actually “know” they are not the main thread. This causes **infinite recursion** to occur and makes the program **unrunnable**. 
 
-A description and guide for setting key PyCoGAPS parameters can be found in <a href="/cogaps/optiona/#table-2-key-parameters-for-cogapspycogaps-and-guidance-on-setting-their-values">Table 2</a>. To view the parameter values that have been set, we include a printParams function (**Box 7**). There are many more additional parameters that can be set depending on your goals, which we invite the reader to explore in our **GitHub documentation**.
+A description and guide for setting key PyCoGAPS parameters can be found in <a href="/CoGAPSGuide/optiona/#table-2-key-parameters-for-cogapspycogaps-and-guidance-on-setting-their-values">Table 2</a>. To view the parameter values that have been set, we include a printParams function (**Box 7**). There are many more additional parameters that can be set depending on your goals, which we invite the reader to explore in our **GitHub documentation**.
 
 ---
 
@@ -417,7 +417,7 @@ maxNS:  11
 
 **11** . With all parameters set, we are now ready to **run PyCoGAPS**. Please note that this is the **most time-consuming step** of the procedure. Timing can take **several hours** and scales nlog(n) based on dataset size (see Timing section below), as well as the parameter values set for ‘nPatterns’ and ‘nIterations’. Time is increased when learning more patterns, when running more iterations, and when running a larger dataset, with iterations having the largest variable impact on the runtime of the NMF function.
 
-<strong>CRITICAL! -</strong> This step has a **long** runtime. For users who want to load an already-complete NMF run and proceed to the analysis portion of this vignette, please skip to <a href="/cogaps/optiona/#analyzing-the-pycogaps-result">step 13</a>. 
+<strong>CRITICAL! -</strong> This step has a **long** runtime. For users who want to load an already-complete NMF run and proceed to the analysis portion of this vignette, please skip to <a href="/CoGAPSGuide/optiona/#analyzing-the-pycogaps-result">step 13</a>. 
 
 Otherwise, you may start the run as so:
 
@@ -447,7 +447,7 @@ NOTE: when running multithreaded, each thread will output to the console separat
 ```
 
 <p style="margin-left: 25px;">
-<strong><a href="/cogaps/troubleshooting/#procedure-1a" target="_blank">TROUBLESHOOTING</a></strong>
+<strong><a href="/CoGAPSGuide/troubleshooting/#procedure-1a" target="_blank">TROUBLESHOOTING</a></strong>
 </p>
     
 ---
@@ -509,7 +509,7 @@ cogapsresult = anndata.read_h5ad("data/cogapsresult.h5ad")
 ```
 
 <p style="margin-left: 25px;">
-<strong><a href="/cogaps/troubleshooting/#procedure-1a" target="_blank">TROUBLESHOOTING</a></strong>
+<strong><a href="/CoGAPSGuide/troubleshooting/#procedure-1a" target="_blank">TROUBLESHOOTING</a></strong>
 </p>
     
 To use your own object, simply replace the path with your own.
@@ -526,7 +526,7 @@ AnnData object with n_obs × n_vars = 15176 × 25442
 
 Now, we are ready to call built-in PyCoGAPS functions to **analyze** and **visualize** the data.
 
-<strong>Note:</strong> Please see “[Anticipated Results](/cogaps/anticipatedresults)” section for more discussion of the result object
+<strong>Note:</strong> Please see “[Anticipated Results](/CoGAPSGuide/anticipatedresults)” section for more discussion of the result object
 
 **14** . We will visualize patterns and compare it with clusters and annotations using **UMAP** and the **scanpy package**. <a href="https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html" target="_blank">scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html</a>
 
@@ -538,7 +538,7 @@ We provide a wrapper function to perform basic clustering workflow in scanpy (al
 from PyCoGAPS.analysis_functions import *
 ```
 
-<strong>! CRITICAL -</strong> If you are at this step following the Docker procedure ([Option B](/cogaps/optionb)), you should have already imported analysis_functions, and **do not** need to include the line above (ie. you do not need to install the PyCoGAPS dependency).
+<strong>! CRITICAL -</strong> If you are at this step following the Docker procedure ([Option B](/CoGAPSGuide/optionb)), you should have already imported analysis_functions, and **do not** need to include the line above (ie. you do not need to install the PyCoGAPS dependency).
 
 Call wrapper function:
 
