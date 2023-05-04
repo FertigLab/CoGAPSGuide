@@ -9,6 +9,7 @@ description: >
   The website for CoGAPS (Coordinated Gene Association in Pattern Sets)
 fixed_navbar: top
 favicon: /images/FertigLabFavicon.png
+footer_menu: footer_menu
 
 exclude: 
   - Gemfile
