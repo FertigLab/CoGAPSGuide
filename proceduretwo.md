@@ -1,6 +1,6 @@
 ---
 
-hero_image: /CoGAPS/images/hero.jpg
+hero_image: /cogaps/images/hero.jpg
 <!-- hero_height: is-fullwidth -->
 hero_darken: true
 subtitle: User Startup Guide
@@ -46,7 +46,7 @@ library(CoGAPS)
 
 <strong>Timing: 3-5 min</strong>
 
-3 . To ensure CoGAPS is working properly, we will first load in the simulated toy data for a test run. Single-cell data will be loaded later in <a href="/CoGAPS/proceduretwo/#running-cogaps-on-single-cell-data">step 6</a>.
+3 . To ensure CoGAPS is working properly, we will first load in the simulated toy data for a test run. Single-cell data will be loaded later in <a href="/cogaps/proceduretwo/#running-cogaps-on-single-cell-data">step 6</a>.
 
 ```r
 modsimdata <- read.table("../data/ModSimData.txt")
@@ -228,7 +228,7 @@ pdac_params <- CogapsParams(nIterations=100, # run for 100 iterations
                   distributed="genome-wide") # parallelize across sets
 ```
 
-If you wish to run **distributed CoGAPS**, which is recommended to improve the computational efficiency for most large datasets, you must also call the **setDistributedParams** function. For a complete description of the parallelization strategy used in distributed CoGAPS, please refer to the section titled “**Finding robust patterns using consensus across parallel sets**”, as well as [Fig. 3](/CoGAPS/troubleshooting/#procedure-2).
+If you wish to run **distributed CoGAPS**, which is recommended to improve the computational efficiency for most large datasets, you must also call the **setDistributedParams** function. For a complete description of the parallelization strategy used in distributed CoGAPS, please refer to the section titled “**Finding robust patterns using consensus across parallel sets**”, as well as [Fig. 3](/cogaps/troubleshooting/#procedure-2).
 
 ```r
 > pdac_params <- setDistributedParams(pdac_params, nSets=7)
@@ -285,7 +285,7 @@ To save as a .csv file, use the following line:
 While CoGAPS is running it periodically prints status messages (**Box 16**). 
 
 <p style="margin-left: 25px;">
-<a href="/CoGAPS/troubleshooting/#procedure-2" target="_blank">TROUBLESHOOTING</a>
+<a href="/cogaps/troubleshooting/#procedure-2" target="_blank">TROUBLESHOOTING</a>
 </p>
         
 ---
@@ -336,7 +336,7 @@ PAUSE POINT - Now we have successfully **generated** and **saved** a CoGAPS resu
 
 The following steps will walk through **analyzing** and **visualizing** the generated saved result.
 
-<strong>Note</strong>: Please see “[Anticipated Results](/CoGAPS/anticipatedresults)” section for more discussion of the result object
+<strong>Note</strong>: Please see “[Anticipated Results](/cogaps/anticipatedresults)” section for more discussion of the result object
 
 10 . It is recommended to **immediately visualize** pattern weights on a UMAP because you will immediately see whether they are showing strong signal and make common sense. 
 
