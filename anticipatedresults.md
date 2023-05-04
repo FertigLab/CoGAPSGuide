@@ -3,9 +3,10 @@
 hero_image: /cogaps/images/hero.jpg
 <!-- hero_height: is-fullwidth -->
 hero_darken: true
-title: Anticipated Results
 
 ---
+
+# Anticipated Results
 
 The output you should obtain from a PyCoGAPS run (Procedure 1A/B or Procedure 3) is an anndata object, stored as an .h5ad file. In the anndata object, the lower dimensional representation of the samples (P matrix) is stored in the .var slot and the weight of the features (A matrix) is stored in the .obs slot. For an m by p dimension gene expression input, the P matrix or .var slot should have dimension m by k, and the A matrix or .obs slot should have dimension k by p, where k is the number of patterns.
 
