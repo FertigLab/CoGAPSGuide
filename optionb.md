@@ -1,6 +1,6 @@
 ---
 
-hero_image: /cogaps/images/hero.jpg
+hero_image: /CoGAPSGuide/images/hero.jpg
 <!-- hero_height: is-fullwidth -->
 hero_darken: true
 title: Docker
@@ -44,14 +44,14 @@ cd..
 ```
 
 <p style="margin-left: 25px;">
-<strong><a href="/cogaps/troubleshooting/#procedure-1b" target="_blank">TROUBLESHOOTING</a></strong>
+<strong><a href="/CoGAPSGuide/troubleshooting/#procedure-1b" target="_blank">TROUBLESHOOTING</a></strong>
 </p>
        
 ## Running PyCoGAPS on Simulated Toy Data
 
 <strong>Timing: 2 min</strong>
 
-**2** . To ensure PyCoGAPS is running properly on your computer, we will first perform a setup and run on the ModSim dataset (running PyCoGAPS on the single-cell data will be performed later in [Step 3](/cogaps/optionb/#running-pycogaps-on-single-cell-data). The dataset has already been downloaded in Step 1. **Run the following commands** in terminal:
+**2** . To ensure PyCoGAPS is running properly on your computer, we will first perform a setup and run on the ModSim dataset (running PyCoGAPS on the single-cell data will be performed later in [Step 3](/CoGAPSGuide/optionb/#running-pycogaps-on-single-cell-data). The dataset has already been downloaded in Step 1. **Run the following commands** in terminal:
 
 ```docker
 docker run -v $PWD:$PWD fertiglab/pycogaps $PWD/params.yaml
@@ -182,13 +182,13 @@ standard_params:
 ...
 ```
 
-A complete list of input options and their descriptions can be found as comments in **params.yaml** and guide to setting key parameters in [Table 2](/cogaps/optionb/#table-2-key-parameters-for-cogapspycogaps-and-guidance-on-setting-their-values).
+A complete list of input options and their descriptions can be found as comments in **params.yaml** and guide to setting key parameters in [Table 2](/CoGAPSGuide/optionb/#table-2-key-parameters-for-cogapspycogaps-and-guidance-on-setting-their-values).
 
 ---
 
 Note the ‘**distributed**’ parameter enables parallelization to decrease runtimes which we recommended for most cases. Please refer to **Box 14** for how to run distributed PyCoGAPS.
 
-A description and guide for setting key PyCoGAPS parameters can be found in [Table 2](/cogaps/optionb/#table-2-key-parameters-for-cogapspycogaps-and-guidance-on-setting-their-values). There are many more additional parameters that can be set depending on your goals, which we invite the reader to explore in our **GitHub documentation**.
+A description and guide for setting key PyCoGAPS parameters can be found in [Table 2](/CoGAPSGuide/optionb/#table-2-key-parameters-for-cogapspycogaps-and-guidance-on-setting-their-values). There are many more additional parameters that can be set depending on your goals, which we invite the reader to explore in our **GitHub documentation**.
 
 ---
 
@@ -262,10 +262,10 @@ from analysis_functions import *
 ```
 
 <p style="margin-left: 25px;">
-<strong><a href="/cogaps/troubleshooting/#procedure-1b" target="_blank">TROUBLESHOOTING</a></strong>
+<strong><a href="/CoGAPSGuide/troubleshooting/#procedure-1b" target="_blank">TROUBLESHOOTING</a></strong>
 </p>
        
-Please **skip to the section above** titled, “<strong>Analyzing the PyCoGAPS Result</strong>” in <a href="/cogaps/optiona/#analyzing-the-pycogaps-result" target="_blank">Procedure 1 Option A Step 13</a> to continue following the analysis and visualization workflow. 
+Please **skip to the section above** titled, “<strong>Analyzing the PyCoGAPS Result</strong>” in <a href="/CoGAPSGuide/optiona/#analyzing-the-pycogaps-result" target="_blank">Procedure 1 Option A Step 13</a> to continue following the analysis and visualization workflow. 
 
 
 ### Table 2: Key parameters for CoGAPS/PyCoGAPS and guidance on setting their values.
