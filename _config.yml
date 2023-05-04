@@ -3,8 +3,8 @@ remote_theme: chrisrhymes/bulma-clean-theme
 permalink: pretty
 
 lang: en
-title: CoGAPS User Guide
-# tagline: CoGAPS
+title: CoGAPS
+tagline: CoGAPS User Guide
 description: >
   The website for CoGAPS (Coordinated Gene Association in Pattern Sets)
 fixed_navbar: top
