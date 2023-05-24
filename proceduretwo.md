@@ -5,7 +5,7 @@ hero_image: /CoGAPSGuide/images/hero.jpg
 hero_darken: true
 subtitle: User Startup Guide
 hero_link: https://www.bioconductor.org/packages/devel/bioc/vignettes/CoGAPS/inst/doc/CoGAPS.html
-hero_link_text: CoGAPS Bioconductor Vignette
+hero_link_text: CoGAPS Vignette
 toc: true
 
 ---
